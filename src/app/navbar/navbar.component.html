@@ -1,0 +1,44 @@
+<nav class="h-[70px] w-screen bg-[#00523F] bg-opacity-20 flex items-center">
+  <div
+    class="flex flex-row items-center space-x-0 sm:space-x-4 text-[24px] sm:text-[30px]"
+  >
+    <img
+      class="h-[40px] sm:h-[60px] ml-4 sm:ml-20 md:ml-40 lg:ml-60 xl:ml-80 mt-4 sm:mt-0 md:mt-1 lg:mt-2 xl:mt-3"
+      src="/assets/images/pixelcut-export.png"
+      alt="GreenLand Logo"
+    />
+    <p
+      class="text-[#525151] font-bold mt-4 text-[16px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px]"
+    >
+      GreenLand
+    </p>
+  </div>
+  <div
+    class="flex gap-4 ml-[100px] sm:ml-[10%] md:ml-[15%] lg:ml-[25%] xl:ml-[30%] mt-4 font-bold text-[#525151] text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] xl:text-[15px] hidden sm:block"
+  >
+    <a
+      class="hover:bg-[#004b23] hover:text-white hover:rounded p-[10px]"
+      href=""
+      >Home</a
+    >
+    <a
+      class="hover:bg-[#004b23] hover:text-white hover:rounded p-[10px]"
+      href=""
+      >Steps</a
+    >
+    <a
+      class="hover:bg-[#004b23] hover:text-white hover:rounded p-[10px]"
+      href=""
+      >Contact</a
+    >
+  </div>
+  <div class="h-[40px] w-[40px]  flex items-center justify-center mt-2 ml-[50%] sm:hidden block"><app-button  [icon]="menuBtnIcon"></app-button></div>
+  <div class="flex  ml-4 mt-2 gap-2  font-bold items-center  ">
+    <app-button [style]="btnStyle" [icon]="loginBtnIcon"></app-button>
+    <p
+      class="text-[#525151] font-bold mt-1 text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] xl:text-[15px] hidden sm:block "
+    >
+      Login
+    </p>
+  </div>
+</nav>
