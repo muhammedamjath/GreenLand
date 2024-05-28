@@ -10,5 +10,7 @@ export class ButtonComponent {
 
   @Input() icon:string=''
 
+  @Input() title:string=''
+
 
 }
