@@ -1,0 +1,58 @@
+<div class="h-screen w-screen flex items-center justify-center">
+  <div class="h-[460px] w-2/4 bg-[#00523F] rounded-[10px] flex">
+    <div class="h-full w-1/2 bg-[] rounded-tl-[10px] rounded-bl-[10px]">
+      <h2 class="bg-[]  mt-2 text-[25px] text-center  ml-8 font-black text-white ">Register here</h2>
+      <form action="">
+        <div class="h-auto mt-2 bg-[] flex flex-col gap-1 items-center  ">
+
+          <div class="h-auto w-5/6 bg-[] border-b border-b-[#536271] p-1 flex flex-col gap-1">
+            <p class="text-[12px] text-white">Name</p>
+            <div class="flex gap-2">
+              <span class="mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="white" d="M5 5a5 5 0 0 1 10 0v2A5 5 0 0 1 5 7V5zM0 16.68A19.9 19.9 0 0 1 10 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z"/></svg></span>
+            <app-input [inputStyle]="inputStyle" [placeholder]="'name'" [inputType]="'text'"></app-input>
+            </div>
+          </div>
+
+          <div class="h-auto w-5/6 bg-[] border-b border-b-[#536271] p-1 flex flex-col gap-1">
+            <p class="text-[12px] text-white">Email</p>
+            <div class="flex gap-2">
+              <span class="mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="white" fill-rule="evenodd" d="m7.172 11.334l2.83 1.935l2.728-1.882l6.115 6.033c-.161.052-.333.08-.512.08H1.667c-.22 0-.43-.043-.623-.12l6.128-6.046ZM20 6.376v9.457c0 .247-.054.481-.15.692l-5.994-5.914L20 6.376ZM0 6.429l6.042 4.132l-5.936 5.858A1.663 1.663 0 0 1 0 15.833V6.43ZM18.333 2.5c.92 0 1.667.746 1.667 1.667v.586L9.998 11.648L0 4.81v-.643C0 3.247.746 2.5 1.667 2.5h16.666Z"/></svg></span>
+            <app-input [inputStyle]="inputStyle" [placeholder]="'@gmail.com'" [inputType]="'text'"></app-input>
+            </div>
+          </div>
+
+          <div class="h-auto w-5/6 bg-[] border-b border-b-[#536271] p-1 flex flex-col gap-1">
+            <p class="text-[12px] text-white">Mob no</p>
+            <div class="flex gap-2">
+              <span class="mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 15 15"><path fill="white" fill-rule="evenodd" d="M4 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-10ZM4.5 1A1.5 1.5 0 0 0 3 2.5v10A1.5 1.5 0 0 0 4.5 14h6a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 10.5 1h-6ZM6 11.65a.35.35 0 1 0 0 .7h3a.35.35 0 1 0 0-.7H6Z" clip-rule="evenodd"/></svg></span>
+            <app-input [inputStyle]="inputStyle" [placeholder]="'+91 000 000 00 00'" [inputType]="'text'"></app-input>
+            </div>
+          </div>
+
+          <div class="h-auto w-5/6 bg-[] border-b border-b-[#536271] p-1 flex flex-col gap-1">
+            <p class="text-[12px] text-white">Password</p>
+            <div class="flex gap-2">
+              <span class="mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10V8c0-2.761 1.239-5 4-5s4 2.239 4 5v2M3.5 17.8v-4.6c0-1.12 0-1.68.218-2.107a2 2 0 0 1 .874-.875c.428-.217.988-.217 2.108-.217h10.6c1.12 0 1.68 0 2.108.217a2 2 0 0 1 .874.874c.218.428.218.988.218 2.108v4.6c0 1.12 0 1.68-.218 2.108a2 2 0 0 1-.874.874C18.98 21 18.42 21 17.3 21H6.7c-1.12 0-1.68 0-2.108-.218a2 2 0 0 1-.874-.874C3.5 19.481 3.5 18.921 3.5 17.8Zm8.5-2.05v-.5m4 .5v-.5m-8 .5v-.5"/></svg></span>
+            <app-input [inputStyle]="inputStyle" [placeholder]="'*********'" [inputType]="'text'"></app-input>
+            </div>
+          </div>
+          
+          <app-button [style]="signupBtnStyle" [title]="signupBtnTittle" ></app-button>
+
+        </div>
+        </form>
+      <div class="h-[80px] bg-[] mt-2 flex flex-col gap-2 ">
+        <div class="flex bg-[] items-center justify-center gap-4">
+          <p class="text-[10px] text-white">Continue with google</p>
+          <img src="/assets/images/google.png" alt="" class="h-8 w-8 cursor-pointer">
+        </div>
+        <p class="w-full bg-[] text-white text-center text-[12px]">if you have an account ? | <span class="font-black text-[#f24c00] text-[15px] cursor-pointer">Login</span></p>
+      </div>
+    </div>
+    <div
+      class="h-full w-1/2 rounded-br-[10px] rounded-tr-[10px] flex items-center justify-center"
+    >
+      <img src="/assets/images/contractor.jpg" alt="" class="h-3/4 w-auto" />
+    </div>
+  </div>
+</div>
