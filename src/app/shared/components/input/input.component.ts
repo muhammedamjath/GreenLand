@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -13,4 +13,16 @@ export class InputComponent {
   @Input() inputName:string=''
 
   @Input() placeholder:string=''
+
+  @Output() focusEvent = new EventEmitter<void>();
+  @Output() blurEvent = new EventEmitter<void>();
+
+  onFocus() {
+    this.focusEvent.emit();
+  }
+
+  onBlur() {
+    this.blurEvent.emit();
+  }
+
 }
