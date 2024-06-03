@@ -14,4 +14,5 @@ export class ButtonComponent {
 
   @Input() routerLink:string=''
 
+  @Input() type:string=''
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +8,37 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  signupBtnStyle:string='h-[35px] w-[200px] font-black font-mono rounded bg-[#FFC42A] text-[#00523F]  '
+  constructor(private FormBuilder:FormBuilder){}
+
+  showDiv: boolean = false;
+
   
-  inputStyle: string = 'w-[250px] h-6 bg-inherit border-l-2 border-r-0 border-t-0 border-b-0 border-indigo-500 text-[10px] pl-[10%] text-white focus:outline-none';
+  loginForm!:FormGroup
+  
+  
+  ngOnInit(){
+    this.loginForm=this.FormBuilder.group({
+      email:['',[Validators.required,Validators.email]],
+      password:['',Validators.required]
+    })
+  }
+  
+  
+  submitted = false;
+  onSubmit(){
+    this.submitted=true
+    if(this.loginForm.valid){
+      console.log('clicked');
+      
+    }
+    else{
+      console.log('not'); 
+    }
+  }
+
+  // optional div function call
+  toggleDiv() {
+    this.showDiv = !this.showDiv;
+  }
 
 }

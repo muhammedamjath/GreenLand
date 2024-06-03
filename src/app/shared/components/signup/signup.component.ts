@@ -1,27 +1,44 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder,FormGroup,Validator, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent  {
-  
-  signupBtnTittle:string='Register'
-  
-  signupBtnStyle:string='h-[35px] w-[200px] font-black font-mono rounded bg-[#FFC42A] text-[#00523F]  '
-  
-  inputStyle: string = 'w-[250px] h-6 bg-inherit border-l-2 border-r-0 border-t-0 border-b-0 border-indigo-500 text-[10px] pl-[10%] text-white focus:outline-none';
-  isInputFocused: boolean = false;
+export class SignupComponent implements OnInit {
 
-  onFocus() {
-    this.isInputFocused = true;
+  signupForm!:FormGroup
+
+  constructor(private FormBuilder:FormBuilder){}
+
+  ngOnInit(){
+    this.signupForm=this.FormBuilder.group({
+        name:['',Validators.required],
+        email:['',[Validators.required,Validators.email]],
+        mobNo:['',[Validators.required,Validators.pattern(/^\d{10}$/)]],
+        password:['',Validators.required]
+      })
+  }
+    
+  
+  submitted = false;
+  onSubmit(){
+    this.submitted=true
+    if(this.signupForm.valid){
+      console.log('clicked');
+      
+    }
+    else{
+      console.log('not');
+      
+    }
+    
+    
   }
 
-  onBlur() {
-    this.isInputFocused = false;
-  }
- 
+  
+  // image src changing due to the costemer
   @Input() imgSrc:string=''
   
 }
