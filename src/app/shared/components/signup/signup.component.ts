@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit,Output,EventEmitter } from '@angular/core';
 import { FormBuilder,FormGroup,Validator, Validators } from '@angular/forms';
 
 @Component({
@@ -12,12 +12,15 @@ export class SignupComponent implements OnInit {
 
   constructor(private FormBuilder:FormBuilder){}
 
+  @Output() signupData = new EventEmitter<any>()
+;
+
   ngOnInit(){
     this.signupForm=this.FormBuilder.group({
-        name:['',Validators.required],
-        email:['',[Validators.required,Validators.email]],
-        mobNo:['',[Validators.required,Validators.pattern(/^\d{10}$/)]],
-        password:['',Validators.required]
+        name:['Amjath',Validators.required],
+        email:['a@gmail.com',[Validators.required,Validators.email]],
+        mobNo:['8943454306',[Validators.required,Validators.pattern(/^\d{10}$/)]],
+        password:['abcd',Validators.required],
       })
   }
     
@@ -25,16 +28,17 @@ export class SignupComponent implements OnInit {
   submitted = false;
   onSubmit(){
     this.submitted=true
-    if(this.signupForm.valid){
-      console.log('clicked');
-      
+    if (this.signupForm.valid) {
+      const signupValues = {
+        name: this.signupForm.value.name,
+        email: this.signupForm.value.email,
+        mobNo: this.signupForm.value.mobNo,
+        password: this.signupForm.value.password,
+      };
+      this.signupData.emit(signupValues)       
+    } else {
+      alert('pls signup again')
     }
-    else{
-      console.log('not');
-      
-    }
-    
-    
   }
 
   
