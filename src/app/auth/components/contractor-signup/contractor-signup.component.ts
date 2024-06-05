@@ -17,7 +17,7 @@ export class ContractorSignupComponent {
 
     this.userService.contractorSignup(datas).subscribe(
       (res)=>{
-        this.router.navigate(['/auth/login'])
+        this.router.navigate(['/auth/otp'])
       },
       (err)=>{
         console.log('error in contractor side:',err);

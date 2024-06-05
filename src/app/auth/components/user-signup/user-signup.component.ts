@@ -17,7 +17,13 @@ export class UserSignupComponent {
     
     this.userService.userSignup(datas).subscribe(
       (res)=>{
-        this.router.navigate(['/auth/login'])
+        localStorage.setItem("signupData", JSON.stringify(datas));
+
+        this.router.navigate(['/auth/SignupOtp'], {
+          queryParams: {
+            option: 'signup'
+          }
+        })
         
       },
       (err:any)=>{

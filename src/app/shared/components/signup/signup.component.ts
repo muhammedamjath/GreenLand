@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(){
     this.signupForm=this.FormBuilder.group({
         name:['Amjath',Validators.required],
-        email:['a@gmail.com',[Validators.required,Validators.email]],
+        email:['muhammedamjath0@gmail.com',[Validators.required,Validators.email]],
         mobNo:['8943454306',[Validators.required,Validators.pattern(/^\d{10}$/)]],
         password:['abcd',Validators.required],
       })

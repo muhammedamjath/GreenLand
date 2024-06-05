@@ -6,6 +6,10 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { UserSignupComponent } from './components/user-signup/user-signup.component';
 import { ContractorSignupComponent } from './components/contractor-signup/contractor-signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OtpComponent } from './components/otpComponent/otp.component';
+import { NgOtpInputModule } from 'ng-otp-input';
+import { SignupOtpComponent } from './components/signup-otp/signup-otp.component';
+import { ResetPasswordOtpComponent } from './components/reset-password-otp/reset-password-otp.component';
 
 
 
@@ -15,12 +19,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     UserSignupComponent,
     ContractorSignupComponent,
+    OtpComponent,
+    SignupOtpComponent,
+    ResetPasswordOtpComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     AuthRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgOtpInputModule 
   ]
 })
 export class AuthModule { }

@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Route, Router } from "@angular/router";
 import { signupModel } from "../models/signup";
 import { Observable } from "rxjs";
+import { signupOtp } from "../models/sinupOtp";
 
 @Injectable({
   providedIn:"root"
@@ -19,6 +20,11 @@ export class userService{
   contractorSignupApi='http://localhost:3000/client/contractorSignup'
   contractorSignup(data:signupModel):Observable <any>{
     return this.http.post(this.contractorSignupApi,data)
+  }
+
+  signupOtpApi='http://localhost:3000/client/signupOtp'
+  signupOtp(data:signupOtp):Observable <any>{
+    return this.http.post(this.signupOtpApi,data)
   }
 
   
