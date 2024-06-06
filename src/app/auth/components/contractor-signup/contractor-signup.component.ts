@@ -17,7 +17,18 @@ export class ContractorSignupComponent {
 
     this.userService.contractorSignup(datas).subscribe(
       (res)=>{
-        this.router.navigate(['/auth/otp'])
+        if(res=='email already used'){
+          alert('this email is already used')
+        }else if(res=='status pending otp sent'){
+          localStorage.setItem("signupData", JSON.stringify(datas));
+          this.router.navigate(['/auth/SignupOtp'])
+        }else if(res=='incorrect email or password'){
+              alert('incorrect email or password')
+        }else{
+
+          localStorage.setItem("signupData", JSON.stringify(datas));
+          this.router.navigate(['/auth/SignupOtp'])
+        }
       },
       (err)=>{
         console.log('error in contractor side:',err);

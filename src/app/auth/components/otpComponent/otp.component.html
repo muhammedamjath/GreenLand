@@ -5,14 +5,14 @@
         </div>
         <div class="h-auto w-full bg-[] flex flex-col gap-2 mt-4">
             <p class="w-full text-center text-[20px] font-semibold">OTP verification</p>
-            <p class="w-full text-center text-[12px]">Enter the otp sent to <b>+91 8943454306</b></p>
+            <p class="w-full text-center text-[12px] font-bold ">Enter the otp sent to <span class="font-semibold text-[gray]">{{userEmail}}</span></p>
         </div>
         <form >
             <div class="h-auto w-full bg-[] flex gap-2 justify-center mt-4 ">
                 <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="{length:4,allowNumbersOnly:true}" ></ng-otp-input>
             </div>
             </form>
-        <p class="w-full bg-[] text-[13px] text-center mt-2">Don't you recive the otp? <span class="text-[blue] cursor-pointer">Resent otp</span></p>
+        <p class="w-full bg-[] text-[13px] text-center mt-2">Don't you recive the otp? <span class="text-[blue] cursor-pointer" (click)="resentOtp()">Resent otp</span></p>
             <div class="w-full flex items-center justify-center mt-6">
         <button class="h-[40px] w-[90%] bg-[blue] text-white rounded-[20px]" (click)="onSubmit()">Verify</button>
             </div>

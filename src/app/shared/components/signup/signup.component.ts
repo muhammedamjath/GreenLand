@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
         name:['Amjath',Validators.required],
         email:['muhammedamjath0@gmail.com',[Validators.required,Validators.email]],
         mobNo:['8943454306',[Validators.required,Validators.pattern(/^\d{10}$/)]],
-        password:['abcd',Validators.required],
+        password:['Amjath@123',[Validators.required,Validators.minLength(8),Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}/)]],
       })
   }
     

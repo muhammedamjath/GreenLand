@@ -29,7 +29,13 @@ onSubmit(data:any){
   
   this.userService.signupOtp(otpData).subscribe(
     (res)=>{
+      if(res=='otp verification success'){
+      localStorage.removeItem('signupData')
       this.router.navigate(['/auth/login'])
+      }else if(res=='otp verification failed'){
+        alert('worng otp')
+      }
+      
     }
   )
 }

@@ -7,17 +7,22 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./otp.component.css']
 })
 export class OtpComponent implements OnInit {
-  // signupData: any = '';
+  signupData: any = '';
   currentOption = 'signup';
+  enteredOtp:string=''
+  userEmail:String=''
+  otpObj={}
+
+   temp = localStorage.getItem('signupData');
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const temp = localStorage.getItem('signupData');
 
-    // if(temp) {
-    //   this.signupData = JSON.parse(temp);
-    // }
+    if(this.temp) {
+      this.signupData = JSON.parse(this.temp);
+      this.userEmail = this.signupData.email; 
+    }
 
 
     this.activatedRoute.queryParamMap.subscribe({
@@ -26,15 +31,11 @@ export class OtpComponent implements OnInit {
       }
     })
 
-    // if(!this.signupData) {
-    //   this.router.navigateByUrl('/auth/userSignup')
-    // }
+    
   }
 
   @Output() otp = new EventEmitter<any>
 
-  enteredOtp:string=''
-  otpObj={}
   onOtpChange(data:any){
       this.enteredOtp=data   
   }
@@ -42,17 +43,11 @@ export class OtpComponent implements OnInit {
   onSubmit() {
     
     if(this.enteredOtp.length==4){
-      let userEmail:String=''
-      const signupData=localStorage.getItem('signupData')
-      if (signupData) {
+      if (this.signupData) {
        
-          const parsedData = JSON.parse(signupData);
-           userEmail = parsedData.email; // Assuming 'email' is the key in localStorage
-        
+           this.otpObj={otp:this.enteredOtp,userEmail:this.userEmail}
+           this.otp.emit(this.otpObj)
       }
-      this.otpObj={otp:this.enteredOtp,userEmail:userEmail}
-      this.otp.emit(this.otpObj)
-      localStorage.removeItem('signupData')
     }
 
 
@@ -63,6 +58,12 @@ export class OtpComponent implements OnInit {
       default:
         console.log('singup')
     }
+  }
+
+  resentOtp(){
+    this.otpObj={otp:'',userEmail:this.userEmail}
+
+    this.otp.emit(this.otpObj)
   }
 
 }

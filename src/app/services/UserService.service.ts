@@ -27,5 +27,10 @@ export class userService{
     return this.http.post(this.signupOtpApi,data)
   }
 
+  resentOtpApi='http://localhost:3000/client/resentOtp'
+  resentOtp(data:signupOtp):Observable <any>{
+    return this.http.patch(this.resentOtpApi,data)
+  }
+  
   
 }
