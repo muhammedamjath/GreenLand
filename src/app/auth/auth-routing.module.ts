@@ -6,6 +6,8 @@ import { UserSignupComponent } from './components/user-signup/user-signup.compon
 import { OtpComponent } from './components/otpComponent/otp.component';
 import { SignupOtpComponent } from './components/signup-otp/signup-otp.component';
 import { ResetPasswordOtpComponent } from './components/reset-password-otp/reset-password-otp.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { NewPasswordComponent } from './components/new-password/new-password.component';
 
 
 const routes: Routes = [
@@ -14,6 +16,9 @@ const routes: Routes = [
   {path:'userSignup',component:UserSignupComponent},
   {path:'SignupOtp',component:SignupOtpComponent},
   {path:'resetOtp',component:ResetPasswordOtpComponent},
+  {path:'forgetPassword',component:ForgetPasswordComponent},
+  {path:'newPassword',component:NewPasswordComponent}
+  
 
 ];
 

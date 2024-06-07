@@ -4,6 +4,7 @@ import { Route, Router } from "@angular/router";
 import { signupModel } from "../models/signup";
 import { Observable } from "rxjs";
 import { signupOtp } from "../models/sinupOtp";
+import { resetPasswordModel } from "../models/resetPass";
 
 @Injectable({
   providedIn:"root"
@@ -31,6 +32,15 @@ export class userService{
   resentOtp(data:signupOtp):Observable <any>{
     return this.http.patch(this.resentOtpApi,data)
   }
+
+  fogetPasswordApi='http://localhost:3000/client/forgetPassword'
+  forgetPassword(data:resetPasswordModel):Observable <any>{
+    return this.http.post(this.fogetPasswordApi,data)
+  }
   
-  
+  resetPasswordOtpApi='http://localhost:3000/client/resetPassword'
+  resetPassword(data:signupOtp):Observable <any>{
+    return this.http.post(this.resetPasswordOtpApi,data)
+  }
+
 }

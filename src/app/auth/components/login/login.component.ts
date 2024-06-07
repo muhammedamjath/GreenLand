@@ -26,6 +26,8 @@ export class LoginComponent {
   
   submitted = false;
   onSubmit(){
+    console.log(this.loginForm);
+    
     this.submitted=true
     if(this.loginForm.valid){
       console.log('clicked');

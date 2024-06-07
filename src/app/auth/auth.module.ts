@@ -10,6 +10,8 @@ import { OtpComponent } from './components/otpComponent/otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { SignupOtpComponent } from './components/signup-otp/signup-otp.component';
 import { ResetPasswordOtpComponent } from './components/reset-password-otp/reset-password-otp.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { NewPasswordComponent } from './components/new-password/new-password.component';
 
 
 
@@ -22,6 +24,8 @@ import { ResetPasswordOtpComponent } from './components/reset-password-otp/reset
     OtpComponent,
     SignupOtpComponent,
     ResetPasswordOtpComponent,
+    ForgetPasswordComponent,
+    NewPasswordComponent,
   ],
   imports: [
     CommonModule,

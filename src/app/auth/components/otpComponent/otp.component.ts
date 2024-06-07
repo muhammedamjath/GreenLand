@@ -8,20 +8,28 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class OtpComponent implements OnInit {
   signupData: any = '';
+  newResetEmail:any=''
   currentOption = 'signup';
   enteredOtp:string=''
   userEmail:String=''
   otpObj={}
 
-   temp = localStorage.getItem('signupData');
+   LocalsignUp = localStorage.getItem('signupData');
+   resetEmail=localStorage.getItem('resetEmail')
+
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
 
-    if(this.temp) {
-      this.signupData = JSON.parse(this.temp);
+    if(this.LocalsignUp) {
+      this.signupData = JSON.parse(this.LocalsignUp);
       this.userEmail = this.signupData.email; 
+    }
+
+    if(this.resetEmail){
+      this.newResetEmail=JSON.parse(this.resetEmail)
+      this.userEmail=this.newResetEmail.email
     }
 
 
@@ -38,14 +46,17 @@ export class OtpComponent implements OnInit {
 
   onOtpChange(data:any){
       this.enteredOtp=data   
+      console.log('data:',data);
+      
   }
 
+  
   onSubmit() {
     
     if(this.enteredOtp.length==4){
-      if (this.signupData) {
+      if (this.signupData || this.newResetEmail) {
        
-           this.otpObj={otp:this.enteredOtp,userEmail:this.userEmail}
+           this.otpObj={otp:this.enteredOtp,userEmail:this.userEmail}           
            this.otp.emit(this.otpObj)
       }
     }

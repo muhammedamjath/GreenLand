@@ -1,5 +1,5 @@
 import { Component, Input, OnInit,Output,EventEmitter } from '@angular/core';
-import { FormBuilder,FormGroup,Validator, Validators } from '@angular/forms';
+import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
