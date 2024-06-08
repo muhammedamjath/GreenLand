@@ -7,11 +7,11 @@ import { userService } from 'src/app/services/UserService.service';
 @Component({
   selector: 'app-new-password',
   templateUrl: './new-password.component.html',
-  styleUrls: ['./new-password.component.css']
+  styleUrls: ['./new-password.component.css'],
 })
 export class NewPasswordComponent implements OnInit {
   newPassword!: FormGroup;
-  recoverPasswordEmail:any=''
+  recoverPasswordEmail: any = '';
 
   constructor(
     private formbuilder: FormBuilder,
@@ -20,7 +20,6 @@ export class NewPasswordComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
     const temp = localStorage.getItem('resetEmail');
 
     if (temp) {
@@ -32,7 +31,7 @@ export class NewPasswordComponent implements OnInit {
 
     this.newPassword = this.formbuilder.group({
       password: [
-        'Amjath@123',
+        '',
         [
           Validators.required,
           Validators.minLength(8),
@@ -44,21 +43,18 @@ export class NewPasswordComponent implements OnInit {
     });
   }
 
-  
-
-  onPasswordSubmit=false
+  onPasswordSubmit = false;
   passwordSubmit() {
     this.onPasswordSubmit = true;
     if (this.newPassword.valid) {
-      
       const recoverEmail = this.recoverPasswordEmail.email;
       const password = this.newPassword.value.password;
       const data = { email: recoverEmail, password: password };
 
       const datas: resetPasswordModel = data as resetPasswordModel;
       this.userService.forgetPassword(datas).subscribe((res) => {
-        localStorage.removeItem('resetEmail')
-        this.router.navigateByUrl('/auth/login')
+        localStorage.removeItem('resetEmail');
+        this.router.navigateByUrl('/auth/login');
       });
     }
   }

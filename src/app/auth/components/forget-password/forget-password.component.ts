@@ -19,13 +19,8 @@ export class ForgetPasswordComponent implements OnInit {
 
   ngOnInit() {
     this.recoverPasswordEmail = this.formbuilder.group({
-      email: [
-        'muhammedamjath0@gmail.com',
-        [Validators.email, Validators.required],
-      ],
+      email: ['', [Validators.email, Validators.required]],
     });
-
-    
   }
 
   emailSection = true;
@@ -51,6 +46,4 @@ export class ForgetPasswordComponent implements OnInit {
       });
     }
   }
-
-  
 }

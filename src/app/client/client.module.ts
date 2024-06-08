@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HomeContractorComponent } from './components/contractor/home-contractor/home-contractor.component';
+import { ClientRoutingModule } from './client-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HomeContractorComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    ClientRoutingModule,
+    SharedModule
   ]
 })
 export class ClientModule { }
