@@ -10,37 +10,42 @@ import { resetPasswordModel } from "../models/resetPass";
   providedIn:"root"
 })
 
-export class userService{
+export class authService{
   constructor(private http:HttpClient , private router:Router){}
 
-  userSignupApi='http://localhost:3000/client/userSignup'
+  userSignupApi='http://localhost:3000/auth/userSignup'
   userSignup(data:signupModel):Observable <any>{
     return this.http.post(this.userSignupApi,data)
   }
 
-  contractorSignupApi='http://localhost:3000/client/contractorSignup'
+  contractorSignupApi='http://localhost:3000/auth/contractorSignup'
   contractorSignup(data:signupModel):Observable <any>{
     return this.http.post(this.contractorSignupApi,data)
   }
 
-  signupOtpApi='http://localhost:3000/client/signupOtp'
+  signupOtpApi='http://localhost:3000/auth/signupOtp'
   signupOtp(data:signupOtp):Observable <any>{
     return this.http.post(this.signupOtpApi,data)
   }
 
-  resentOtpApi='http://localhost:3000/client/resentOtp'
+  resentOtpApi='http://localhost:3000/auth/resentOtp'
   resentOtp(data:signupOtp):Observable <any>{
     return this.http.patch(this.resentOtpApi,data)
   }
 
-  fogetPasswordApi='http://localhost:3000/client/forgetPassword'
+  fogetPasswordApi='http://localhost:3000/auth/forgetPassword'
   forgetPassword(data:resetPasswordModel):Observable <any>{
     return this.http.post(this.fogetPasswordApi,data)
   }
   
-  resetPasswordOtpApi='http://localhost:3000/client/resetPassword'
+  resetPasswordOtpApi='http://localhost:3000/auth/resetPassword'
   resetPassword(data:signupOtp):Observable <any>{
     return this.http.post(this.resetPasswordOtpApi,data)
+  }
+
+  loginApi='http://localhost:3000/auth/login'
+  login(data:resetPasswordModel):Observable <any>{
+    return this.http.post(this.loginApi,data)
   }
 
 }

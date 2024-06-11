@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { signupModel } from 'src/app/models/signup';
-import { userService } from 'src/app/services/UserService.service';
+import { authService, } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'user-signup',
@@ -9,7 +9,7 @@ import { userService } from 'src/app/services/UserService.service';
   styleUrls: ['./user-signup.component.css'],
 })
 export class UserSignupComponent {
-  constructor(private userService: userService, private router: Router) {}
+  constructor(private userService: authService, private router: Router) {}
 
   onSignupData(data: any) {
     const datas: signupModel = data as signupModel;

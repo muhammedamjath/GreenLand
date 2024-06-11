@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { resetPasswordModel } from 'src/app/models/resetPass';
-import { userService } from 'src/app/services/UserService.service';
+import { authService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-new-password',
@@ -15,7 +15,7 @@ export class NewPasswordComponent implements OnInit {
 
   constructor(
     private formbuilder: FormBuilder,
-    private userService: userService,
+    private authservice: authService,
     private router: Router
   ) {}
 
@@ -52,7 +52,7 @@ export class NewPasswordComponent implements OnInit {
       const data = { email: recoverEmail, password: password };
 
       const datas: resetPasswordModel = data as resetPasswordModel;
-      this.userService.forgetPassword(datas).subscribe((res) => {
+      this.authservice.forgetPassword(datas).subscribe((res) => {
         localStorage.removeItem('resetEmail');
         this.router.navigateByUrl('/auth/login');
       });

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { resetPasswordModel } from 'src/app/models/resetPass';
+import { authService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent {
 
-  constructor(private FormBuilder:FormBuilder){}
+  constructor(private FormBuilder:FormBuilder , private authservice:authService){}
 
   showDiv: boolean = false;
 
@@ -18,20 +20,38 @@ export class LoginComponent {
   
   ngOnInit(){
     this.loginForm=this.FormBuilder.group({
-      email:['',[Validators.required,Validators.email]],
-      password:['',Validators.required]
+      email:['muhammedamjath0@gmail.com',[Validators.required,Validators.email]],
+      password:['Amjath@123',Validators.required]
     })
   }
   
   
   submitted = false;
   onSubmit(){
-    console.log(this.loginForm);
-    
     this.submitted=true
     if(this.loginForm.valid){
-      console.log('clicked');
-      
+       const objData={email:this.loginForm.value.email,password:this.loginForm.value.password}
+      const sentData:resetPasswordModel = objData as resetPasswordModel
+      this.authservice.login(sentData).subscribe(
+        (res)=>{
+          console.log(res);
+          
+          if(res.data.category == 'user'){
+            console.log(res.token);
+            
+                localStorage.setItem('token',res.token)
+                
+          }else if (res.data.category == 'contractor'){
+            localStorage.setItem('token',res.token)
+
+          }else if (res.status=='incorrect password'){
+              
+          }else if (res.status == 'userData not fount'){
+            alert('pls login')
+          }
+          
+        }
+      )
     }
     else{
       console.log('not'); 

@@ -6,6 +6,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ComponyRegistrationComponent } from './components/compony registration form/compony-registration.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ButtonComponent,
     NavbarComponent,
     FooterComponent,
-    SignupComponent
+    SignupComponent,
+    ComponyRegistrationComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ButtonComponent,
     NavbarComponent,
     FooterComponent,
-    SignupComponent
+    SignupComponent,
+    ComponyRegistrationComponent
   ]
 
 })

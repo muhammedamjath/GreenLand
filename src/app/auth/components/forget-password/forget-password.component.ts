@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { resetPasswordModel } from 'src/app/models/resetPass';
-import { userService } from 'src/app/services/UserService.service';
+import { authService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -13,7 +13,7 @@ export class ForgetPasswordComponent implements OnInit {
   recoverPasswordEmail!: FormGroup;
   constructor(
     private formbuilder: FormBuilder,
-    private userService: userService,
+    private authservice: authService,
     private router: Router
   ) {}
 
@@ -35,7 +35,7 @@ export class ForgetPasswordComponent implements OnInit {
 
       const datas: resetPasswordModel = data as resetPasswordModel;
 
-      this.userService.forgetPassword(datas).subscribe((res) => {
+      this.authservice.forgetPassword(datas).subscribe((res) => {
         if (res == 'no user data fount') {
           alert('no user data fount.pls signup');
           this.router.navigateByUrl('/auth/userSignup');

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { signupModel } from 'src/app/models/signup';
-import { userService } from 'src/app/services/UserService.service';
+import { authService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-contractor-signup',
@@ -9,12 +9,12 @@ import { userService } from 'src/app/services/UserService.service';
   styleUrls: ['./contractor-signup.component.css'],
 })
 export class ContractorSignupComponent {
-  constructor(private userService: userService, private router: Router) {}
+  constructor(private authservice: authService, private router: Router) {}
 
   onSignupData(data: any) {
     const datas: signupModel = data as signupModel;
 
-    this.userService.contractorSignup(datas).subscribe(
+    this.authservice.contractorSignup(datas).subscribe(
       (res) => {
         if (res == 'email already used') {
           alert('this email is already used');

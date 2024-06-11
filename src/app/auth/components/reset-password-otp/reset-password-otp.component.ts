@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { signupOtp } from 'src/app/models/sinupOtp';
-import { userService } from 'src/app/services/UserService.service';
+import { authService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-reset-password-otp',
@@ -9,7 +9,7 @@ import { userService } from 'src/app/services/UserService.service';
   styleUrls: ['./reset-password-otp.component.css'],
 })
 export class ResetPasswordOtpComponent implements OnInit {
-  constructor(private router: Router, private userService: userService) {}
+  constructor(private router: Router, private authservice: authService) {}
   resetEmail: any = '';
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class ResetPasswordOtpComponent implements OnInit {
     const otpData: signupOtp = data as signupOtp;
     console.log(data);
 
-    this.userService.resetPassword(otpData).subscribe((res) => {
+    this.authservice.resetPassword(otpData).subscribe((res) => {
       if (res == 'otp verification success') {
         this.router.navigateByUrl('/auth/newPassword');
       } else if ('no user fount') {
