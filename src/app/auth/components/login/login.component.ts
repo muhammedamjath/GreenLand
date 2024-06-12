@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  Router } from '@angular/router';
 import { resetPasswordModel } from 'src/app/models/resetPass';
 import { authService } from 'src/app/services/auth.service';
 
@@ -10,7 +11,7 @@ import { authService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
 
-  constructor(private FormBuilder:FormBuilder , private authservice:authService){}
+  constructor(private FormBuilder:FormBuilder , private authservice:authService , private router:Router){}
 
   showDiv: boolean = false;
 
@@ -38,11 +39,12 @@ export class LoginComponent {
           
           if(res.data.category == 'user'){
             console.log(res.token);
-            
-                localStorage.setItem('token',res.token)
+          
+              localStorage.setItem('token',res.token)
                 
           }else if (res.data.category == 'contractor'){
             localStorage.setItem('token',res.token)
+            this.router.navigate(['/client/contractorHome'])
 
           }else if (res.status=='incorrect password'){
               

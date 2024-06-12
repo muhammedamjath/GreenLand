@@ -12,6 +12,8 @@ export class clientService{
 
     componyRegApi='http://localhost:3000/client/componyRegistration'
     componyReg(data:componyReg):Observable<any>{
+        console.log(data);
+        
         return this.http.post(this.componyRegApi,data)
     }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './client/components/home/home.component';
+import { clientGuard } from './guards/client.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
   {
     path:'client',
     loadChildren:()=>
-      import('./client/client.module').then((m)=> m.ClientModule)
+      import('./client/client.module').then((m)=> m.ClientModule),canActivate:[clientGuard]
   }
 ];
 

@@ -36,12 +36,15 @@ export class ComponyRegistrationComponent implements OnInit {
 
   onSubmit(){
     if(this.registerForm.valid){
-      const registerValues={
-        ...this.registerForm.value,
-        image: this.imageFile
-      }
+      const formData= new FormData()
+      formData.append('image',this.imageFile)
+      formData.append('componyName',this.registerForm.value.componyName)
+      formData.append('location',this.registerForm.value.location)
+      formData.append('category',this.registerForm.value.category)
+      formData.append('discription',this.registerForm.value.discription)
       
-      this.registerData.emit(registerValues)
+      
+      this.registerData.emit(formData)
     }
 
   }

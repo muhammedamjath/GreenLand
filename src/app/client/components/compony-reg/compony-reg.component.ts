@@ -17,8 +17,13 @@ export class ComponyRegComponent {
     
     this.clientService.componyReg(datas).subscribe(
       (res)=>{
-        console.log(res);
         
+        // console.log(res);
+        
+      },
+      (error) => {
+        console.error('Error:', error);
+        alert('invalid access to server');
       }
     )
     
