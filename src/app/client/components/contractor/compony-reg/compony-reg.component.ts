@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { componyReg } from 'src/app/models/componyRegistration';
 import { clientService } from 'src/app/services/client.service';
 
@@ -9,16 +10,14 @@ import { clientService } from 'src/app/services/client.service';
 })
 export class ComponyRegComponent {
 
-  constructor(private clientService:clientService){}
+  constructor(private clientService:clientService , private router:Router){}
 
   componyReg(data:any){
     const datas : componyReg =data as componyReg
-    console.log(datas);
     
     this.clientService.componyReg(datas).subscribe(
       (res)=>{
-        
-        // console.log(res);
+        this.router.navigate(['/client/contractorHome'])
         
       },
       (error) => {

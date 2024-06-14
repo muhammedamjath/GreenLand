@@ -8,12 +8,38 @@ import { Observable } from "rxjs";
 })
 
 export class clientService{
+    componyData:any=''
+    
     constructor(private http:HttpClient){}
+
+    ProfilePhotoUpdateApi='http://localhost:3000/client/profilePhotoUpdate'
+    profilePhotoUpdate(data:any):Observable<any>{
+        return this.http.post(this.ProfilePhotoUpdateApi,data)
+    }
+
+    getUserDetailesApi='http://localhost:3000/client/getUser'
+    getUser():Observable<any>{
+        return this.http.get(this.getUserDetailesApi)
+    }
 
     componyRegApi='http://localhost:3000/client/componyRegistration'
     componyReg(data:componyReg):Observable<any>{
-        console.log(data);
-        
         return this.http.post(this.componyRegApi,data)
     }
+
+    registeredComponysApi='http://localhost:3000/client/registeredCompnys'
+    registeredcomponys():Observable<any>{
+        return this.http.get(this.registeredComponysApi)
+    }
+    
+    updateComponyGetApi='http://localhost:3000/client/getSigleComponyDetailes/'
+    componyDetails(id:any):Observable<any>{ 
+        return this.http.get(`${this.updateComponyGetApi}${id}`);
+    }
+  
+    updateCompony(data:componyReg):Observable<any>{
+        const updateComponyApi=`http://localhost:3000/client/updateCompony?id=${this.componyData._id}`
+        return this.http.post(updateComponyApi,data)
+    }
+
 }

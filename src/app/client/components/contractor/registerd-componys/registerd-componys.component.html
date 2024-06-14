@@ -1,0 +1,33 @@
+
+<div class="h-screen w-screen">
+
+    <app-navbar></app-navbar>
+
+    <p class="w-screen bg-[red] text-center mt-2 text-[30px]">Registered works </p>
+    <div class="min-h-[600px] w-screen bg-[yellow] mt-4 flex justify-center gap-6 flex-wrap pb-4">
+        <div class="h-[300px] w-[40%] bg-[#bde0fe] rounded-[10px] relative" *ngFor="let i of datas">
+            <div class="h-[100px] w-[20%] bg-white ml-[40%] mt-4 rounded-[10px] flex justify-center items-center">
+                <img src="{{i.image}}" alt="" class="h-full w-auto rounded">
+            </div>
+            <button class="absolute h-[30px] w-[10%] top-2 left-[85%] bg-[#e5e5e5] rounded " (click)="editItem(i._id)" >Edit</button>
+            <div class="w-full h-12  mt-2 flex gap-[2%] justify-center">
+                <div class="bg-white w-[48%] h-12 flex items-center gap-1 rounded "><span class="bg-[#e0e1dd] text-[13px] h-12 flex items-center rounded-tl rounded-bl">Compony Name : </span> {{i.componyName}}</div>
+                <div class="bg-white w-[48%] h-12 flex items-center gap-1 rounded "><span class="bg-[#e0e1dd] text-[13px] h-12 flex items-center rounded-tl rounded-bl">Category : </span>{{i.category}} </div>
+            </div>
+            <div class="w-full h-12  mt-2 flex gap-[2%] ">
+                <div class="bg-white w-[48%] h-12 flex items-center gap-1 rounded ml-[1%] "><span class="bg-[#e0e1dd] text-[13px] h-12 flex items-center rounded-tl rounded-bl">Location &nbsp;<i class="fa-solid fa-location-dot"></i>&nbsp;: </span>{{i.location}} </div>
+            </div>
+
+            <div class="w-full h-12  mt-2 flex gap-[2%] ">
+                <div class="bg-white w-[98%] h-12 flex items-center gap-1 rounded ml-[1%] text-[10px]"><span class="bg-[#e0e1dd] w-[20%] text-[13px] h-12 flex items-center rounded-tl rounded-bl">Compony Name : </span> {{i.discription}} </div>
+                
+            </div>
+        </div>
+
+    </div>
+<app-footer></app-footer>
+
+</div>
+
+
+
