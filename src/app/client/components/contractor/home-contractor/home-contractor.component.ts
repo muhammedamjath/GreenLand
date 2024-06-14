@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { clientService } from 'src/app/services/client.service';
 
 @Component({
@@ -8,9 +9,9 @@ import { clientService } from 'src/app/services/client.service';
   styleUrls: ['./home-contractor.component.css']
 })
 export class HomeContractorComponent implements OnInit {
-  constructor(private clientService:clientService , private formBuilder:FormBuilder){}
+  constructor(private clientService:clientService , private formBuilder:FormBuilder , private router:Router){}
   userData:any
-  logoutDiv:boolean=true
+  logoutDiv:boolean=false
   profileChangeForm!:FormGroup
   // profileImage:string=''
   showChangeProfileModal:boolean=false
@@ -27,9 +28,7 @@ export class HomeContractorComponent implements OnInit {
     this.profileChangeForm = this.formBuilder.group({
       image:[[],Validators.required]
     })
-    // if(this.commonService.profileImage){
-    //   this.profileImage=this.commonService.profileImage
-    // }
+    
 
   }
 
@@ -42,7 +41,17 @@ export class HomeContractorComponent implements OnInit {
   }
 
   submitProfilePicture(){
-    
+    if(this.profileChangeForm.valid){
+      this.buttonDisabled=true
+      const data= new FormData()
+      data.append('image',this.imageFile)
+      console.log('data is :',data);
+      
+      this.clientService.profilePhotoUpdate(data).subscribe((res)=>{
+        console.log(res);
+        
+      })
+    }
   }
 
   onImageUpload(data:any){
@@ -53,6 +62,11 @@ export class HomeContractorComponent implements OnInit {
 
   closeModal(){
     this.showChangeProfileModal=false
+  }
+
+  logout(){
+    localStorage.removeItem('token')
+    this.router.navigate(['/'])
   }
 
 }

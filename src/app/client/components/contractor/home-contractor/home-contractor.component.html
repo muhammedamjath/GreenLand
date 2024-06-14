@@ -33,20 +33,20 @@
     </div>
 
 
-    <div *ngIf="logoutDiv"  class="h-[150px] w-[100%] sm:w-[80%] md:w-[50%] lg:w-[40%] xl:w-[30%] bg-[violet] rounded-[10px] absolute  top-[100px] right-6 flex flex-col justify-between items-center z-10 p-2 ">
+    <div *ngIf="logoutDiv"  class="h-[150px] w-[100%] sm:w-[80%] md:w-[50%] lg:w-[40%] xl:w-[30%] bg-[#252525] rounded-[10px] absolute  top-[100px] right-6 flex flex-col justify-between items-center z-10 p-2 ">
             <div class="flex gap-2 w-full bg-[] ">
                 <div class="h-[80px] w-[20%] bg-white rounded-[10px] flex justify-center relative items-center">
                     <img *ngIf="userData.image" src="/assets/images/Amjath.jpg" alt="" class="h-full w-auto rounded-[10px]">
                     <div *ngIf="!userData.image" class="h-full w-full text-[40px] flex items-center justify-center"><i class="fa-regular fa-user"></i></div>
                     <div class="bg-[] text-[20px] absolute bottom-0 right-0 cursor-pointer" (click)="changeProfile()"><i class="fa-solid fa-pencil"></i></div>
                 </div>
-                <div class="h-[80px] w-[80%]">
+                <div class="h-[80px] w-[80%] text-white text-[15px]">
                     <p>{{userData.name}}</p>
                     <p>{{userData.email}}</p>
                     <p> <span>+91</span> {{userData.mobNo}}</p>
                 </div>
             </div>
-            <button class="h-[40px] w-[40%] bg-[#FFC42A] rounded-[10px] font-medium ">Logout</button>
+            <button class="h-[40px] w-[40%] bg-[#FFC42A] rounded-[10px] font-medium " (click)="logout()">Logout</button>
     </div>
     <!-- main content  -->
 
