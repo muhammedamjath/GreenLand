@@ -4,13 +4,15 @@ import { HomeContractorComponent } from "./components/contractor/home-contractor
 import { ComponyRegComponent } from "./components/contractor/compony-reg/compony-reg.component";
 import { UpdateComponyComponent } from "./components/contractor/update-compony/update-compony.component";
 import { RegisterdComponysComponent } from "./components/contractor/registerd-componys/registerd-componys.component";
+import { LandingPageComponent } from "./components/user/landing-page/landing-page.component";
 
 
 const routes:Routes=[
     {path:'contractorHome',component:HomeContractorComponent},
     {path:'componyReg',component:ComponyRegComponent},
     {path:'updateCompony',component:UpdateComponyComponent},
-    {path:'registerdComponys',component:RegisterdComponysComponent}
+    {path:'registerdComponys',component:RegisterdComponysComponent},
+    {path:'userLandPage',component:LandingPageComponent}
 ]
 
 @NgModule({

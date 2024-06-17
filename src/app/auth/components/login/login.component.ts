@@ -39,8 +39,8 @@ export class LoginComponent {
           
           if(res.data.category == 'user'){
             console.log(res.token);
-          
               localStorage.setItem('token',res.token)
+              this.router.navigate(['/client/userLandPage'])
                 
           }else if (res.data.category == 'contractor'){
             localStorage.setItem('token',res.token)

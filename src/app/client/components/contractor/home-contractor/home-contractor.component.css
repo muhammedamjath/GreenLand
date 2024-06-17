@@ -1,0 +1,10 @@
+ body{
+    background-color: #f4d35e;
+}
+
+.welcome{
+    font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}

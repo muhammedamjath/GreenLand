@@ -48,8 +48,9 @@ export class HomeContractorComponent implements OnInit {
       console.log('data is :',data);
       
       this.clientService.profilePhotoUpdate(data).subscribe((res)=>{
-        console.log(res);
-        
+        this.showChangeProfileModal=false
+        // location.reload()
+        this.userData=res
       })
     }
   }

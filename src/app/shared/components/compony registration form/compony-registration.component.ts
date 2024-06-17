@@ -12,6 +12,7 @@ export class ComponyRegistrationComponent implements OnInit  {
   registerForm!:FormGroup
   constructor(private formBuilder:FormBuilder , private clientService:clientService){}
 
+  @Input() submitBtnText:string=''
   imageUrl:string=''
   imageFile: any = null;
   @Input() isEditing = false;
