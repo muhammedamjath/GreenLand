@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { clientService } from 'src/app/services/client.service';
 
 @Component({
@@ -7,29 +7,28 @@ import { clientService } from 'src/app/services/client.service';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-
+  userData:any
+  allComponys:any
   constructor(private clientService:clientService){}
 
-  userData:any
-  logoutDiv:boolean=false
 
   ngOnInit() {
     this.clientService.getUser().subscribe((res)=>{
       this.userData=res
-      
     })
+
+    this.clientService.getAllCompony().subscribe((res)=>{
+      this.allComponys=res
+      console.log(this.allComponys);
+    })
+    
   }
 
-  changeProfile(){
-
+  shareId(id:any){
+    
+    
   }
 
-  profileClick(){
-    this.logoutDiv=!this.logoutDiv
-  }
-
-  logout(){
-
-  }
+  
 
 }

@@ -8,4 +8,9 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
-  
+  .description {
+    width: 100%; /* Ensure it takes the full width available */
+    white-space: nowrap; /* Prevents the text from wrapping to the next line */
+    overflow: hidden; /* Hides the overflow */
+    text-overflow: ellipsis; /* Adds ellipsis (...) to indicate overflow */
+}

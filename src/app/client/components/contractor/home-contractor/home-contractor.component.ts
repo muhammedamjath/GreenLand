@@ -18,7 +18,7 @@ export class HomeContractorComponent implements OnInit {
   previewImageSrc:string=''
   imageFile:any = null
 
-  buttonDisabled:boolean=false
+  buttonDisabled:boolean=false 
 
   ngOnInit() {
     this.clientService.getUser().subscribe((res)=>{
@@ -26,7 +26,7 @@ export class HomeContractorComponent implements OnInit {
     })
 
     this.profileChangeForm = this.formBuilder.group({
-      image:[[],Validators.required]
+      image:[[]]
     })
     
 
@@ -41,6 +41,8 @@ export class HomeContractorComponent implements OnInit {
   }
 
   submitProfilePicture(){
+    console.log('dai');
+    
     if(this.profileChangeForm.valid){
       this.buttonDisabled=true
       const data= new FormData()
@@ -51,18 +53,28 @@ export class HomeContractorComponent implements OnInit {
         this.showChangeProfileModal=false
         // location.reload()
         this.userData=res
-      })
+        this.imageFile=null
+        this.previewImageSrc ="";
+        this.buttonDisabled = false; 
+      },
+    (err)=>{
+      console.log(err);
+      this.buttonDisabled=false
+    })
     }
   }
 
   onImageUpload(data:any){
+    console.log('hai');
+    
     this.profileChangeForm.value.image = data.target.files[0];
     this.previewImageSrc = URL.createObjectURL(data.target.files[0]);
     this.imageFile = data.target.files[0]
   }
 
   closeModal(){
-    this.showChangeProfileModal=false
+    this.showChangeProfileModal=false;
+    this.previewImageSrc ="";
   }
 
   logout(){

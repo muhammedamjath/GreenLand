@@ -1,0 +1,43 @@
+/* Style the scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 12px; 
+    height: 8px; 
+}
+
+/* Style the track (background) */
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Style the draggable thumb */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #888; 
+    border-radius: 10px; 
+    border: 2px solid #f1f1f1; 
+}
+
+/* Style the thumb on hover */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+/* Optional: Style the scrollbar buttons */
+.custom-scrollbar::-webkit-scrollbar-button {
+    background: #d8e2dc; 
+}
+
+/* Optional: Style the track piece */
+.custom-scrollbar::-webkit-scrollbar-track-piece {
+    background: #d8e2dc; 
+}
+
+/* Optional: Style the corner where the scrollbars meet */
+.custom-scrollbar::-webkit-scrollbar-corner {
+    background: #f1f1f1;
+}
+
+/* Optional: Style the resizer corner */
+.custom-scrollbar::-webkit-resizer {
+    background: #ccc; 
+}

@@ -5,6 +5,7 @@ import { ComponyRegComponent } from "./components/contractor/compony-reg/compony
 import { UpdateComponyComponent } from "./components/contractor/update-compony/update-compony.component";
 import { RegisterdComponysComponent } from "./components/contractor/registerd-componys/registerd-componys.component";
 import { LandingPageComponent } from "./components/user/landing-page/landing-page.component";
+import { DetailedComponyViewComponent } from "./components/user/detailed-compony-view/detailed-compony-view.component";
 
 
 const routes:Routes=[
@@ -12,7 +13,8 @@ const routes:Routes=[
     {path:'componyReg',component:ComponyRegComponent},
     {path:'updateCompony',component:UpdateComponyComponent},
     {path:'registerdComponys',component:RegisterdComponysComponent},
-    {path:'userLandPage',component:LandingPageComponent}
+    {path:'userLandPage',component:LandingPageComponent},
+    {path:'detailedView',component:DetailedComponyViewComponent}
 ]
 
 @NgModule({

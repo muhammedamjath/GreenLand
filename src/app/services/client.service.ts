@@ -9,6 +9,7 @@ import { Observable } from "rxjs";
 
 export class clientService{
     componyData:any=''
+   
     
     constructor(private http:HttpClient){}
 
@@ -40,6 +41,11 @@ export class clientService{
     updateCompony(data:componyReg):Observable<any>{
         const updateComponyApi=`http://localhost:3000/client/updateCompony?id=${this.componyData._id}`
         return this.http.post(updateComponyApi,data)
+    }
+
+    getAllComponyApi='http://localhost:3000/client/getAllCompony'
+    getAllCompony():Observable<any>{
+        return this.http.get(this.getAllComponyApi)
     }
 
 }

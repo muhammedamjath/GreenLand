@@ -13,7 +13,7 @@
                     <div class="h-[400px] w-[100%] sm:w-[100%] md:w-[49%] lg:w-[49%] xl:w-[49%] bg-[] flex flex-col gap-8">
                         <div class="flex flex-col gap-2">
                             <p>Compony Logo <span class="text-[red]">*</span> :</p>
-                            <div class="h-[200px] w-[65%] rounded-[20px] bg-white ml-[17.5%] flex items-center justify-center"><img src="{{imageUrl}}" alt="" class="h-[180px] w-auto"></div>
+                            <div class="h-[200px] w-[65%] rounded-[20px] bg-white ml-[17.5%] flex items-center justify-center"><img src="{{imageUrl}}" alt="" class="h-full w-full rounded-[20px] object-cover"></div>
                             <input type="file" class="h-8 w-[40%] cursor-pointer ml-[30%] bg-[#ffff] rounded-[10px]"   formControlName="image" (change)="onImageChange($event)">
                         </div>
                         <div class="flex flex-col gap-2">
@@ -27,17 +27,39 @@
                         
                         <div class="flex flex-col gap-2">
                             <p>Category <span class="text-[red]">*</span> :</p>
-                            <input type="text" class="h-[40px] w-[100%]  rounded-[10px] text-center focus:outline-[blue] bg-[#ffff]" formControlName="category">
+                            <select  class="h-[40px] w-[100%]  rounded-[10px] text-center focus:outline-[blue] bg-[#ffff]" formControlName="category">
+                                <option value="painting">Painting</option>
+                                <option value="carpender">Carpender</option>
+                                <option value="foundation">Foundation</option>
+                                <option value="evacuation">Evacuation</option>
+                                <option value="roofing">Roofing</option>
+                                <option value="floor">Floor</option>
+                            </select>
                         </div>
 
                         <div class="flex flex-col gap-2">
                             <p>Location <span class="text-[red]">*</span> :</p>
-                            <input type="text" class="h-[40px] w-[100%]  rounded-[10px] text-center focus:outline-[blue] bg-[#ffff] " formControlName="location">
+                            <select type="text" class="h-[40px] w-[100%]  rounded-[10px] text-center focus:outline-[blue] bg-[#ffff] " formControlName="location">
+                                <option value="kasarkod">Kasarkod</option>
+                                <option value="kannur">Kannur</option>
+                                <option value="wayanad">Wayand</option>
+                                <option value="kozhikod">Kozhikode</option>
+                                <option value="malapuram">Malappuram</option>
+                                <option value="palakkad">Palakkad</option>
+                                <option value="trissur">trissur</option>
+                                <option value="ernamkulam">Ernamkulam</option>
+                                <option value="idukki">Idukki</option>
+                                <option value="alappuzha">Alappuzha</option>
+                                <option value="kottayam">Kottayam</option>
+                                <option value="kollam">Kollam</option>
+                                <option value="pathanamthitta">Pathanamthitta</option>
+                                <option value="thiruvananthapuram">Thiruvananthapuram</option>
+                            </select>
                         </div>
 
                         <div class="flex flex-col gap-2">
                             <p>Discription <span class="text-[red]">*</span> :</p>
-                            <textarea name="" id=" " class="h-[120px] w-[100%]  rounded-[10px]  focus:outline-[blue] bg-[#ffff]" formControlName="discription"></textarea>
+                            <textarea name="" id=" " class="h-[120px] w-[100%]  rounded-[10px] pt-2  focus:outline-[blue] bg-[#ffff]" formControlName="discription"></textarea>
                         </div>
                     </div>
                 </div>

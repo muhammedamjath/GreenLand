@@ -8,6 +8,8 @@ import { UpdateComponyComponent } from './components/contractor/update-compony/u
 import { RegisterdComponysComponent } from './components/contractor/registerd-componys/registerd-componys.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LandingPageComponent } from './components/user/landing-page/landing-page.component';
+import { DetailedComponyViewComponent } from './components/user/detailed-compony-view/detailed-compony-view.component';
+import { UserNavComponent } from './components/user/user-nav/user-nav.component';
 
 
 
@@ -17,7 +19,9 @@ import { LandingPageComponent } from './components/user/landing-page/landing-pag
     ComponyRegComponent,
     UpdateComponyComponent,
     RegisterdComponysComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    DetailedComponyViewComponent,
+    UserNavComponent
   ],
   imports: [
     CommonModule,
