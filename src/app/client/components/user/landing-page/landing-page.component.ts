@@ -1,5 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { clientService } from 'src/app/services/client.service';
+
 
 @Component({
   selector: 'app-landing-page',
@@ -9,7 +11,7 @@ import { clientService } from 'src/app/services/client.service';
 export class LandingPageComponent implements OnInit {
   userData:any
   allComponys:any
-  constructor(private clientService:clientService){}
+  constructor(private clientService:clientService , private router:Router, private activatedRoute: ActivatedRoute){}
 
 
   ngOnInit() {
@@ -24,8 +26,8 @@ export class LandingPageComponent implements OnInit {
     
   }
 
-  shareId(id:any){
-    
+  shareId(id:any){ 
+    this.router.navigateByUrl(`/client/detailedView/${id}` );
     
   }
 

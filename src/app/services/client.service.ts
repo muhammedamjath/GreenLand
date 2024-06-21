@@ -48,4 +48,14 @@ export class clientService{
         return this.http.get(this.getAllComponyApi)
     }
 
+    notification(id:any):Observable<any>{
+        const notificationApi='http://localhost:3000/client/notification?id='+id
+        return this.http.post(notificationApi,id)
+    }
+
+    notificationGetApi='http://localhost:3000/client/notificationGet?id='
+    notificationGet(id:string):Observable<any>{
+        return this.http.get(`${this.notificationGetApi}${id}`)
+    }
+
 }

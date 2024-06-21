@@ -8,23 +8,55 @@
         <!-- first part -->
         <div class="w-[100%] h-[250px] bg-[] flex ">
             <div class="h-full w-[30%] bg-[#f8f9fa] flex items-center justify-center" >
-                <img src="/assets/images/painting logo/istockphoto-1195810722-612x612.jpg" alt="" class="h-[90%]  w-auto rounded">
+                <img src="{{componyDetailes?.image}}" alt="" class="h-[90%]  w-auto rounded">
             </div>
             <div class="h-full w-[70%] bg-[] flex ">
                 <div class="w-[75%] h-full bg-[]">
-                    <h1 class="w-full h-[25%] bg-[#f8f9fa] text-center text-[35px]">hjdbhj</h1>
-                    <p class="w-full h-[75%]  flex items-center justify-center bg-[] ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet repellendus dolore, doloribus et nam nostrum consectetur tempora? Sapiente molestias quos ad hic id illo at voluptatum quo numquam a! Illo!</p>
+                    <h1 class="w-full h-[25%] bg-[#f8f9fa] text-center text-[35px]">{{componyDetailes?.componyName}}</h1>
+                    <p class="w-full h-[75%]  flex items-center justify-center bg-[] p-2 ">{{componyDetailes?.discription}}</p>
                 </div>
                 <div class="h-full w-[25%] bg-[#f8f9fa] flex items-center justify-center">
-                    <button class="bg-[blue] h-[40px] w-[80%] rounded text-white flex gap-4 items-center justify-center" ><i class="fa-solid fa-plus"></i>Connect</button>
+                    <button [disabled]="btndisabled" class="bg-[blue] h-[40px] w-[80%] rounded text-white " (click)="onConnect(componyDetailes._id)" [ngStyle]="btnStyle()" >
+                        <span *ngIf="!btnStatus" class="flex gap-4 items-center justify-center"><i class="fa-solid fa-plus"></i>Connect</span>
+                        <span *ngIf="btnStatus?.status=='unread'" class="flex gap-4 items-center justify-center"><i class="fa-solid fa-check"></i>Requsted</span>
+                    </button>
+                        
                 </div>
             </div>
          </div>
 
-         <!-- second part -->
+         <!-- review part -->
           <div class="w-full h-[250px] bg-[#d8e2dc] pb-1 flex flex-col items-center">
             <h1 class="w-full h-[50px] bg-[] text-center text-[30px] ">Reviws</h1>
             <div class="w-[98%] h-[200px] bg-[] custom-scrollbar flex items-center justify-center gap-2 overflow-x-auto p-1">
+                <div class="bg-[white] h-full w-[30%] shadow-lg min-w-[400px] p-2 rounded">
+                    <div class="w-full h-[40%] flex items-center justify-center "><img src="/assets/images/Amjath.jpg" alt="" class="h-full w-auto rounded"></div>
+                    <p class="w-full text-center font-medium">Amjath</p>
+                    <p class="w-full text-center">⭐⭐⭐⭐⭐</p>
+                    <p class="h-[30%] bg-[#f8f9fa] text-[10px] flex items-center justify-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque laboriosam recusandae aperiam repellendus eveniet molestiae obcaecati, tenetur aspernatur. Velit quibusdam eligendi tempora dicta repellendus aliquid commodi rerum fuga harum dolorum?</p>
+                </div>
+
+                <div class="bg-[white] h-full w-[30%] shadow-lg min-w-[400px] p-2 rounded">
+                    <div class="w-full h-[40%] flex items-center justify-center "><img src="/assets/images/Amjath.jpg" alt="" class="h-full w-auto rounded"></div>
+                    <p class="w-full text-center font-medium">Amjath</p>
+                    <p class="w-full text-center">⭐⭐⭐⭐⭐</p>
+                    <p class="h-[30%] bg-[#f8f9fa] text-[10px] flex items-center justify-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque laboriosam recusandae aperiam repellendus eveniet molestiae obcaecati, tenetur aspernatur. Velit quibusdam eligendi tempora dicta repellendus aliquid commodi rerum fuga harum dolorum?</p>
+                </div>
+
+                <div class="bg-[white] h-full w-[30%] shadow-lg min-w-[400px] p-2 rounded">
+                    <div class="w-full h-[40%] flex items-center justify-center "><img src="/assets/images/Amjath.jpg" alt="" class="h-full w-auto rounded"></div>
+                    <p class="w-full text-center font-medium">Amjath</p>
+                    <p class="w-full text-center">⭐⭐⭐⭐⭐</p>
+                    <p class="h-[30%] bg-[#f8f9fa] text-[10px] flex items-center justify-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque laboriosam recusandae aperiam repellendus eveniet molestiae obcaecati, tenetur aspernatur. Velit quibusdam eligendi tempora dicta repellendus aliquid commodi rerum fuga harum dolorum?</p>
+                </div>
+
+                <div class="bg-[white] h-full w-[30%] shadow-lg min-w-[400px] p-2 rounded">
+                    <div class="w-full h-[40%] flex items-center justify-center "><img src="/assets/images/Amjath.jpg" alt="" class="h-full w-auto rounded"></div>
+                    <p class="w-full text-center font-medium">Amjath</p>
+                    <p class="w-full text-center">⭐⭐⭐⭐⭐</p>
+                    <p class="h-[30%] bg-[#f8f9fa] text-[10px] flex items-center justify-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque laboriosam recusandae aperiam repellendus eveniet molestiae obcaecati, tenetur aspernatur. Velit quibusdam eligendi tempora dicta repellendus aliquid commodi rerum fuga harum dolorum?</p>
+                </div>
+
                 <div class="bg-[white] h-full w-[30%] shadow-lg min-w-[400px] p-2 rounded">
                     <div class="w-full h-[40%] flex items-center justify-center "><img src="/assets/images/Amjath.jpg" alt="" class="h-full w-auto rounded"></div>
                     <p class="w-full text-center font-medium">Amjath</p>

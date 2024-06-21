@@ -17,12 +17,22 @@ export class HomeContractorComponent implements OnInit {
   showChangeProfileModal:boolean=false
   previewImageSrc:string=''
   imageFile:any = null
+  unreadMessageCount:number=0
+  messages:any[]=[]
 
   buttonDisabled:boolean=false 
 
   ngOnInit() {
     this.clientService.getUser().subscribe((res)=>{
-      this.userData=res
+      this.userData=res.userData
+      this.messages=res.messages
+      const messages:any[]=res.messages
+      messages.forEach(data =>{
+        if(data.status == 'unread'){
+          this.unreadMessageCount++
+        }
+      })
+      
     })
 
     this.profileChangeForm = this.formBuilder.group({
@@ -40,9 +50,7 @@ export class HomeContractorComponent implements OnInit {
     this.logoutDiv=!this.logoutDiv
   }
 
-  submitProfilePicture(){
-    console.log('dai');
-    
+  submitProfilePicture(){    
     if(this.profileChangeForm.valid){
       this.buttonDisabled=true
       const data= new FormData()
