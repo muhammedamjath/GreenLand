@@ -7,6 +7,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComponyRegistrationComponent } from './components/compony registration form/compony-registration.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ComponyRegistrationComponent } from './components/compony registration 
     NavbarComponent,
     FooterComponent,
     SignupComponent,
-    ComponyRegistrationComponent
+    ComponyRegistrationComponent,
+    ChatComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { ComponyRegistrationComponent } from './components/compony registration 
     NavbarComponent,
     FooterComponent,
     SignupComponent,
-    ComponyRegistrationComponent
+    ComponyRegistrationComponent,
+    ChatComponent
   ]
 
 })

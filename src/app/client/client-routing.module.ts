@@ -11,7 +11,7 @@ import { DetailedComponyViewComponent } from "./components/user/detailed-compony
 const routes:Routes=[
     {path:'contractorHome', component:HomeContractorComponent},
     {path:'componyReg', component:ComponyRegComponent},
-    {path:'updateCompony', component:UpdateComponyComponent},
+    {path:'updateCompony/:id', component:UpdateComponyComponent},
     {path:'registerdComponys' ,component:RegisterdComponysComponent},
     {path:'userLandPage' ,component:LandingPageComponent},
     {path:'detailedView/:id', component:DetailedComponyViewComponent}

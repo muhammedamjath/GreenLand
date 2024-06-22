@@ -9,85 +9,11 @@ import { clientService } from 'src/app/services/client.service';
   styleUrls: ['./home-contractor.component.css']
 })
 export class HomeContractorComponent implements OnInit {
-  constructor(private clientService:clientService , private formBuilder:FormBuilder , private router:Router){}
-  userData:any
-  logoutDiv:boolean=false
-  profileChangeForm!:FormGroup
-  // profileImage:string=''
-  showChangeProfileModal:boolean=false
-  previewImageSrc:string=''
-  imageFile:any = null
-  unreadMessageCount:number=0
-  messages:any[]=[]
-
-  buttonDisabled:boolean=false 
-
+  
   ngOnInit() {
-    this.clientService.getUser().subscribe((res)=>{
-      this.userData=res.userData
-      this.messages=res.messages
-      const messages:any[]=res.messages
-      messages.forEach(data =>{
-        if(data.status == 'unread'){
-          this.unreadMessageCount++
-        }
-      })
-      
-    })
-
-    this.profileChangeForm = this.formBuilder.group({
-      image:[[]]
-    })
     
-
   }
 
-  changeProfile(){
-    this.showChangeProfileModal=true
-  }
-
-  profileClick(){
-    this.logoutDiv=!this.logoutDiv
-  }
-
-  submitProfilePicture(){    
-    if(this.profileChangeForm.valid){
-      this.buttonDisabled=true
-      const data= new FormData()
-      data.append('image',this.imageFile)
-      console.log('data is :',data);
-      
-      this.clientService.profilePhotoUpdate(data).subscribe((res)=>{
-        this.showChangeProfileModal=false
-        // location.reload()
-        this.userData=res
-        this.imageFile=null
-        this.previewImageSrc ="";
-        this.buttonDisabled = false; 
-      },
-    (err)=>{
-      console.log(err);
-      this.buttonDisabled=false
-    })
-    }
-  }
-
-  onImageUpload(data:any){
-    console.log('hai');
-    
-    this.profileChangeForm.value.image = data.target.files[0];
-    this.previewImageSrc = URL.createObjectURL(data.target.files[0]);
-    this.imageFile = data.target.files[0]
-  }
-
-  closeModal(){
-    this.showChangeProfileModal=false;
-    this.previewImageSrc ="";
-  }
-
-  logout(){
-    localStorage.removeItem('token')
-    this.router.navigate(['/'])
-  }
+  
 
 }

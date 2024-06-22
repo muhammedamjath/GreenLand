@@ -13,9 +13,9 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 432 384"><path fill="#fb6107" d="M171 363H64V192H0L213 0l214 192h-64v171H256V235h-85v128z"/></svg>
      </div>
 
-        <div class=" w-[10%] bg-[] flex items-center justify-center cursor-pointer">
+        <div *ngIf="userData?.category=='contractor'" class=" w-[10%] bg-[] flex items-center justify-center cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50"><g fill="#fb6107" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke="#454054" d="M31.25 37.5h-12.5a6.25 6.25 0 0 0 12.5 0"/><path stroke="#306CFE" d="M40.375 29.958a4.42 4.42 0 0 1 1.292 3.125v0A4.417 4.417 0 0 1 37.25 37.5h-24.5a4.416 4.416 0 0 1-4.417-4.417v0a4.42 4.42 0 0 1 1.292-3.125l2.875-2.875V18.75A12.5 12.5 0 0 1 25 6.25v0a12.5 12.5 0 0 1 12.5 12.5v8.333z"/></g></svg>
-            <span class="h-[20px] w-[20px] bg-[red] rounded-full mb-[20px] ml-[-20px] border-2 border-white flex items-center justify-center text-[10px] text-white">5</span>
+            <span class="h-[20px] w-[20px] bg-[red] rounded-full mb-[20px] ml-[-20px] border-2 border-white flex items-center justify-center text-[10px] text-white">{{unreadMessageCount}}</span>
         </div>
 
         <div class=" w-[10%] bg-[] flex items-center justify-center cursor-pointer">
@@ -28,7 +28,7 @@
         </div>
 
         <div  (click)="profileClick()" class=" w-[55px]  rounded-full bg-[] border-2 border-[#fb6107] h-[55px] flex items-center justify-center cursor-pointer">
-            <img  *ngIf="userData?.image" src="{{userData?.image}}" alt="" class="h-full w-auto rounded-full">
+            <img  *ngIf="userData?.image" src="{{userData?.image}}" alt="" class="h-full w-full object-cover rounded-full">
             <div *ngIf="!userData?.image" class="h-full w-full text-[30px] flex items-center justify-center"><i class="fa-regular fa-user"></i></div>
         </div>
     </div>
@@ -39,7 +39,7 @@
 <div *ngIf="logoutDiv"  class="h-[150px] w-[100%] sm:w-[80%] md:w-[50%] lg:w-[40%] xl:w-[30%] bg-[#252525] rounded-[10px] fixed  top-[160px] sm:top-[160px] md:top-[90px] lg:top-[90px] xl:top-[90px] right-0 xl:right-4 flex flex-col justify-between items-center z-10 p-2 ">
     <div class="flex gap-2 w-full bg-[] ">
         <div class="h-[80px] w-[20%] bg-white rounded-[10px] flex justify-center relative items-center">
-            <img *ngIf="userData?.image" src="{{userData?.image}}" alt="" class="h-full w-auto rounded-[10px]">
+            <img *ngIf="userData?.image" src="{{userData?.image}}" alt="" class="h-full w-full object-cover rounded-[10px]">
             <div *ngIf="!userData?.image" class="h-full w-full text-[40px] flex items-center justify-center"><i class="fa-regular fa-user"></i></div>
             <div class="bg-[] text-[20px] absolute bottom-0 right-0 cursor-pointer" (click)="changeProfile()"><i class="fa-solid fa-pencil"></i></div>
         </div>
@@ -51,3 +51,36 @@
     </div>
     <button class="h-[40px] w-[40%] bg-[#FFC42A] rounded-[10px] font-medium " (click)="logout()">Logout</button>
 </div>
+
+<!-- image update part -->
+
+<div class="fixed inset-0 z-50 overflow-auto bg-gray-900 bg-opacity-75 flex items-center justify-center" *ngIf="showChangeProfileModal">
+    <div class="bg-white rounded-lg shadow-lg p-6 max-w-md relative">
+      <button class="absolute top-3 right-3 text-gray-500 hover:text-gray-700" (click)="closeModal()">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div class="mb-4">
+        <h2 class="text-lg font-semibold">Change Profile Picture</h2>
+      </div>
+      <form [formGroup]="profileChangeForm" (ngSubmit)="submitProfilePicture()">
+        <div class="mb-4">
+          <label class="block text-gray-700 font-semibold mb-2" for="image-upload">Upload Image</label>
+          <input class="border border-gray-400 p-2 w-full" id="image-upload" type="file" (change)="onImageUpload($event)" accept="image/*">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 font-semibold mb-2" for="image-preview">Preview</label>
+          <div class="h-48 bg-gray-200 flex items-center justify-center">
+            <img *ngIf="previewImageSrc" [src]="previewImageSrc" class="max-h-full max-w-full">
+            <span *ngIf="!previewImageSrc" class="text-gray-500">No image selected</span>
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <button [disabled]="buttonDisabled" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

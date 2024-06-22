@@ -9,7 +9,7 @@ import { RegisterdComponysComponent } from './components/contractor/registerd-co
 import { ReactiveFormsModule } from '@angular/forms';
 import { LandingPageComponent } from './components/user/landing-page/landing-page.component';
 import { DetailedComponyViewComponent } from './components/user/detailed-compony-view/detailed-compony-view.component';
-import { UserNavComponent } from './components/user/user-nav/user-nav.component';
+import { UserNavComponent } from '../shared/components/user-nav/user-nav.component';
 
 
 

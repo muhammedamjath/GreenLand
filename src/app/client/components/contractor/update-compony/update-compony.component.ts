@@ -11,11 +11,23 @@ import { clientService } from 'src/app/services/client.service';
 export class UpdateComponyComponent implements OnInit {
 
 
-  constructor(private router:Router , private clientService:clientService){}
+  constructor(private router:Router ,private activeRoute:ActivatedRoute , private clientService:clientService){}
 
+  // componyId:string=''
+  // componyData:any
   ngOnInit(): void {
 
-    
+    // this.activeRoute.params.subscribe(params =>{
+    // this.componyId=params['id']
+      
+    // this.clientService.componyDetails(this.componyId).subscribe((res)=>{
+    //     this.componyData=res
+    //     console.log('response from update:',res);
+        
+    //   })
+      
+
+    // })
     
   }
 

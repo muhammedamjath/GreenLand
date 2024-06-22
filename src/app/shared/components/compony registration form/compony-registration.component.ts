@@ -1,5 +1,6 @@
 import { Component,Input,Output,EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder,FormGroup,Validator, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { clientService } from 'src/app/services/client.service';
 
 @Component({
@@ -7,19 +8,22 @@ import { clientService } from 'src/app/services/client.service';
   templateUrl: './compony-registration.component.html',
   styleUrls: ['./compony-registration.component.css']
 })
-export class ComponyRegistrationComponent implements OnInit  {
+export class ComponyRegistrationComponent implements OnInit   {
 
   registerForm!:FormGroup
-  constructor(private formBuilder:FormBuilder , private clientService:clientService){}
+  constructor(private formBuilder:FormBuilder , private clientService:clientService , private activeteRoute:ActivatedRoute){}
 
-  @Input() submitBtnText:string=''
-  imageUrl:string=''
   imageFile: any = null;
+  imageUrl:string=''
+  componyDetails: any;
+  componyId:string=''
+
+  
+  @Input() submitBtnText:string=''
   @Input() isEditing = false;
   @Input() header:string=''
-
   @Output() registerData = new EventEmitter<any>
-   componyDetails: any;
+
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -29,19 +33,27 @@ export class ComponyRegistrationComponent implements OnInit  {
       category:['',[Validators.required]],
       discription:['',[Validators.required]]
     })
-    this.componyDetails=this.clientService.componyData
-    if (this.componyDetails) {
-      const { image, ...otherDetails } = this.componyDetails; 
-      this.imageUrl = image; 
-      this.registerForm.patchValue(otherDetails); 
-    }
     
+    this.activeteRoute.params.subscribe(params=>{
+      this.componyId=params['id']
+    })
+
+    this.clientService.componyDetails(this.componyId).subscribe((res)=>{
+      this.componyDetails=res 
+      if (this.componyDetails) {
+        const { image, ...otherDetails } = this.componyDetails; 
+        this.imageUrl = image; 
+        this.registerForm.patchValue(otherDetails); 
+      }
+    })
+
   }
+
+  
  
   onImageChange(e: any){
     this.registerForm.value.image = e.target.files[0];
     this.imageUrl = URL.createObjectURL(e.target.files[0]);
-
     this.imageFile = e.target.files[0];
   }
 
@@ -66,5 +78,4 @@ export class ComponyRegistrationComponent implements OnInit  {
     
     this.registerData.emit(formData)
   }
-
 }
