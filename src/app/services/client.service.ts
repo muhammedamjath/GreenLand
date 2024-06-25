@@ -9,9 +9,12 @@ import { Observable } from "rxjs";
 
 export class clientService{
     componyData:any=''
+    userData:any
    
     
-    constructor(private http:HttpClient){}
+    constructor(private http:HttpClient){
+        
+    }
 
     ProfilePhotoUpdateApi='http://localhost:3000/client/profilePhotoUpdate'
     profilePhotoUpdate(data:any):Observable<any>{

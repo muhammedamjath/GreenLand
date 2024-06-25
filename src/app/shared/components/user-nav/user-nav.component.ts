@@ -21,10 +21,13 @@ export class UserNavComponent implements OnInit {
   userData:any
   unreadMessageCount:number=0
   messages:any[]=[]
+  showNotification:boolean=false
+  showChat:boolean=false
 
   ngOnInit() {
-    this.userService.getUser().subscribe((res)=>{
+    this.userService.getUser().subscribe((res)=>{      
       this.userData=res.userData
+      this.userService.userData=res.userData
       this.messages=res.messages
       const messages:any[]=res.messages
       messages.forEach(data =>{
@@ -73,7 +76,7 @@ export class UserNavComponent implements OnInit {
 
   logout(){
     localStorage.removeItem('token')
-    this.router.navigate(['/'])
+    this.router.navigate(['/auth/login'])
   }
 
   changeProfile(){
@@ -89,5 +92,17 @@ export class UserNavComponent implements OnInit {
     this.profileChangeForm.value.image = data.target.files[0];
     this.previewImageSrc = URL.createObjectURL(data.target.files[0]);
     this.imageFile = data.target.files[0]
+  }
+
+  notificationStatus(){
+    this.showNotification=!this.showNotification
+  }
+
+  showTheChat(){
+    this.showChat=true
+  }
+
+  closeTheChat(state:boolean){
+    this.showChat=state
   }
 }

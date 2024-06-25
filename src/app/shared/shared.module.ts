@@ -5,8 +5,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponyRegistrationComponent } from './components/compony registration form/compony-registration.component';
+import { UserNavComponent } from './components/user-nav/user-nav.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ChatComponent } from './components/chat/chat.component';
 
 
@@ -17,12 +19,15 @@ import { ChatComponent } from './components/chat/chat.component';
     FooterComponent,
     SignupComponent,
     ComponyRegistrationComponent,
+    UserNavComponent,
+    NotificationsComponent,
     ChatComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports:[
     ButtonComponent,
@@ -30,7 +35,7 @@ import { ChatComponent } from './components/chat/chat.component';
     FooterComponent,
     SignupComponent,
     ComponyRegistrationComponent,
-    ChatComponent
+    UserNavComponent
   ]
 
 })

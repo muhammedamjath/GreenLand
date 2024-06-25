@@ -6,10 +6,9 @@ import { SharedModule } from '../shared/shared.module';
 import { ComponyRegComponent } from './components/contractor/compony-reg/compony-reg.component';
 import { UpdateComponyComponent } from './components/contractor/update-compony/update-compony.component';
 import { RegisterdComponysComponent } from './components/contractor/registerd-componys/registerd-componys.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LandingPageComponent } from './components/user/landing-page/landing-page.component';
 import { DetailedComponyViewComponent } from './components/user/detailed-compony-view/detailed-compony-view.component';
-import { UserNavComponent } from '../shared/components/user-nav/user-nav.component';
 
 
 
@@ -21,13 +20,13 @@ import { UserNavComponent } from '../shared/components/user-nav/user-nav.compone
     RegisterdComponysComponent,
     LandingPageComponent,
     DetailedComponyViewComponent,
-    UserNavComponent
   ],
   imports: [
     CommonModule,
     ClientRoutingModule,
     SharedModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    FormsModule
+  ],
 })
 export class ClientModule { }

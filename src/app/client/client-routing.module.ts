@@ -6,6 +6,7 @@ import { UpdateComponyComponent } from "./components/contractor/update-compony/u
 import { RegisterdComponysComponent } from "./components/contractor/registerd-componys/registerd-componys.component";
 import { LandingPageComponent } from "./components/user/landing-page/landing-page.component";
 import { DetailedComponyViewComponent } from "./components/user/detailed-compony-view/detailed-compony-view.component";
+import { ChatComponent } from "../shared/components/chat/chat.component";
 
 
 const routes:Routes=[
@@ -14,7 +15,8 @@ const routes:Routes=[
     {path:'updateCompony/:id', component:UpdateComponyComponent},
     {path:'registerdComponys' ,component:RegisterdComponysComponent},
     {path:'userLandPage' ,component:LandingPageComponent},
-    {path:'detailedView/:id', component:DetailedComponyViewComponent}
+    {path:'detailedView/:id', component:DetailedComponyViewComponent},
+    {path:'chat',component:ChatComponent}
 ]
 
 @NgModule({
