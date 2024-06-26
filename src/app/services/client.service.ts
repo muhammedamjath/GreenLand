@@ -66,4 +66,10 @@ export class clientService{
         return this.http.get(`${this.singleNotificationApi}${id}`)
     }
 
+    sentApprovedEmailApi='http://localhost:3000/client/approvedEmail'
+    approvedEmailSend(data:any):Observable<any>{
+        return this.http.post(this.sentApprovedEmailApi,data)
+    }
+
+
 }
