@@ -57,8 +57,13 @@ export class clientService{
     }
 
     notificationGetApi='http://localhost:3000/client/notificationGet?id='
-    notificationGet(id:string):Observable<any>{
+    notificationGet(id:string|boolean):Observable<any>{
         return this.http.get(`${this.notificationGetApi}${id}`)
+    }
+
+    singleNotificationApi='http://localhost:3000/client/singleNotificationGet?id='
+    singleNnotificationGet(id:any):Observable<any>{
+        return this.http.get(`${this.singleNotificationApi}${id}`)
     }
 
 }

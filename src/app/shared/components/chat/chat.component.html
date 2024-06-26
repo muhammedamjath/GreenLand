@@ -24,8 +24,8 @@
                 
             </div>
             <div class="h-[8%]  bottom-0 w-full bg-[#4c956c] flex items-center justify-center gap-2 ">
-                    <input type="text" name="message" class="border h-[80%] focus:outline-[#70e000] w-[60%] rounded-[20px] pl-8 " placeholder=" message"  [(ngModel)]="newMessage">
-                    <button class="h-[80%] w-[4%] text-white  flex items-center justify-center" (click)="sendMessage()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 15 15"><path fill="currentColor" fill-rule="evenodd" d="M1.203 1.043a.5.5 0 0 0-.635.709L3.921 7.5L.568 13.248a.5.5 0 0 0 .635.709l13.5-6a.5.5 0 0 0 0-.914l-13.5-6ZM4.846 7.1L2.212 2.586L13.27 7.5L2.212 12.414L4.846 7.9H9a.4.4 0 1 0 0-.8H4.846Z" clip-rule="evenodd"/></svg></button>
+                    <input type="text" name="message" class="border h-[80%] focus:outline-[#70e000] w-[60%] rounded-[20px] pl-8 " (keyup.enter)="sendMessage()" placeholder=" message"  [(ngModel)]="newMessage">
+                    <button class="h-[80%] w-[4%] text-white  flex items-center justify-center" (click)="sendMessage()" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 15 15"><path fill="currentColor" fill-rule="evenodd" d="M1.203 1.043a.5.5 0 0 0-.635.709L3.921 7.5L.568 13.248a.5.5 0 0 0 .635.709l13.5-6a.5.5 0 0 0 0-.914l-13.5-6ZM4.846 7.1L2.212 2.586L13.27 7.5L2.212 12.414L4.846 7.9H9a.4.4 0 1 0 0-.8H4.846Z" clip-rule="evenodd"/></svg></button>
                 </div>
         </div>
 

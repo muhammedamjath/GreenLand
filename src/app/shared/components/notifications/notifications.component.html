@@ -1,18 +1,35 @@
-<div class="max-h-[600px] w-[20%] bg-[] fixed right-[10%] z-10 top-[80px] flex flex-col  overflow-y-auto">
+<div class="max-h-[600px] w-[20%] bg-[] fixed right-[10%] z-10 top-[80px] flex flex-col border-b border-l border-l-[#00ffe7] border-r border-r-[#00ffe7] border-b-[#00ffe7] overflow-y-auto">
 
-    <div class=" max-h-[50px] bg-white border-b border-[#eae2b7] flex items-center justify-center ">
-        <div class="h-[50px] w-full  bg-[] p-1 flex ">
+    <div class=" max-h-[50px] bg-white border-b border-[#eae2b7] flex items-center justify-center flex-col " *ngFor="let data of notification">
+        <div class="h-[50px] w-full  bg-white p-1 flex cursor-pointer	" (click)="openNotification(data._id)" >
             <div class="flex flex-col h-full w-[25%] bg-[] ">
                 <span class="h-full w-full bg-[] flex items-center justify-center text-[30px] text-[orange]">
                     <i class="fa-solid fa-circle-exclamation"></i>
                 </span>
             </div>
             <div class="h-full w-[75%] bg-[] flex flex-col ">
-                <span class="w-full h-[30%] bg-[] text-[10px] text-[gray]">14/05/2002</span>
-                <p class="w-full h-[70%] bg-[] text-[12px] pt-1 truncate  ">New notification from muhammed amjath kooliyodan </p>
+                <span class="w-full h-[30%] bg-[] text-[10px] text-[gray]">{{data.date}}</span>
+                <p class="w-full h-[70%] bg-[] text-[12px] pt-1 truncate  ">New notification from {{data.userData[0].name}} </p>
             </div>
         </div>
     </div>
     
+
+</div>
+
+<!-- show single notification -->
+<div *ngIf="fullNotification" class="fixed inset-0 z-50 overflow-auto bg-gray-900 bg-opacity-75 flex items-center justify-center">
+    <div class="h-[30%] w-[40%] bg-[#cbf3f0] rounded p-2 relative ">
+      <button class="absolute right-0 text-[20px] h-[30px] w-[30px] text-[red]" (click)="closeDiv()"><i class="fa-solid fa-circle-xmark"></i></button>
+      <p class="w-full text-center font-semibold text-[#ffba08]"> Notification from <span class="text-black">{{custemerData?.name}}</span></p>
+      <p class="w-full text-center mt-2">The requst is for <b>{{componyData?.category}} </b> work of your compony <b>{{componyData?.componyName}}</b>  </p>
+      <p class="ml-[5%] mt-2"><b>User Name :</b> {{custemerData?.name}}</p>
+      <p class="ml-[5%]"><b>Email :</b> {{custemerData?.email}}</p>
+      <p class="ml-[5%]"><b>Contact Number :</b>+91 {{custemerData?.mobNo}}</p>
+      <div class="flex gap-[10%] w-full items-center justify-center mt-4 ">
+        <button class="min-h-[40px] w-[40%] bg-[blue] text-white rounded"> Send approved gmail</button>
+        <button class="min-h-[40px] w-[40%] bg-[orange] rounded">Message through chat service</button>
+      </div>
+    </div>
 
 </div>

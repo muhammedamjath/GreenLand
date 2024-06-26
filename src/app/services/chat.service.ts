@@ -25,5 +25,21 @@ export class ChatService {
     })
   }
 
+  register(username: string) {
+    this.socket.emit('register', username);
+  }
+
+  sendPrivateMessage(recipient: string, message: string) {
+    this.socket.emit('private_message', { recipient, message });
+  }
+
+  onPrivateMessage(): Observable<any> {
+    return new Observable(observer => {
+      this.socket.on('private_message', (message) => {
+        observer.next(message);
+      });
+    });
+  }
+
   
 }

@@ -12,6 +12,7 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ChatComponent } from './components/chat/chat.component';
 
 
+
 @NgModule({
   declarations: [
     ButtonComponent,
@@ -27,7 +28,7 @@ import { ChatComponent } from './components/chat/chat.component';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   exports:[
     ButtonComponent,
@@ -36,7 +37,8 @@ import { ChatComponent } from './components/chat/chat.component';
     SignupComponent,
     ComponyRegistrationComponent,
     UserNavComponent
-  ]
+  ],
+  
 
 })
 export class SharedModule { }
