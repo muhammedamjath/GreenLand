@@ -10,6 +10,7 @@ import { ComponyRegistrationComponent } from './components/compony registration 
 import { UserNavComponent } from './components/user-nav/user-nav.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { ChatListComponent } from './components/chat-list/chat-list.component';
 
 
 
@@ -22,7 +23,8 @@ import { ChatComponent } from './components/chat/chat.component';
     ComponyRegistrationComponent,
     UserNavComponent,
     NotificationsComponent,
-    ChatComponent
+    ChatComponent,
+    ChatListComponent
   ],
   imports: [
     CommonModule,

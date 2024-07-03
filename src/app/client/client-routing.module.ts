@@ -16,7 +16,8 @@ const routes:Routes=[
     {path:'registerdComponys' ,component:RegisterdComponysComponent},
     {path:'userLandPage' ,component:LandingPageComponent},
     {path:'detailedView/:id', component:DetailedComponyViewComponent},
-    {path:'chat',component:ChatComponent}
+    {path:'chat/:id',component:ChatComponent},
+    
 ]
 
 @NgModule({

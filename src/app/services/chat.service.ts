@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Socket, io } from 'socket.io-client';
@@ -7,10 +8,16 @@ import { Socket, io } from 'socket.io-client';
 })
 export class ChatService {
 
+  constructor(private http:HttpClient){}
+
   private socket!:Socket
 
   connect() {
     this.socket = io('http://localhost:3000');
+  }
+
+  register(senderId: string) {
+    this.socket.emit('register', senderId);
   }
 
   sendMessage(message:any){    
@@ -25,20 +32,10 @@ export class ChatService {
     })
   }
 
-  register(username: string) {
-    this.socket.emit('register', username);
-  }
-
-  sendPrivateMessage(recipient: string, message: string) {
-    this.socket.emit('private_message', { recipient, message });
-  }
-
-  onPrivateMessage(): Observable<any> {
-    return new Observable(observer => {
-      this.socket.on('private_message', (message) => {
-        observer.next(message);
-      });
-    });
+  // chat post api 
+  chatPostApi='http://localhost:3000/client/chatPost'
+  chatPost(data:object):Observable<any>{
+    return this.http.post(this.chatPostApi,data)
   }
 
   

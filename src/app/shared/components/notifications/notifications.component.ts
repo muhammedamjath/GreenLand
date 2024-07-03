@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { clientService } from 'src/app/services/client.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { clientService } from 'src/app/services/client.service';
 })
 export class NotificationsComponent implements OnInit {
 
-  constructor(private clientService:clientService ){}
+  constructor(private clientService:clientService , private router:Router){}
   
 
   notification:any
@@ -33,7 +34,6 @@ export class NotificationsComponent implements OnInit {
 
   openNotification(id:string){
     this.clientService.singleNnotificationGet(id).subscribe((res)=>{
-      // console.log('response is :',res);
       this.custemerData=res.userData
       this.componyData=res.componyData 
       this.notificationId=res.notificationData._id
@@ -49,7 +49,6 @@ export class NotificationsComponent implements OnInit {
   }
 
   sentApprovedEmail(id:string){
-    // console.log('the id is:',id);
     const obj={
       notificationId : id,
       custemerData:this.custemerData,
@@ -57,9 +56,8 @@ export class NotificationsComponent implements OnInit {
     }
     this.clientService.approvedEmailSend(obj).subscribe((res)=>{
       this.emailBtnStatus=res.status
-      
+      this.btnStyle()
     })
-    
   }
 
   btnStyle(){
@@ -69,6 +67,11 @@ export class NotificationsComponent implements OnInit {
     }
   }
 
+  onChatMessage(id:string){
+    this.router.navigate([`/client/chat/${id}`])
+    
+  }
+ 
   
 
 }

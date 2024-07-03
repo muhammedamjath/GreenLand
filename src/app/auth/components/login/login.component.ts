@@ -35,21 +35,19 @@ export class LoginComponent {
       const sentData:resetPasswordModel = objData as resetPasswordModel
       this.authservice.login(sentData).subscribe(
         (res)=>{
-          console.log(res);
           
-          if(res.data.category == 'user'){
-            console.log(res.token);
+          if(res.data?.category == 'user'){
               localStorage.setItem('token',res.token)
               this.router.navigate(['/client/userLandPage'])
                 
-          }else if (res.data.category == 'contractor'){
+          }else if (res.data?.category == 'contractor'){
             localStorage.setItem('token',res.token)
             this.router.navigate(['/client/contractorHome'])
 
           }else if (res.status=='incorrect password'){
-              
+            alert('incorrect password ')
           }else if (res.status == 'userData not fount'){
-            alert('pls login')
+            alert('incorrect email entered.')
           }
           
         }
