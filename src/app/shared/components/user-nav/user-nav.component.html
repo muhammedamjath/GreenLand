@@ -87,6 +87,6 @@
 
   <app-notifications *ngIf="showNotification" ></app-notifications>
   <!-- <app-chat *ngIf="showChat" (changeState)="closeTheChat($event)" ></app-chat> -->
-   <chat-list></chat-list>
+   <chat-list *ngIf="showChat"></chat-list>
 
   <!--  -->

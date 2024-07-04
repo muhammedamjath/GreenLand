@@ -38,5 +38,13 @@ export class ChatService {
     return this.http.post(this.chatPostApi,data)
   }
 
+  getChatListApi='http://localhost:3000/client/chatList'
+  chatList():Observable<any>{
+    return this.http.get(this.getChatListApi)
+  }
   
+  chatHistoryget(data:object):Observable<any>{
+    const chatHistoryGetApi=`http://localhost:3000/client/chatHistory`
+    return this.http.post(chatHistoryGetApi,data)
+  }
 }

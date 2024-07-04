@@ -35,7 +35,7 @@ export class NotificationsComponent implements OnInit {
   openNotification(id:string){
     this.clientService.singleNnotificationGet(id).subscribe((res)=>{
       this.custemerData=res.userData
-      this.componyData=res.componyData 
+      this.componyData=res.componyData       
       this.notificationId=res.notificationData._id
       this.emailBtnStatus=res.notificationData.status
       this.fullNotification=true
@@ -68,7 +68,7 @@ export class NotificationsComponent implements OnInit {
   }
 
   onChatMessage(id:string){
-    this.router.navigate([`/client/chat/${id}`])
+    this.router.navigate([`/client/chat/${id}/${this.componyData._id}`])
     
   }
  

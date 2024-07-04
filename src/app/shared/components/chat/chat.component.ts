@@ -18,7 +18,9 @@ export class ChatComponent implements OnInit {
   newMessage:string=''
   userData:any
   reciverid:string=''
+  componyId:string=''
   cloeseChat:boolean=true
+  
   @Output() changeState:  EventEmitter<any> = new EventEmitter() ;
   changchatStatus(){
     this.changeState.emit(false)
@@ -34,35 +36,44 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params => {
       this.reciverid = params['id'];
+      this.componyId=params['componyId']
     })
     
     
     this.clientService.getUser().subscribe((res)=>{
       this.userData=res.userData
-      
       this.chatService.register(this.userData._id)
+      const obj={
+        componyId:this.componyId,
+        sender:this.userData._id,
+        receiver:this.reciverid
+      }
+      this.chatService.chatHistoryget(obj).subscribe((res)=>{
+        for (let message of res[0].messages){
+          this.messages.push(message)                    
+        }
+      })
     })
     
 
     this.chatService.connect()
 
-    this.chatService.onMessage().subscribe((message:any)=>{
-      console.log('this is message:',message);
-      
+    this.chatService.onMessage().subscribe((message:any)=>{      
       this.messages.push(message)
     })
 
     
+    
   }
-   sendMessage(){
+   sendMessage(){    
     const message= {
       sender:this.userData._id,
       receiver:this.reciverid,
+      componyId:this.componyId,
       message:this.newMessage,
     }
     
     this.chatService.chatPost(message).subscribe((res)=>{
-      console.log('res is :',res);
       
     })
 
@@ -70,6 +81,5 @@ export class ChatComponent implements OnInit {
     this.chatService.sendMessage(message)
     this.newMessage=''
   }
-
    
 }

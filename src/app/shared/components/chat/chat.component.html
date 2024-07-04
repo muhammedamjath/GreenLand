@@ -1,5 +1,5 @@
 <div *ngIf="cloeseChat" class="fixed inset-0 z-50 overflow-auto bg-gray-900 bg-opacity-75 flex items-center justify-center">
-    <div class="h-[90%] w-[70%]  bg-white flex ">
+    <div class="h-[90%] w-[90%]  bg-white flex ">
 
         <div class="w-[100%] h-full bg-[]">
             <div class="w-full h-[10%] bg-[#70e000] border-b border-b-[#f0ead2] flex">
@@ -17,13 +17,18 @@
                     <button class="text-[20px] h-[30px] w-[30px] text-[red] absolute right-0 top-1 " (click)="changchatStatus()"><i class="fa-solid fa-circle-xmark"></i></button>
                 </div>
             </div>
-            <div class="h-[82%] w-full bg-white overflow-y-auto ">
+            <div class="h-[80%] w-full bg-white overflow-y-auto ">
                 <div class="min-h-[40px] w-full p-2 " *ngFor="let message of messages"  >
-                    <div [class.ml-auto]="message.sender == userData?._id" class="min-h-[0px] w-fit max-w-[40%]  bg-[#f2e8cf] flex p-1 rounded overflow-x-hidden" >{{message.message}}</div>
+                    <div 
+                    [class.ml-auto]="message.sender == userData?._id" 
+                    class="min-h-[0px] w-fit max-w-[40%]  bg-[#f2e8cf] flex p-2  overflow-x-hidden" 
+                    [ngClass]="{' rounded-br rounded-l': message.sender == userData?._id, ' rounded-r rounded-bl': message.sender != userData?._id}">
+                    {{message.message}}
+                    </div>
                 </div>
                 
             </div>
-            <div class="h-[8%]  bottom-0 w-full bg-[#4c956c] flex items-center justify-center gap-2 ">
+            <div class="h-[10%]  bottom-0 w-full bg-[#4c956c] flex items-center justify-center gap-2 ">
                     <input type="text" name="message" class="border h-[80%] focus:outline-[#70e000] w-[60%] rounded-[20px] pl-8 "  (keyup.enter)="sendMessage()" placeholder=" message"  [(ngModel)]="newMessage">
                     <button class="h-[80%] w-[4%] text-white  flex items-center justify-center" (click)="sendMessage()" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 15 15"><path fill="currentColor" fill-rule="evenodd" d="M1.203 1.043a.5.5 0 0 0-.635.709L3.921 7.5L.568 13.248a.5.5 0 0 0 .635.709l13.5-6a.5.5 0 0 0 0-.914l-13.5-6ZM4.846 7.1L2.212 2.586L13.27 7.5L2.212 12.414L4.846 7.9H9a.4.4 0 1 0 0-.8H4.846Z" clip-rule="evenodd"/></svg></button>
                 </div>

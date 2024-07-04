@@ -1,4 +1,23 @@
-<div class="max-h-[600px] w-[40%] bg-[] fixed right-[10%] z-10 top-[80px] flex flex-col border-b border-l border-l-[#00ffe7] border-r border-r-[#00ffe7] border-b-[#00ffe7] overflow-y-auto">
+<div class="max-w-md mx-auto bg-[#06d6a0] shadow-lg rounded-lg overflow-hidden fixed  right-4 z-10 w-[40%] top-[80px] max-h-[600px] overflow-y-auto  md:max-w-lg">
+    <div class="md:flex">
+        <div class="w-full p-4">
+            <ul *ngFor="let data of notification">
+                <li class="flex justify-between items-center bg-white mt-2 p-2 hover:shadow-lg rounded cursor-pointer transition" (click)="openNotification(data._id)" [ngStyle]="{'background-color': data.status == 'mailed' ? '#fff' : '#e9edc9',}">
+                    <div class="flex ml-2"> <img src="{{data.userData[0].image}}" width="40" height="40" class="rounded-full">
+                        <div class="flex flex-col ml-2"> <span class="font-medium text-black">{{data.userData[0].name}}</span> <span class="text-sm text-gray-400 truncate w-32">Hey, Joel, I here to help you out please tell me</span> </div>
+                    </div>
+                    <div class="flex flex-col items-center"> <span class="text-gray-300">{{data.date}}</span>  </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- <div class="max-h-[600px] w-[40%] bg-[] fixed right-[10%] z-10 top-[80px] flex flex-col border-b border-l border-l-[#00ffe7] border-r border-r-[#00ffe7] border-b-[#00ffe7] overflow-y-auto">
 
     <div 
     class=" max-h-[50px] bg-white border-b border-[#eae2b7] flex items-center justify-center flex-col " 
@@ -16,7 +35,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- show single notification -->
 <div *ngIf="fullNotification" class="fixed inset-0 z-50 overflow-auto bg-gray-900 bg-opacity-75 flex items-center justify-center">
