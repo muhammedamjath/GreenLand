@@ -7,6 +7,7 @@ import { RegisterdComponysComponent } from "./components/contractor/registerd-co
 import { LandingPageComponent } from "./components/user/landing-page/landing-page.component";
 import { DetailedComponyViewComponent } from "./components/user/detailed-compony-view/detailed-compony-view.component";
 import { ChatComponent } from "../shared/components/chat/chat.component";
+import { WorkHistoryComponent } from "./components/user/work-history/work-history.component";
 
 
 const routes:Routes=[
@@ -17,6 +18,7 @@ const routes:Routes=[
     {path:'userLandPage' ,component:LandingPageComponent},
     {path:'detailedView/:id', component:DetailedComponyViewComponent},
     {path:'chat/:id/:componyId',component:ChatComponent},
+    {path:'userHistory',component:WorkHistoryComponent}
     
 ]
 

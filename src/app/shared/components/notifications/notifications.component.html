@@ -1,18 +1,46 @@
-<div class="max-w-md mx-auto bg-[#06d6a0] shadow-lg rounded-lg overflow-hidden fixed  right-4 z-10 w-[40%] top-[80px] max-h-[600px] overflow-y-auto  md:max-w-lg">
-    <div class="md:flex">
-        <div class="w-full p-4">
-            <ul *ngFor="let data of notification">
-                <li class="flex justify-between items-center bg-white mt-2 p-2 hover:shadow-lg rounded cursor-pointer transition" (click)="openNotification(data._id)" [ngStyle]="{'background-color': data.status == 'mailed' ? '#fff' : '#e9edc9',}">
-                    <div class="flex ml-2"> <img src="{{data.userData[0].image}}" width="40" height="40" class="rounded-full">
-                        <div class="flex flex-col ml-2"> <span class="font-medium text-black">{{data.userData[0].name}}</span> <span class="text-sm text-gray-400 truncate w-32">Hey, Joel, I here to help you out please tell me</span> </div>
-                    </div>
-                    <div class="flex flex-col items-center"> <span class="text-gray-300">{{data.date}}</span>  </div>
-                </li>
-            </ul>
-        </div>
+<div class="fixed right-4 top-[80px] z-10 w-full max-w-md md:max-w-lg bg-white shadow-2xl rounded-lg overflow-hidden">
+    <div class="bg-gradient-to-r from-indigo-500 to-purple-600 p-4">
+      <h2 class="text-xl font-bold text-white text-center">Notifications</h2>
     </div>
-</div>
-
+    
+    <div class="max-h-[500px] overflow-y-auto">
+      <ul class="divide-y divide-gray-200">
+        <li *ngFor="let data of notification" 
+            class="hover:bg-gray-50 transition-colors duration-150 ease-in-out cursor-pointer"
+            (click)="openNotification(data._id)"
+            [ngClass]="{'bg-green-50': data.status !== 'mailed', 'bg-white': data.status === 'mailed'}">
+          <div class="flex items-center px-4 py-3 sm:px-6">
+            <div class="min-w-0 flex-1 flex items-center">
+              <div class="flex-shrink-0">
+                <img *ngIf="data.userData[0].image" [src]="data.userData[0].image" 
+                     class="h-12 w-12 rounded-full object-cover border-2 border-indigo-200" 
+                     [alt]="data.userData[0].name">
+                <div *ngIf="!data.userData[0].image" 
+                     class="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center">
+                  <span class="text-indigo-500 font-semibold text-lg">
+                    {{data.userData[0].name.charAt(0).toUpperCase()}}
+                  </span>
+                </div>
+              </div>
+              <div class="min-w-0 flex-1 px-4">
+                <p class="text-sm font-medium text-indigo-600 truncate">{{data.userData[0].name}}</p>
+                <p class="mt-1 text-sm text-gray-500 truncate">
+                  Hey, Joel, I here to help you out please tell me
+                </p>
+              </div>
+            </div>
+            <div class="flex-shrink-0 flex flex-col items-end">
+              <p class="text-xs text-gray-500">{{data.date}}</p>
+              <span *ngIf="data.status !== 'mailed'" 
+                    class="mt-1 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                New
+              </span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 
 
 
@@ -39,26 +67,43 @@
 
 <!-- show single notification -->
 <div *ngIf="fullNotification" class="fixed inset-0 z-50 overflow-auto bg-gray-900 bg-opacity-75 flex items-center justify-center">
-
-    <div class="h-[30%] w-[40%] bg-[#cbf3f0] rounded p-2 relative ">
-      <button class="absolute right-0 text-[20px] h-[30px] w-[30px] text-[red]" (click)="closeDiv()"><i class="fa-solid fa-circle-xmark"></i></button>
-      <p class="w-full text-center font-semibold text-[#ffba08]"> Notification from <span class="text-black">{{custemerData?.name}}</span></p>
-      <p class="w-full text-center mt-2">The requst is for <b>{{componyData?.category}} </b> work of your compony <b>{{componyData?.componyName}}</b>  </p>
-      <p class="ml-[5%] mt-2"><b>User Name :</b> {{custemerData?.name}}</p>
-      <p class="ml-[5%]"><b>Email :</b> {{custemerData?.email}}</p>
-      <p class="ml-[5%]"><b>Contact Number :</b>+91 {{custemerData?.mobNo}}</p>
-      <div class="flex gap-[10%] w-full items-center justify-center mt-4 ">
-        <button 
-            [disabled]="emailBtnStatus =='mailed' " 
-            class="min-h-[40px] w-[40%] bg-[blue] text-white rounded" 
-            (click)="sentApprovedEmail(notificationId)" 
-            [ngStyle]="btnStyle()"> Send approved gmail
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4 transform transition-all duration-300 ease-in-out scale-95 hover:scale-100">
+      <div class="relative p-6">
+        <button class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors duration-200" (click)="closeDiv()">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
-        <button 
-        class="min-h-[40px] w-[40%] bg-[orange] rounded"
-        (click)="onChatMessage(custemerData?._id)" > Message through chat service
-        </button>
+        
+        <h2 class="text-2xl font-bold text-center text-indigo-600 mb-4">Notification from <span class="text-gray-800">{{custemerData?.name}}</span></h2>
+        
+        <div class="bg-indigo-50 rounded-lg p-4 mb-4">
+          <p class="text-center text-gray-700">
+            The request is for <span class="font-semibold text-indigo-700">{{componyData?.category}}</span> work of your company 
+            <span class="font-semibold text-indigo-700">{{componyData?.componyName}}</span>
+          </p>
+        </div>
+        
+        <div class="space-y-2 mb-6">
+          <p><span class="font-semibold text-gray-700">User Name:</span> {{custemerData?.name}}</p>
+          <p><span class="font-semibold text-gray-700">Email:</span> {{custemerData?.email}}</p>
+          <p><span class="font-semibold text-gray-700">Contact Number:</span> +91 {{custemerData?.mobNo}}</p>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button 
+            [disabled]="emailBtnStatus == 'mailed'"
+            class="w-full sm:w-1/2 px-4 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            (click)="sentApprovedEmail(notificationId)"
+            [ngStyle]="btnStyle()">
+            Send approved email
+          </button>
+          <button 
+            class="w-full sm:w-1/2 px-4 py-2 bg-orange-500 text-white rounded-lg shadow hover:bg-orange-600 transition-colors duration-200"
+            (click)="onChatMessage(custemerData?._id)">
+            Message via chat
+          </button>
+        </div>
       </div>
     </div>
-
-</div>
+  </div>

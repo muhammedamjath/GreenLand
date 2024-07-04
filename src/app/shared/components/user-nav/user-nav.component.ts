@@ -76,7 +76,7 @@ export class UserNavComponent implements OnInit {
 
   logout(){
     localStorage.removeItem('token')
-    this.router.navigate(['/auth/login'])
+    this.router.navigate(['/'])
   }
 
   changeProfile(){
@@ -99,7 +99,7 @@ export class UserNavComponent implements OnInit {
   }
 
   showTheChat(){
-    this.showChat=true
+    this.showChat=!this.showChat
   }
 
   closeTheChat(state:boolean){

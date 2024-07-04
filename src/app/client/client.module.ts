@@ -9,6 +9,8 @@ import { RegisterdComponysComponent } from './components/contractor/registerd-co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LandingPageComponent } from './components/user/landing-page/landing-page.component';
 import { DetailedComponyViewComponent } from './components/user/detailed-compony-view/detailed-compony-view.component';
+import { WorkHistoryComponent } from './components/user/work-history/work-history.component';
+import { HistoryComponent } from './components/contractor/history/history.component';
 
 
 
@@ -20,6 +22,8 @@ import { DetailedComponyViewComponent } from './components/user/detailed-compony
     RegisterdComponysComponent,
     LandingPageComponent,
     DetailedComponyViewComponent,
+    WorkHistoryComponent,
+    HistoryComponent,
   ],
   imports: [
     CommonModule,

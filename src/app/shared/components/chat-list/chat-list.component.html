@@ -1,41 +1,73 @@
-    <div class="max-w-md mx-auto bg-[#06d6a0] shadow-lg rounded-lg overflow-hidden fixed  right-4 z-10 w-[40%] top-[80px] max-h-[600px] overflow-y-auto  md:max-w-lg">
-        <div class="md:flex">
-            <div class="w-full p-4">
-                <div class="relative"> <input type="text" class="w-full h-12 rounded focus:outline-none px-3 focus:shadow-md" placeholder="Search..."> <i class="fa fa-search absolute right-3 top-4 text-gray-300"></i> </div>
-                <ul *ngFor="let data of chatListDat">
-                    
-                    <ng-container *ngIf="userData?.category == 'contractor'; else nonContractor">
-                        <li class="flex justify-between items-center bg-white mt-2 p-2 hover:shadow-lg rounded cursor-pointer transition" (click)="getSelect(data.userId, data.componyId)">
-                            <div class="flex ml-2 h-[40px] w-[40px] rounded-full">
-                                <img src="{{data?.senderData[0].image}}" alt="😁" class="rounded-full h-full w-full object-cover">
-                                <div class="flex flex-col ml-16 justify-center">
-                                    <span *ngIf="data?.senderData[0].componyName" class="text-sm text-gray-400 w-32">{{data?.senderData[0].componyName}}</span>
-                                    <span *ngIf="data?.senderData[0].name" class="text-sm text-gray-400 w-32">{{data?.senderData[0].name}}</span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <span class="text-gray-300">11:26</span>
-                                <i class="fa fa-star text-green-400"></i>
-                            </div>
-                        </li>
-                    </ng-container>
-                    <ng-template #nonContractor>
-                        <li class="flex justify-between items-center bg-white mt-2 p-2 hover:shadow-lg rounded cursor-pointer transition" (click)="getSelect(data.contractorId, data.componyId)">
-                            <div class="flex ml-2 h-[40px] w-[40px] rounded-full">
-                                <img src="{{data?.senderData[0].image}}" alt="😁" class="rounded-full h-full w-full object-cover">
-                                <div class="flex flex-col ml-16 justify-center">
-                                    <span *ngIf="data?.senderData[0].componyName" class="text-sm text-gray-400 w-32">{{data?.senderData[0].componyName}}</span>
-                                    <span *ngIf="data?.senderData[0].name" class="text-sm text-gray-400 w-32">{{data?.senderData[0].name}}</span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <span class="text-gray-300">11:26</span>
-                                <i class="fa fa-star text-green-400"></i>
-                            </div>
-                        </li>
-                    </ng-template>
-                    
-                </ul>
-            </div>
-        </div>
+<div class="fixed right-4 top-[80px] z-10 w-full max-w-md md:max-w-lg bg-white shadow-2xl rounded-lg overflow-hidden">
+    <div class="bg-gradient-to-r from-blue-500 to-teal-400 p-4">
+      <h2 class="text-xl font-bold text-white text-center">Chat History</h2>
     </div>
+    
+    <div class="max-h-[500px] overflow-y-auto bg-gray-50">
+      <ul class="divide-y divide-gray-200">
+        <ng-container *ngFor="let data of chatListDat">
+          <ng-container *ngIf="userData?.category == 'contractor'; else nonContractor">
+            <li class="hover:bg-gray-100 transition-colors duration-150 ease-in-out cursor-pointer"
+                (click)="getSelect(data.userId, data.componyId)">
+              <div class="flex items-center px-4 py-3 sm:px-6">
+                <div class="flex-shrink-0">
+                  <img *ngIf="data?.senderData[0].image" [src]="data?.senderData[0].image" 
+                       class="h-12 w-12 rounded-full object-cover border-2 border-blue-200" 
+                       alt="User Avatar">
+                  <div *ngIf="!data?.senderData[0].image" 
+                       class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
+                    <i class="fa-regular fa-user text-blue-500 text-xl"></i>
+                  </div>
+                </div>
+                <div class="ml-4 flex-1 flex justify-between items-center">
+                  <div>
+                    <p class="text-sm font-medium text-gray-900" *ngIf="data?.senderData[0].componyName">
+                      {{data?.senderData[0].componyName}}
+                    </p>
+                    <p class="text-sm font-medium text-gray-900" *ngIf="data?.senderData[0].name">
+                      {{data?.senderData[0].name}}
+                    </p>
+                  </div>
+                  <div *ngIf="data.newMessageCount > 0" 
+                       class="bg-blue-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">
+                    {{data.newMessageCount}}
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ng-container>
+          
+          <ng-template #nonContractor>
+            <li class="hover:bg-gray-100 transition-colors duration-150 ease-in-out cursor-pointer"
+                (click)="getSelect(data.contractorId, data.componyId)">
+              <div class="flex items-center px-4 py-3 sm:px-6">
+                <div class="flex-shrink-0">
+                  <img *ngIf="data?.senderData[0].image" [src]="data?.senderData[0].image" 
+                       class="h-12 w-12 rounded-full object-cover border-2 border-teal-200" 
+                       alt="User Avatar">
+                  <div *ngIf="!data?.senderData[0].image" 
+                       class="h-12 w-12 rounded-full bg-teal-100 flex items-center justify-center">
+                    <i class="fa-regular fa-user text-teal-500 text-xl"></i>
+                  </div>
+                </div>
+                <div class="ml-4 flex-1 flex justify-between items-center">
+                  <div>
+                    <p class="text-sm font-medium text-gray-900" *ngIf="data?.senderData[0].componyName">
+                      {{data?.senderData[0].componyName}}
+                    </p>
+                    <p class="text-sm font-medium text-gray-900" *ngIf="data?.senderData[0].name">
+                      {{data?.senderData[0].name}}
+                    </p>
+                  </div>
+                  <div *ngIf="data.newMessageCount > 0" 
+                       class="bg-teal-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">
+                    {{data.newMessageCount}}
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ng-template>
+        </ng-container>
+      </ul>
+    </div>
+  </div>

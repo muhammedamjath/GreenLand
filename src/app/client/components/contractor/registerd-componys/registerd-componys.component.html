@@ -1,34 +1,33 @@
-
-<div class="h-screen w-[100%]">
+<div class="min-h-screen bg-gray-100">
     <user-nav></user-nav>
-
-    <div class="mt-[170px] sm:mt-[170px] md:mt-[90px] lg:mt-[90px] xl:mt-[90px]">
-        <p class="w-[100%] bg-[] text-center mt-2 text-[30px]">Registered works </p>
-    <div class="min-h-[600px] w-[100%] bg-[] mt-4 flex justify-center gap-6 flex-wrap pb-4">
-        <div class="h-[300px] w-[40%] bg-[] rounded-[10px] relative shadow-lg " *ngFor="let i of datas">
-            <div class="h-[100px] w-[20%] bg-white ml-[40%] mt-4 rounded-[10px] flex justify-center items-center">
-                <img src="{{i.image}}" alt="" class="h-full w-auto rounded">
+  
+    <div class="container mx-auto px-4 pt-[170px] sm:pt-[170px] md:pt-[90px] lg:pt-[90px] xl:pt-[90px]">
+      <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">Registered Works</h1>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105" *ngFor="let i of datas">
+          <div class="relative">
+            <div class="h-40 bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+              <img [src]="i.image" alt="" class="h-24 w-24 object-cover rounded-full border-4 border-white shadow-lg">
             </div>
-            <button class="absolute h-[30px] w-[10%] top-2 left-[85%] bg-[#e5e5e5] rounded " (click)="editItem(i._id)" >Edit</button>
-            <div class="w-full h-12  mt-2 flex gap-[2%] justify-center">
-                <div class="bg-white w-[48%] h-12 flex items-center gap-1 rounded "><span class="bg-[#e0e1dd] text-[13px] h-12 flex items-center rounded-tl rounded-bl">Compony Name : </span> {{i.componyName}}</div>
-                <div class="bg-white w-[48%] h-12 flex items-center gap-1 rounded "><span class="bg-[#e0e1dd] text-[13px] h-12 flex items-center rounded-tl rounded-bl">Category : </span>{{i.category}} </div>
+            <button class="absolute top-2 right-2 bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-medium shadow hover:bg-gray-100 transition-colors duration-300" (click)="editItem(i._id)">
+              Edit
+            </button>
+          </div>
+          
+          <div class="p-4">
+            <h2 class="text-xl font-semibold text-gray-800 mb-2">{{i.componyName}}</h2>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">{{i.category}}</span>
+              <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-sm flex items-center">
+                <i class="fa-solid fa-location-dot mr-1"></i>{{i.location}}
+              </span>
             </div>
-            <div class="w-full h-12  mt-2 flex gap-[2%] ">
-                <div class="bg-white w-[48%] h-12 flex items-center gap-1 rounded ml-[1%] "><span class="bg-[#e0e1dd] text-[13px] h-12 flex items-center rounded-tl rounded-bl">Location &nbsp;<i class="fa-solid fa-location-dot"></i>&nbsp;: </span>{{i.location}} </div>
-            </div>
-
-            <div class="w-full h-12  mt-2 flex gap-[2%] ">
-                <div class="bg-white w-[98%] h-12 flex items-center gap-1 rounded ml-[1%] text-[10px]"><span class="bg-[#e0e1dd] w-[20%] text-[13px] h-12 flex items-center rounded-tl rounded-bl">Compony Name : </span> {{i.discription}} </div>
-                
-            </div>
+            <p class="text-gray-600 text-sm line-clamp-3">{{i.discription}}</p>
+          </div>
         </div>
-
+      </div>
     </div>
-    </div>
-<app-footer></app-footer>
-
-</div>
-
-
-
+  
+    <app-footer></app-footer>
+  </div>

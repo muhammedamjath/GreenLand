@@ -1,4 +1,4 @@
-<div class="w-[100%] h-full">
+<div class="w-[100%] h-full " >
 
     <!-- nav bar -->
     <user-nav ></user-nav>
@@ -6,10 +6,10 @@
     <!-- profile part -->
     
 
-    <div class="mt-[170px] sm:mt-[170px] md:mt-[90px] lg:mt-[90px] xl:mt-[90px] ">
+    <div class="mt-[170px] sm:mt-[170px] md:mt-[80px] lg:mt-[80px] xl:mt-[80px] ">
     
         <!-- input search tag -->
-         <div class="w-[100%] bg-[] flex items-center justify-center mt-2">
+         <div class="w-[100%] bg-[] flex items-center justify-center pt-2">
             <input type="text" class="h-[50px] w-[90%] sm:w-[80%] md:w-[50%] lg:w-[40%] xl:w-[40%]  rounded-[10px] border border-[#fb8b24] focus:outline-[#fb8b24] pl-8" placeholder="You can search here....">
             <button class="bg-[] h-[50px] w-[50px] ml-[-12%] sm:ml-[-8%] md:ml-[-5%] lg:ml-[-4%] xl:ml-[-4%] text-[20px]"><i class="fa-solid fa-magnifying-glass"></i></button>
          </div>
@@ -18,7 +18,7 @@
           <div class="h-auto w-[100%] bg-[] mt-2 flex ">
             <div  class="h-auto w-[100%] sm:w-[100%] md:w-[80%] lg:w-[80%] xlw-[80%]: bg-[]  flex flex-wrap gap-2 sm:gap-2 md:gap-6 lg:gap-6 xl:gap-6  justify-center border-r shadow-xl pb-10 pt-4 ">
                 
-                <div *ngFor="let data of allComponys" class="w-[98%] sm:w-[98%] md:w-[45%] lg:w-[45%] xl:w-[45%]  h-[250px] bg-[] rounded-[10px] shadow-lg" routerLink="/client/detailedView">
+                <div *ngFor="let data of allComponys" class="w-[98%] sm:w-[98%] md:w-[45%] lg:w-[45%] xl:w-[45%]  h-[250px] bg-[#F6EEC9] rounded-[10px] shadow-lg" routerLink="/client/detailedView">
                     <div class="w-full h-[45%] bg-[] flex items-center justify-center">
                         <img src="{{data?.image}}" alt="" class="h-[90%] w-auto rounded-[10px]">
                     </div>
@@ -27,38 +27,38 @@
                     <div class="w-full pl-8">⭐⭐⭐⭐⭐</div>
                     <p class="w-full truncate pl-8">{{data?.discription}}</p>
                     <div class="w-full flex items-center justify-center">
-                        <button class="bg-[blue] text-white h-[35px] w-[40%] rounded-[10px]" (click)="shareId(data?._id)">View</button>
+                        <button class="bg-[#EE4E4E] text-white h-[35px] w-[40%] rounded-[10px]" (click)="shareId(data?._id)">View</button>
                     </div>
                 </div>
   
             </div>
-            <div class="h-[590px] w-[20%] bg-[] overflow-y-auto scrollbar-hide sticky top-[80px] hidden sm:hidden md:block lg:block xl:block border  ">
+            <div class="h-[590px] w-[20%] bg-[] overflow-y-auto scrollbar-hide sticky top-[80px] hidden sm:hidden md:block lg:block xl:block border bg-white bg-opacity-30 backdrop-blur-lg ">
                 <div class="w-full min-h-[50%] bg-[] flex flex-col gap-2 pt-2 "> 
                     <p class="w-full text-center font-black">Filter by Category</p>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Painting</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Carpender</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Roofing</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Floor</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Evacuation</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Foundation</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Painting</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Carpender</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Roofing</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Floor</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Evacuation</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Foundation</button>
                 </div>
 
-                <div class="w-full min-h-[50%] bg-[] flex flex-col gap-2 pt-2 mt-2">
+                <div class="w-full min-h-[50%] bg-[] flex flex-col gap-2 pt-2 mt-2 pb-8">
                     <p class="w-full text-center font-black">Filter by location</p>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Kasarkod</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Kannur</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Wayanad</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Kozhikode</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Malappuram</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Trissur</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Palakkad</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Ernamkulam</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Idukki</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Pathanamthitta</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Kottayam</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Kollam</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Alappuzha</button>
-                    <button class="bg-[#dee2e6] w-[80%] h-8 ml-[10%] rounded">Thiruvananthapuram</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Kasarkod</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Kannur</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Wayanad</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Kozhikode</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Malappuram</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Trissur</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Palakkad</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Ernamkulam</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Idukki</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Pathanamthitta</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Kottayam</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Kollam</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Alappuzha</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded">Thiruvananthapuram</button>
                 </div>
                
             </div>
