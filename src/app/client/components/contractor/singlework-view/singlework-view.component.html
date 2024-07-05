@@ -1,0 +1,107 @@
+
+<user-nav></user-nav>
+<div class="mt-[170px] sm:mt-[170px] md:mt-[80px] lg:mt-[80px] xl:mt-[80px] ">
+<div class="container mx-auto p-4  ">
+    <!-- User and Work Location Details -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <!-- User Details -->
+      <div class="bg-white shadow-md rounded-lg p-6 border border-[#799351]">
+        <h2 class="text-2xl font-bold mb-4 text-[#799351]">User Details</h2>
+        <div class="space-y-2 text-[#799351]">
+          <p><span class="font-semibold">Name:</span> {{ userName }}</p>
+          <p><span class="font-semibold">Email:</span> {{ userEmail }}</p>
+          <p><span class="font-semibold">Phone:</span> {{ userPhone }}</p>
+        </div>
+      </div>
+  
+      <!-- Work Location -->
+      <div class="bg-white shadow-md rounded-lg p-6 border border-[#799351]">
+        <h2 class="text-2xl font-bold mb-4 text-[#799351]">Work Location</h2>
+        <div class="space-y-2 text-[#799351]">
+          <p><span class="font-semibold">State:</span> {{ workState }}</p>
+          <p><span class="font-semibold">District:</span> {{ workDistrict }}</p>
+          <p><span class="font-semibold">Place:</span> {{ workPlace }}</p>
+        </div>
+      </div>
+
+    </div>
+  
+    <!-- Company Details -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-8 border border-[#799351]">
+      <h2 class="text-2xl font-bold mb-4 text-[#799351]">Company Details</h2>
+      <div class="flex items-center space-x-4">
+        <img [src]="companyPhotoUrl" alt="Company Logo" class="w-24 h-24 object-cover rounded-full border-2 border-[#799351]">
+        <div>
+          <p class="text-xl font-semibold text-[#799351]">{{ companyName }}</p>
+          <p class="text-[#A1DD70]">{{ companyCategory }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Work Updates -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-8 border border-[#799351]">
+      <h2 class="text-2xl font-bold mb-4 text-[#799351]">Work Updates</h2>
+      <div class="space-y-4">
+        <div *ngFor="let update of workUpdates" class="border-b border-[#A1DD70] pb-4 last:border-b-0">
+          <p class="font-semibold text-[#799351]">{{ update.date | date:'medium' }}</p>
+          <p class="text-[#799351]">{{ update.description }}</p>
+        </div>
+      </div>
+      <!-- Add Update Form -->
+      <form (ngSubmit)="addUpdate()" [formGroup]="updateForm" class="mt-6">
+        <div class="flex space-x-4">
+          <input type="text" formControlName="updateDescription" placeholder="Enter update" 
+                 class="flex-grow px-4 py-2 border border-[#799351] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#799351]">
+          <button type="submit" class="px-6 py-2 bg-[#EE4E4E] text-white rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2">
+            Add Update
+          </button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Project Details Form -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-8 border border-[#799351]">
+      <h2 class="text-2xl font-bold mb-4 text-[#799351]">Project Details</h2>
+      <form [formGroup]="projectForm" (ngSubmit)="submitProjectDetails()">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="totalArea" class="block mb-2 font-semibold text-[#799351]">Total Area (sq ft)</label>
+            <input type="number" id="totalArea" formControlName="totalArea" 
+                   class="w-full px-4 py-2 border border-[#799351] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#799351]">
+          </div>
+          <div>
+            <label for="contractAmount" class="block mb-2 font-semibold text-[#799351]">Contract Amount ($)</label>
+            <input type="number" id="contractAmount" formControlName="contractAmount" 
+                   class="w-full px-4 py-2 border border-[#799351] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#799351]">
+          </div>
+          <div>
+            <label for="workDuration" class="block mb-2 font-semibold text-[#799351]">Work Duration (months)</label>
+            <input type="number" id="workDuration" formControlName="workDuration" 
+                   class="w-full px-4 py-2 border border-[#799351] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#799351]">
+          </div>
+          <div>
+            <label for="startDate" class="block mb-2 font-semibold text-[#799351]">Start Date</label>
+            <input type="date" id="startDate" formControlName="startDate" 
+                   class="w-full px-4 py-2 border border-[#799351] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#799351]">
+          </div>
+          <div>
+            <label for="endDate" class="block mb-2 font-semibold text-[#799351]">End Date</label>
+            <input type="date" id="endDate" formControlName="endDate" 
+                   class="w-full px-4 py-2 border border-[#799351] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#799351]">
+          </div>
+        </div>
+        <button type="submit" class="mt-6 px-6 py-2 bg-[#A1DD70] text-[#799351] rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#A1DD70] focus:ring-offset-2">
+          Submit Project Details
+        </button>
+      </form>
+    </div>
+  
+    <!-- Invoice Generation -->
+    <div class="bg-white shadow-md rounded-lg p-6 border border-[#799351]">
+      <h2 class="text-2xl font-bold mb-4 text-[#799351]">Generate Invoice</h2>
+      <button (click)="generateInvoice()" class="px-6 py-2 bg-[#EE4E4E] text-white rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2">
+        Generate Invoice
+      </button>
+    </div>
+  </div>
+  <app-footer></app-footer>

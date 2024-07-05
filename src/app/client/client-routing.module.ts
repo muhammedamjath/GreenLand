@@ -9,6 +9,8 @@ import { DetailedComponyViewComponent } from "./components/user/detailed-compony
 import { ChatComponent } from "../shared/components/chat/chat.component";
 import { WorkHistoryComponent } from "./components/user/work-history/work-history.component";
 import { HistoryComponent } from "./components/contractor/history/history.component";
+import { WorkFullViewComponent } from "./components/user/work-full-view/work-full-view.component";
+import { SingleworkViewComponent } from "./components/contractor/singlework-view/singlework-view.component";
 
 
 const routes:Routes=[
@@ -20,7 +22,9 @@ const routes:Routes=[
     {path:'detailedView/:id', component:DetailedComponyViewComponent},
     {path:'chat/:id/:componyId',component:ChatComponent},
     {path:'userHistory',component:WorkHistoryComponent},
-    {path:'contractorHistory',component:HistoryComponent}
+    {path:'contractorHistory',component:HistoryComponent},
+    {path:'detailWorkView',component:WorkFullViewComponent},
+    {path:'singleworkView',component:SingleworkViewComponent}
     
 ]
 

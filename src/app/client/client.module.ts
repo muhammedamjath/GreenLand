@@ -12,6 +12,8 @@ import { DetailedComponyViewComponent } from './components/user/detailed-compony
 import { WorkHistoryComponent } from './components/user/work-history/work-history.component';
 import { HistoryComponent } from './components/contractor/history/history.component';
 import { WorkDetailComponent } from './components/user/work-detail/work-detail.component';
+import { WorkFullViewComponent } from './components/user/work-full-view/work-full-view.component';
+import { SingleworkViewComponent } from './components/contractor/singlework-view/singlework-view.component';
 
 
 
@@ -26,6 +28,8 @@ import { WorkDetailComponent } from './components/user/work-detail/work-detail.c
     WorkHistoryComponent,
     HistoryComponent,
     WorkDetailComponent,
+    WorkFullViewComponent,
+    SingleworkViewComponent,
   ],
   imports: [
     CommonModule,
