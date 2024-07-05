@@ -47,4 +47,9 @@ export class ChatService {
     const chatHistoryGetApi=`http://localhost:3000/client/chatHistory`
     return this.http.post(chatHistoryGetApi,data)
   }
+
+  receiverData(id:string):Observable<any>{
+    const receiverDetailesApi='http://localhost:3000/client/receiverData?id='
+    return this.http.get(`${receiverDetailesApi}${id}`)
+  }
 }

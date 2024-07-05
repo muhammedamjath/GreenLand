@@ -71,5 +71,9 @@ export class clientService{
         return this.http.post(this.sentApprovedEmailApi,data)
     }
 
+    workHistoryApi='http://localhost:3000/client/workHistory'
+    workHistoryGet():Observable<any>{
+        return this.http.get(this.workHistoryApi)
+    }
 
 }

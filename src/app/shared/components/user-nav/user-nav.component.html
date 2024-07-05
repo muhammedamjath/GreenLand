@@ -1,4 +1,4 @@
-<div class="h-auto w-screen bg-gradient-to-r from-[#fff] to-[#EE7218]  flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row items-center  border-b fixed top-0 left-0 z-20  ">
+<div class="h-auto w-screen bg-gradient-to-r from-[#fff]   to-[#1A5319]  flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row items-center   fixed top-0 left-0 z-20  ">
 
     <div class="w-[100%] sm:w-[100%] md:w-[50%] lg:w-[50%] xl:w-[50%] bg-[] h-[80px] pl-8 flex items-center sm:justify-center md:justify-center lg:justify-normal xl:justify-normal justify-center " >
         <img
@@ -9,7 +9,7 @@
         <p class="text-[#007200] font-bold mt-4 text-[16px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px]"> Green<span class="text-[#972d07]">Land</span></p>
     </div>
     <div  class="w-[100%] sm:w-[100%] md:w-[50%] lg:w-[50%] xl:w-[50%] h-[80px] flex items-center justify-evenly sm:justify-evenly md:justify-end lg:justify-end xl:justify-evenly  gap-6 pr-4  bg-[]">
-        <div class=" w-[10%] bg-[] flex items-center justify-center cursor-pointer">
+        <div class=" w-[10%] bg-[] flex items-center justify-center cursor-pointer" [routerLink]="userData?.category == 'contractor' ? '/client/contractorHome' : '/client/userLandPage'">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 432 384"><path fill="#ffff" d="M171 363H64V192H0L213 0l214 192h-64v171H256V235h-85v128z"/></svg>
         </div>
 
@@ -23,7 +23,7 @@
             <span class="h-[20px] w-[20px] bg-[red] rounded-full mb-[20px] ml-[-20px] border-2 border-white flex items-center justify-center text-[10px] text-white">5</span>
         </div>
 
-        <div class=" w-[10%] bg-[] flex items-center justify-center cursor-pointer">
+        <div class=" w-[10%] bg-[] flex items-center justify-center cursor-pointer" [routerLink]="userData?.category == 'contractor' ? '/client/contractorHistory' : '/client/userHistory'">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="#ffff" d="M4 19V8v11Zm.615 1q-.69 0-1.152-.462Q3 19.075 3 18.385v-9.77q0-.69.463-1.152Q3.925 7 4.615 7H9V5.615q0-.69.463-1.152Q9.925 4 10.614 4h2.77q.69 0 1.153.463q.462.462.462 1.152V7h4.385q.69 0 1.152.463q.463.462.463 1.152v4.198q-.238-.151-.479-.264q-.24-.112-.521-.21V8.614q0-.269-.173-.442T19.385 8H4.615q-.269 0-.442.173T4 8.615v9.77q0 .269.173.442t.442.173h7.46q.056.275.12.515q.063.24.153.485H4.615ZM10 7h4V5.615q0-.269-.173-.442T13.385 5h-2.77q-.269 0-.442.173T10 5.615V7Zm8 15q-1.671 0-2.836-1.164T14 18q0-1.671 1.164-2.836T18 14q1.671 0 2.836 1.164T22 18q0 1.671-1.164 2.836T18 22Zm.385-4.162v-2.723h-.77v3.047l2.035 2.034l.546-.546l-1.811-1.812Z"/></svg>
         </div>
 
@@ -62,7 +62,7 @@
       </button>
     </div>
     <div class="flex justify-between items-center">
-      <button  class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+      <button  class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded transition duration-300" routerLink="/">
         <i class="fas fa-home mr-2"></i>Main Home
       </button>
       <button (click)="logout()" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300">

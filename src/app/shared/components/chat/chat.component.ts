@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from 'src/app/services/chat.service';
 import { clientService } from 'src/app/services/client.service';
@@ -9,9 +9,11 @@ import { clientService } from 'src/app/services/client.service';
   styleUrls: ['./chat.component.css'],
 
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit , AfterViewChecked   {
 
+  @ViewChild('messageContainer') private messageContainer!: ElementRef;
   constructor(private chatService:ChatService , private clientService:clientService , private router:Router , private activeRoute:ActivatedRoute){}
+
 
 
   messages:any=[]
@@ -20,6 +22,7 @@ export class ChatComponent implements OnInit {
   reciverid:string=''
   componyId:string=''
   cloeseChat:boolean=true
+  receiverData:any
   
   @Output() changeState:  EventEmitter<any> = new EventEmitter() ;
   changchatStatus(){
@@ -39,6 +42,11 @@ export class ChatComponent implements OnInit {
       this.componyId=params['componyId']
     })
     
+    this.chatService.receiverData(this.reciverid).subscribe((res)=>{
+      this.receiverData=res
+      console.log(res);
+      
+    })
     
     this.clientService.getUser().subscribe((res)=>{
       this.userData=res.userData
@@ -48,7 +56,7 @@ export class ChatComponent implements OnInit {
         sender:this.userData._id,
         receiver:this.reciverid
       }
-      this.chatService.chatHistoryget(obj).subscribe((res)=>{
+      this.chatService.chatHistoryget(obj).subscribe((res)=>{        
         for (let message of res[0].messages){
           this.messages.push(message)                    
         }
@@ -63,8 +71,12 @@ export class ChatComponent implements OnInit {
     })
 
     
-    
   }
+
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
+  }
+
    sendMessage(){    
     const message= {
       sender:this.userData._id,
@@ -73,13 +85,14 @@ export class ChatComponent implements OnInit {
       message:this.newMessage,
     }
     
-    this.chatService.chatPost(message).subscribe((res)=>{
-      
-    })
+    this.chatService.chatPost(message).subscribe((res)=>{})
 
     this.messages.push(message)
     this.chatService.sendMessage(message)
     this.newMessage=''
   }
    
+  scrollToBottom(): void {
+      this.messageContainer.nativeElement.scrollTop = this.messageContainer.nativeElement.scrollHeight;
+  }
 }

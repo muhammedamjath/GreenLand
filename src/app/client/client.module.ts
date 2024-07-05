@@ -11,6 +11,7 @@ import { LandingPageComponent } from './components/user/landing-page/landing-pag
 import { DetailedComponyViewComponent } from './components/user/detailed-compony-view/detailed-compony-view.component';
 import { WorkHistoryComponent } from './components/user/work-history/work-history.component';
 import { HistoryComponent } from './components/contractor/history/history.component';
+import { WorkDetailComponent } from './components/user/work-detail/work-detail.component';
 
 
 
@@ -24,6 +25,7 @@ import { HistoryComponent } from './components/contractor/history/history.compon
     DetailedComponyViewComponent,
     WorkHistoryComponent,
     HistoryComponent,
+    WorkDetailComponent,
   ],
   imports: [
     CommonModule,

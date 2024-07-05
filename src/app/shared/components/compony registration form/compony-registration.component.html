@@ -1,71 +1,74 @@
-
 <app-navbar></app-navbar>
 
-
-<div class="min-h-screen w-[100%] block items-center  justify-center sm:block md:flex lg:flex xl:flex flex-col">
-    <div class="h-[1000px] sm:h-[1040px] md:h-[550px] lg:h-[550px] xl:h-[550px] w-[100%] sm:w-[100%] md:w-[80%] lg:w-[80%] xl:w-[60%] bg-[#B9FBC0] rounded-[20px]">
-        <p class="w-full bg-[] text-[30px] font-black text-center">{{header}}</p>
-        
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
-            <div class="h-[850px] sm:h-[850px] md:h-[450px] lg:h-[450px] xl:h-[450px] w-[90%] ml-[5%] bg-[] mt-4 flex flex-col gap-1">
-                <div class="w-[100%] h-[800px] sm:h-[800px] md:h-[400px] lg:h-[400px] xl:h-[400px] bg-[] flex gap-[2%] flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row">
-                    <!-- part one -->
-                    <div class="h-[400px] w-[100%] sm:w-[100%] md:w-[49%] lg:w-[49%] xl:w-[49%] bg-[] flex flex-col gap-8">
-                        <div class="flex flex-col gap-2">
-                            <p>Compony Logo <span class="text-[red]">*</span> :</p>
-                            <div class="h-[200px] w-[65%] rounded-[20px] bg-white ml-[17.5%] flex items-center justify-center"><img src="{{imageUrl}}" alt="" class="h-full w-full rounded-[20px] object-cover"></div>
-                            <input type="file" class="h-8 w-[40%] cursor-pointer ml-[30%] bg-[#ffff] rounded-[10px]"   formControlName="image" (change)="onImageChange($event)">
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <p>Compony Name <span class="text-[red]">*</span> :</p>
-                            <input type="text" class="h-[40px] w-[100%]  rounded-[10px] text-center focus:outline-[blue] bg-[#ffff]"  formControlName="componyName">
-                        </div>
-                    </div>
-
-                    <!-- part two -->
-                    <div class="h-[400px] w-[100%] sm:w-[100%] md:w-[49%] lg:w-[49%] xl:w-[49%] bg-[] flex flex-col gap-8">
-                        
-                        <div class="flex flex-col gap-2">
-                            <p>Category <span class="text-[red]">*</span> :</p>
-                            <select  class="h-[40px] w-[100%]  rounded-[10px] text-center focus:outline-[blue] bg-[#ffff]" formControlName="category">
-                                <option value="painting">Painting</option>
-                                <option value="carpender">Carpender</option>
-                                <option value="foundation">Foundation</option>
-                                <option value="evacuation">Evacuation</option>
-                                <option value="roofing">Roofing</option>
-                                <option value="floor">Floor</option>
-                            </select>
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <p>Location <span class="text-[red]">*</span> :</p>
-                            <select type="text" class="h-[40px] w-[100%]  rounded-[10px] text-center focus:outline-[blue] bg-[#ffff] " formControlName="location">
-                                <option value="kasarkod">Kasarkod</option>
-                                <option value="kannur">Kannur</option>
-                                <option value="wayanad">Wayand</option>
-                                <option value="kozhikod">Kozhikode</option>
-                                <option value="malapuram">Malappuram</option>
-                                <option value="palakkad">Palakkad</option>
-                                <option value="trissur">trissur</option>
-                                <option value="ernamkulam">Ernamkulam</option>
-                                <option value="idukki">Idukki</option>
-                                <option value="alappuzha">Alappuzha</option>
-                                <option value="kottayam">Kottayam</option>
-                                <option value="kollam">Kollam</option>
-                                <option value="pathanamthitta">Pathanamthitta</option>
-                                <option value="thiruvananthapuram">Thiruvananthapuram</option>
-                            </select>
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <p>Discription <span class="text-[red]">*</span> :</p>
-                            <textarea name="" id=" " class="h-[120px] w-[100%]  rounded-[10px] pt-2  focus:outline-[blue] bg-[#ffff]" formControlName="discription"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="bg-[#FFC42A] w-[40%] h-[40px] rounded-[10px] ml-[30%] font-medium cursor-pointer hover:bg-[#ffba08]">{{submitBtnText}}</button>
-            </div>
-        </form>
+<div class="min-h-screen w-full bg-gradient-to-br from-green-100 to-blue-100 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div class="bg-gradient-to-r from-green-400 to-blue-500 py-6">
+      <p class="text-3xl font-bold text-center text-white">{{header}}</p>
     </div>
+    
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="p-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Left column -->
+        <div class="space-y-6">
+          <div>
+            <p class="text-lg font-semibold mb-2">Company Logo <span class="text-red-500">*</span></p>
+            <div class="h-48 w-48 mx-auto bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+              <img src="{{imageUrl}}" alt="" class="h-full w-full object-cover">
+            </div>
+            <input type="file" class="mt-4 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" formControlName="image" (change)="onImageChange($event)">
+          </div>
+          <div>
+            <p class="text-lg font-semibold mb-2">Company Name <span class="text-red-500">*</span></p>
+            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" formControlName="componyName">
+          </div>
+        </div>
+        
+        <!-- Right column -->
+        <div class="space-y-6">
+          <div>
+            <p class="text-lg font-semibold mb-2">Category <span class="text-red-500">*</span></p>
+            <select class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" formControlName="category">
+              <option value="painting">Painting</option>
+              <option value="carpender">Carpenter</option>
+              <option value="foundation">Foundation</option>
+              <option value="evacuation">Evacuation</option>
+              <option value="roofing">Roofing</option>
+              <option value="floor">Floor</option>
+            </select>
+          </div>
+          <div>
+            <p class="text-lg font-semibold mb-2">Location <span class="text-red-500">*</span></p>
+            <select class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" formControlName="location">
+                <option value="kasarkod">Kasarkod</option>
+                <option value="kannur">Kannur</option>
+                <option value="wayanad">Wayand</option>
+                <option value="kozhikod">Kozhikode</option>
+                <option value="malapuram">Malappuram</option>
+                <option value="palakkad">Palakkad</option>
+                <option value="trissur">trissur</option>
+                <option value="ernamkulam">Ernamkulam</option>
+                <option value="idukki">Idukki</option>
+                <option value="alappuzha">Alappuzha</option>
+                <option value="kottayam">Kottayam</option>
+                <option value="kollam">Kollam</option>
+                <option value="pathanamthitta">Pathanamthitta</option>
+                <option value="thiruvananthapuram">Thiruvananthapuram</option>
+            </select>
+          </div>
+          <div>
+            <p class="text-lg font-semibold mb-2">Description <span class="text-red-500">*</span></p>
+            <textarea class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 h-32" formControlName="discription"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-8">
+        <button type="submit" class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:from-yellow-500 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transition duration-300">
+          {{submitBtnText}}
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
+
 <app-footer></app-footer>
