@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { clientService } from 'src/app/services/client.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { clientService } from 'src/app/services/client.service';
 })
 export class WorkHistoryComponent implements OnInit {
 
-  constructor(private clientService:clientService){}
+  constructor(private clientService:clientService , private router:Router){}
 
   history:any
 
@@ -18,6 +19,12 @@ export class WorkHistoryComponent implements OnInit {
       this.history=res
       
     })
+  }
+
+  open(id:string){
+    console.log(id);
+    
+    this.router.navigate([`/client/detailWorkView/${id}`])
   }
 
 }

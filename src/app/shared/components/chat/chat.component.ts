@@ -50,6 +50,8 @@ export class ChatComponent implements OnInit , AfterViewChecked   {
     
     this.clientService.getUser().subscribe((res)=>{
       this.userData=res.userData
+      console.log('receiverId:',this.userData);
+      
       this.chatService.register(this.userData._id)
       const obj={
         componyId:this.componyId,

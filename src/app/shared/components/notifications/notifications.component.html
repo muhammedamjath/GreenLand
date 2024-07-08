@@ -44,27 +44,6 @@
 
 
 
-
-<!-- <div class="max-h-[600px] w-[40%] bg-[] fixed right-[10%] z-10 top-[80px] flex flex-col border-b border-l border-l-[#00ffe7] border-r border-r-[#00ffe7] border-b-[#00ffe7] overflow-y-auto">
-
-    <div 
-    class=" max-h-[50px] bg-white border-b border-[#eae2b7] flex items-center justify-center flex-col " 
-    *ngFor="let data of notification" 
-    >
-        <div class="h-[50px] w-full  bg-white p-1 flex cursor-pointer	" (click)="openNotification(data._id)" [ngStyle]="{'background-color': data.status == 'mailed' ? '#fff' : '#e9edc9',}" >
-            <div class="flex flex-col h-full w-[25%] bg-[] ">
-                <span class="h-full w-full bg-[] flex items-center justify-center text-[30px] text-[orange]">
-                    <i class="fa-solid fa-circle-exclamation"></i>
-                </span>
-            </div>
-            <div class="h-full w-[75%] bg-[] flex flex-col ">
-                <span class="w-full h-[30%] bg-[] text-[10px] text-[gray]">{{data.date}}</span>
-                <p class="w-full h-[70%] bg-[] text-[12px] pt-1 truncate  ">New notification from {{data.userData[0].name}} </p>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <!-- show single notification -->
 <div *ngIf="fullNotification" class="fixed inset-0 z-50 overflow-auto bg-gray-900 bg-opacity-75 flex items-center justify-center">
     <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4 transform transition-all duration-300 ease-in-out scale-95 hover:scale-100">
@@ -88,6 +67,8 @@
           <p><span class="font-semibold text-gray-700">User Name:</span> {{custemerData?.name}}</p>
           <p><span class="font-semibold text-gray-700">Email:</span> {{custemerData?.email}}</p>
           <p><span class="font-semibold text-gray-700">Contact Number:</span> +91 {{custemerData?.mobNo}}</p>
+          <p><span class="font-semibold text-gray-700">District:</span> +91 {{custemerData?.mobNo}}</p>
+          <p><span class="font-semibold text-gray-700">Work place:</span> +91 {{custemerData?.mobNo}}</p>
         </div>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">

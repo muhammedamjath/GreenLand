@@ -76,4 +76,34 @@ export class clientService{
         return this.http.get(this.workHistoryApi)
     }
 
+    locationSaveApi='http://localhost:3000/client/locationSave'
+    locationSave(data:any):Observable<any>{
+        return this.http.post(this.locationSaveApi,data)
+    }
+
+    detailedViewOfWork(id:string):Observable<any>{
+       const  singleHistoryGet='http://localhost:3000/client/singleHisGet?id='
+        return this.http.get(singleHistoryGet + id)
+    }
+
+    taskUpdateApi='http://localhost:3000/client/taskUpdate'
+    taskUpdate(obj:object):Observable<any>{
+        return this.http.post(this.taskUpdateApi,obj)
+    }
+
+    deleteTaskApi = 'http://localhost:3000/client/deleteTaskUpdate'
+    deleteTask(data:any):Observable<any>{
+        return this.http.post(this.deleteTaskApi,data)
+    }
+
+    projectDetailesApi = 'http://localhost:3000/client/projectDetailes'
+    projectDetailes(data:any):Observable<any>{
+        return this.http.post(this.projectDetailesApi,data)
+    }
+
+    // confirmation/approved email sent by contractor
+    confirmationEmailApi= 'http://localhost:3000/client/confirmationEmail'
+    confirmationEmail(data:any):Observable<any>{
+        return this.http.post(this.confirmationEmailApi,data)
+    }
 }

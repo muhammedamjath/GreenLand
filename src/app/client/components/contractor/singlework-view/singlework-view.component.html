@@ -1,107 +1,166 @@
-
 <user-nav></user-nav>
-<div class="mt-[170px] sm:mt-[170px] md:mt-[80px] lg:mt-[80px] xl:mt-[80px] ">
-<div class="container mx-auto p-4  ">
-    <!-- User and Work Location Details -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-      <!-- User Details -->
-      <div class="bg-white shadow-md rounded-lg p-6 border border-[#799351]">
-        <h2 class="text-2xl font-bold mb-4 text-[#799351]">User Details</h2>
-        <div class="space-y-2 text-[#799351]">
-          <p><span class="font-semibold">Name:</span> {{ userName }}</p>
-          <p><span class="font-semibold">Email:</span> {{ userEmail }}</p>
-          <p><span class="font-semibold">Phone:</span> {{ userPhone }}</p>
-        </div>
-      </div>
-  
-      <!-- Work Location -->
-      <div class="bg-white shadow-md rounded-lg p-6 border border-[#799351]">
-        <h2 class="text-2xl font-bold mb-4 text-[#799351]">Work Location</h2>
-        <div class="space-y-2 text-[#799351]">
-          <p><span class="font-semibold">State:</span> {{ workState }}</p>
-          <p><span class="font-semibold">District:</span> {{ workDistrict }}</p>
-          <p><span class="font-semibold">Place:</span> {{ workPlace }}</p>
-        </div>
-      </div>
+<div class="mt-[160px] sm:mt-[160px] md:mt-[80px] lg:mt-[80px] xl:mt-[80px] ">
 
+<div class="bg-gradient-to-br from-[#E6F0D8] to-[#F0F8E5] min-h-screen py-10">
+  <div class="container mx-auto px-4 max-w-5xl">
+
+    <div class="bg-white rounded-xl shadow-lg p-4 mb-8 text-center" *ngIf="fullData?.status == 'requsted'">
+      <button (click)="sendConfirmationEmail()" [disabled]="fullData?.status == 'Accepted'"  class="px-6 py-3 bg-gradient-to-r from-[#A1DD70] to-[#799351] text-white rounded-full hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] focus:ring-offset-2 transition duration-300 ease-in-out transform hover:-translate-y-1">
+        <i class="fas fa-envelope mr-2"></i> Send Confirmation Email
+      </button>
     </div>
-  
-    <!-- Company Details -->
-    <div class="bg-white shadow-md rounded-lg p-6 mb-8 border border-[#799351]">
-      <h2 class="text-2xl font-bold mb-4 text-[#799351]">Company Details</h2>
-      <div class="flex items-center space-x-4">
-        <img [src]="companyPhotoUrl" alt="Company Logo" class="w-24 h-24 object-cover rounded-full border-2 border-[#799351]">
-        <div>
-          <p class="text-xl font-semibold text-[#799351]">{{ companyName }}</p>
-          <p class="text-[#A1DD70]">{{ companyCategory }}</p>
+
+    <!-- User and Company Overview -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+      <div class="md:flex">
+        <!-- User Details -->
+        <div class="md:w-1/2 p-6 border-r border-[#A1DD70]">
+          <h2 class="text-2xl font-bold mb-4 text-[#799351]">User Profile</h2>
+          <div class="space-y-2 text-[#576B3D]">
+            <p><i class="fas fa-user mr-2"></i>{{fullData?.userData[0].name}}</p>
+            <p><i class="fas fa-envelope mr-2"></i>{{fullData?.userData[0].email}}</p>
+            <p><i class="fas fa-phone mr-2"></i>{{fullData?.mobNo}}</p>
+          </div>
+        </div>
+
+        <!-- Company Details -->
+        <div class="md:w-1/2 p-6 bg-[#F9FBF6]">
+          <h2 class="text-2xl font-bold mb-4 text-[#799351]">Company</h2>
+          <div class="flex items-center space-x-4">
+            <img [src]="fullData?.componyData[0].image" alt="Company Logo" class="w-16 h-16 object-cover rounded-full border-2 border-[#A1DD70]">
+            <div>
+              <p class="text-xl font-semibold text-[#799351]">{{fullData?.componyData[0].componyName}}</p>
+              <p class="text-[#A1DD70]">{{fullData?.componyData[0].category}}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  
+
+    <!-- Work Location -->
+    <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold mb-4 text-[#799351]">Work Location</h2>
+      <div class="grid grid-cols-3 gap-4 text-[#576B3D]">
+        <div class="bg-[#F9FBF6] p-4 rounded-lg">
+          <p class="font-semibold">State</p>
+          <p>Kerala</p>
+        </div>
+        <div class="bg-[#F9FBF6] p-4 rounded-lg">
+          <p class="font-semibold">District</p>
+          <p>{{fullData?.district}}</p>
+        </div>
+        <div class="bg-[#F9FBF6] p-4 rounded-lg">
+          <p class="font-semibold">Place</p>
+          <p>{{fullData?.place}}</p>
+        </div>
+      </div>
+    </div>
+
     <!-- Work Updates -->
-    <div class="bg-white shadow-md rounded-lg p-6 mb-8 border border-[#799351]">
+    <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
       <h2 class="text-2xl font-bold mb-4 text-[#799351]">Work Updates</h2>
-      <div class="space-y-4">
-        <div *ngFor="let update of workUpdates" class="border-b border-[#A1DD70] pb-4 last:border-b-0">
-          <p class="font-semibold text-[#799351]">{{ update.date | date:'medium' }}</p>
-          <p class="text-[#799351]">{{ update.description }}</p>
+      <div class="space-y-4 mb-6">
+        <div *ngFor="let update of workUpdates" class="bg-[#F9FBF6] p-4 rounded-lg flex justify-between items-start">
+          <div>
+            <p class="font-semibold text-[#799351]">{{ update?.date | date:'medium' }}</p>
+            <p class="text-[#576B3D]">{{ update?.discription }}</p>
+          </div>
+          <button (click)="deleteUpdate(update?._id)" class="text-red-500 hover:text-red-700">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
         </div>
       </div>
       <!-- Add Update Form -->
-      <form (ngSubmit)="addUpdate()" [formGroup]="updateForm" class="mt-6">
-        <div class="flex space-x-4">
-          <input type="text" formControlName="updateDescription" placeholder="Enter update" 
-                 class="flex-grow px-4 py-2 border border-[#799351] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#799351]">
-          <button type="submit" class="px-6 py-2 bg-[#EE4E4E] text-white rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2">
-            Add Update
-          </button>
-        </div>
-      </form>
-    </div>
-  
-    <!-- Project Details Form -->
-    <div class="bg-white shadow-md rounded-lg p-6 mb-8 border border-[#799351]">
-      <h2 class="text-2xl font-bold mb-4 text-[#799351]">Project Details</h2>
-      <form [formGroup]="projectForm" (ngSubmit)="submitProjectDetails()">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label for="totalArea" class="block mb-2 font-semibold text-[#799351]">Total Area (sq ft)</label>
-            <input type="number" id="totalArea" formControlName="totalArea" 
-                   class="w-full px-4 py-2 border border-[#799351] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#799351]">
-          </div>
-          <div>
-            <label for="contractAmount" class="block mb-2 font-semibold text-[#799351]">Contract Amount ($)</label>
-            <input type="number" id="contractAmount" formControlName="contractAmount" 
-                   class="w-full px-4 py-2 border border-[#799351] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#799351]">
-          </div>
-          <div>
-            <label for="workDuration" class="block mb-2 font-semibold text-[#799351]">Work Duration (months)</label>
-            <input type="number" id="workDuration" formControlName="workDuration" 
-                   class="w-full px-4 py-2 border border-[#799351] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#799351]">
-          </div>
-          <div>
-            <label for="startDate" class="block mb-2 font-semibold text-[#799351]">Start Date</label>
-            <input type="date" id="startDate" formControlName="startDate" 
-                   class="w-full px-4 py-2 border border-[#799351] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#799351]">
-          </div>
-          <div>
-            <label for="endDate" class="block mb-2 font-semibold text-[#799351]">End Date</label>
-            <input type="date" id="endDate" formControlName="endDate" 
-                   class="w-full px-4 py-2 border border-[#799351] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#799351]">
-          </div>
-        </div>
-        <button type="submit" class="mt-6 px-6 py-2 bg-[#A1DD70] text-[#799351] rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#A1DD70] focus:ring-offset-2">
-          Submit Project Details
+      <form (ngSubmit)="addUpdate()" [formGroup]="updateForm" class="flex space-x-4">
+        <input type="text" formControlName="updateDescription" placeholder="Enter update" 
+               class="flex-grow px-4 py-2 border border-[#A1DD70] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#576B3D]">
+        <button type="submit" class="px-6 py-2 bg-[#EE4E4E] text-white rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2">
+          Add Update
         </button>
       </form>
     </div>
-  
+
+    <div class="bg-white rounded-xl shadow-lg p-6 mb-8" *ngIf="fullData?.duration">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl text-[#799351] font-bold">Project Details</h2>
+        <button class="bg-[#799351] text-white px-4 py-2 rounded-lg hover:bg-[#5d7340] transition duration-300" (click)="openForm()">
+          Add/Update Project Details
+        </button>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-gray-100 p-4 rounded">
+          <h4 class="font-semibold mb-2">Total Area</h4>
+          <p>{{fullData?.area}} sq ft</p>
+        </div>
+        <div class="bg-gray-100 p-4 rounded">
+          <h4 class="font-semibold mb-2">Contract Amount</h4>
+          <p>₹{{fullData?.amount}}</p>
+        </div>
+        <div class="bg-gray-100 p-4 rounded">
+          <h4 class="font-semibold mb-2">Work duration</h4>
+          <p>{{fullData?.duration}} days</p>
+        </div>
+        <div class="bg-gray-100 p-4 rounded">
+          <h4 class="font-semibold mb-2">Start Date</h4>
+          <p>{{fullData?.startDate}}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- project update -->
+    <div class="fixed inset-0 z-50 overflow-auto bg-gray-900 bg-opacity-75 flex items-center justify-center" *ngIf="formState">
+      <div class=" bg-white  rounded-xl shadow-lg p-6 mb-8 w-full max-w-4xl">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-2xl font-bold text-[#799351]">Project Details</h2>
+          <button type="button" class="text-gray-600 hover:text-gray-800 focus:outline-none" (click)="closeForm()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <form [formGroup]="projectForm" (ngSubmit)="submitProjectDetails()">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="totalArea" class="block mb-2 font-semibold text-[#799351]">Total Area (sq ft)</label>
+              <input type="number" id="totalArea" formControlName="totalArea" 
+                     class="w-full px-4 py-2 border border-[#A1DD70] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#576B3D]">
+            </div>
+            <div>
+              <label for="contractAmount" class="block mb-2 font-semibold text-[#799351]">Contract Amount ($)</label>
+              <input type="number" id="contractAmount" formControlName="contractAmount" 
+                     class="w-full px-4 py-2 border border-[#A1DD70] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#576B3D]">
+            </div>
+            <div>
+              <label for="workDuration" class="block mb-2 font-semibold text-[#799351]">Work Duration (Days)</label>
+              <input type="number" id="workDuration" formControlName="workDuration" 
+                     class="w-full px-4 py-2 border border-[#A1DD70] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#576B3D]">
+            </div>
+            <div>
+              <label for="startDate" class="block mb-2 font-semibold text-[#799351]">Start Date</label>
+              <input type="date" id="startDate" formControlName="startDate" 
+                     class="w-full px-4 py-2 border border-[#A1DD70] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#576B3D]">
+            </div>
+          </div>
+          <button type="submit" class="mt-6 w-full px-6 py-2 bg-[#EE4E4E] text-white rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#A1DD70] focus:ring-offset-2">
+            Submit Project Details
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- Invoice Generation -->
-    <div class="bg-white shadow-md rounded-lg p-6 border border-[#799351]">
+    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
       <h2 class="text-2xl font-bold mb-4 text-[#799351]">Generate Invoice</h2>
-      <button (click)="generateInvoice()" class="px-6 py-2 bg-[#EE4E4E] text-white rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2">
+      <button (click)="generateInvoice()" class="px-8 py-3 bg-[#EE4E4E] text-white rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2 transition duration-300 ease-in-out transform hover:-translate-y-1">
         Generate Invoice
       </button>
     </div>
+
+    <!-- chat button -->
+    <button (click)="openChat(fullData?.userData[0]._id, fullData?.componyData[0]._id)" class="fixed bottom-8 right-8 w-16 h-16 bg-[#EE4E4E] text-white rounded-full shadow-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2 transition duration-300 ease-in-out transform hover:-translate-y-1">
+      <i class="fas fa-comments text-2xl"></i>
+    </button>
+
   </div>
-  <app-footer></app-footer>
+</div>
+<app-footer></app-footer>

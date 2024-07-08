@@ -23,8 +23,8 @@ const routes:Routes=[
     {path:'chat/:id/:componyId',component:ChatComponent},
     {path:'userHistory',component:WorkHistoryComponent},
     {path:'contractorHistory',component:HistoryComponent},
-    {path:'detailWorkView',component:WorkFullViewComponent},
-    {path:'singleworkView',component:SingleworkViewComponent}
+    {path:'detailWorkView/:id',component:WorkFullViewComponent},
+    {path:'singleworkView/:id',component:SingleworkViewComponent}
     
 ]
 

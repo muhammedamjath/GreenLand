@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { clientService } from 'src/app/services/client.service';
 
@@ -8,11 +9,17 @@ import { clientService } from 'src/app/services/client.service';
   styleUrls: ['./detailed-compony-view.component.css']
 })
 export class DetailedComponyViewComponent implements OnInit {
-  constructor(private route:ActivatedRoute , private clientService:clientService){}
+
+  constructor(private route:ActivatedRoute , private clientService:clientService , private fb: FormBuilder){}
+
+  connectionForm!: FormGroup;
+
   componyId:string=''
   componyDetailes:any
   btnStatus:any=null
   btndisabled:boolean=false
+  conncetionform:boolean=false
+  spinner:boolean=false
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -31,12 +38,28 @@ export class DetailedComponyViewComponent implements OnInit {
     })
 
 
+      this.connectionForm = this.fb.group({
+        componyId: [this.componyId],
+        district: ['', Validators.required],
+        placeOfWork: ['', Validators.required],
+        phoneNumber: ['', [Validators.required, Validators.pattern(/^\+?[1-9]\d{1,14}$/)]],
+      });
+
+
+
 }
 
   onConnect(id:any){
-   this.clientService.notification(id).subscribe((res)=>{
-    this.btnStatus=res
-   this.btndisabled=true
+    let  that = this;
+    
+    this.clientService.notification(id).subscribe((res)=>{
+      this.btnStatus=res
+      this.spinner=true
+      this.btndisabled=true
+      setTimeout(function(){
+        that.conncetionform = true;
+        that.spinner=false
+      },1000);
      
    },
   (err)=>{
@@ -45,10 +68,23 @@ export class DetailedComponyViewComponent implements OnInit {
     
 }
 
+onSubmit() {
+  if (this.connectionForm.valid) {
+    this.clientService.locationSave(this.connectionForm.value).subscribe((res)=>{
+      this.conncetionform=false
+    })
+  }
+
+}
+
 btnStyle(){
   return {
     'background-color': this.btndisabled ? '#ccc' : 'blue',
   }
+}
+
+closeForm(){
+  this.conncetionform=false
 }
 
 }
