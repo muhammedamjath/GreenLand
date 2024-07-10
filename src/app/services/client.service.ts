@@ -106,4 +106,10 @@ export class clientService{
     confirmationEmail(data:any):Observable<any>{
         return this.http.post(this.confirmationEmailApi,data)
     }
+
+    // generate invoice
+    generateInvoice(id:string):Observable<any>{
+        const generateInvoiceApi = 'http://localhost:3000/client/generateInvoice?id='
+        return this.http.get(`${generateInvoiceApi}${id}`)
+    }
 }

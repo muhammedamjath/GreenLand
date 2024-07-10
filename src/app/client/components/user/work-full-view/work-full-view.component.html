@@ -110,17 +110,28 @@
           </div>
         </div>
       </div>
-  
-    <!-- Invoice Download -->
-    <div *ngIf="fullData?.status == 'completed'">
-      <h2 class="text-2xl font-bold mb-4">Invoice</h2>
-      <button class="w-full sm:w-auto bg-[#EE4E4E] hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-        </svg>
-        Download Invoice
-      </button>
-    </div>
+
+      <!-- invoice btn -->
+      <div class="relative inline-block">
+        <button 
+          class="w-full sm:w-auto bg-[#EE4E4E] text-white font-bold py-2 px-4 rounded flex items-center justify-center" 
+          (click)="projectInvoice(fullData._id)" 
+          [disabled]="fullData?.status !== 'completed' && fullData?.status !== 'started'"
+          [ngClass]="{'opacity-70 cursor-not-allowed': fullData?.status !== 'started' && fullData?.status != 'completed' }"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          Download Invoice
+        </button>
+        <div 
+          class="absolute z-10 p-2 -mt-2 text-sm text-white bg-gray-700 rounded-lg opacity-0 transition-opacity duration-300 tooltip"
+          [ngClass]="{'opacity-100': fullData?.status !== 'started' && fullData?.status !== 'completed'}"
+        >
+          You can download invoice after work has been completed
+        </div>
+      </div>
+    
 
     <!-- chat button -->
     <button (click)="openChat(fullData?.contractorId, fullData?.componyData[0]._id)" class="fixed bottom-20 right-8 w-16 h-16 bg-[#EE4E4E] text-white rounded-full shadow-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2 transition duration-300 ease-in-out transform hover:-translate-y-1">
@@ -128,3 +139,72 @@
     </button>
   </div>
   <app-footer></app-footer>
+
+  <!-- invoice canvas -->
+  <div id="invoice-content" class="p-8 bg-white rounded-lg shadow-lg max-w-3xl mx-auto hide-on-print ">
+    <div class="flex justify-center items-center mb-6">
+      <h2 class="text-3xl font-bold text-green-600 ">GreenLand</h2>
+    </div>
+    
+    <div class="mb-6">
+      <h3 class="text-xl font-semibold text-green-700 mb-2 text-center">Invoice</h3>
+      <p class="text-gray-600">Details of your project in {{fullData?.place}}</p>
+    </div>
+    
+    <div class="grid grid-cols-2 gap-6 mb-6">
+      <div>
+        <h3 class="text-lg font-semibold text-green-700 mb-2">Contractor Details</h3>
+        <p><span class="font-medium">Name:</span> {{ contractorData?.name }}</p>
+        <p><span class="font-medium">Email:</span> {{ contractorData?.email }}</p>
+        <p><span class="font-medium">Mobile:</span> {{ contractorData?.mobNo }}</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-green-700 mb-2">User Details</h3>
+        <p><span class="font-medium">Name:</span> {{ fullData?.userData[0]?.name }}</p>
+        <p><span class="font-medium">Email:</span> {{ fullData?.userData[0]?.email }}</p>
+        <p><span class="font-medium">Mobile:</span> {{ fullData?.userData[0]?.mobNo }}</p>
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <h3 class="text-lg font-semibold text-green-700 mb-2">Company Details</h3>
+      <p><span class="font-medium">Name of Company:</span> {{ fullData?.componyData[0].componyName }}</p>
+      <p><span class="font-medium">Category:</span> {{ fullData?.componyData[0].category }}</p>
+    </div>
+    
+    <div class="mb-6">
+      <h3 class="text-lg font-semibold text-green-700 mb-2">Project Details</h3>
+      <table class="w-full border-collapse">
+        
+        <tr class="bg-green-50">
+          <td class="border border-green-300 p-2">District</td>
+          <td class="border border-green-300 p-2">{{ fullData?.district }}</td>
+        </tr>
+        <tr>
+          <td class="border border-green-300 p-2">Place of Work</td>
+          <td class="border border-green-300 p-2">{{ fullData?.place }}</td>
+        </tr>
+        <tr class="bg-green-50">
+          <td class="border border-green-300 p-2">Total Area</td>
+          <td class="border border-green-300 p-2">{{ fullData?.area }}</td>
+        </tr>
+        <tr>
+          <td class="border border-green-300 p-2">Amount</td>
+          <td class="border border-green-300 p-2">{{ fullData?.amount }}</td>
+        </tr>
+        <tr class="bg-green-50">
+          <td class="border border-green-300 p-2">Duration</td>
+          <td class="border border-green-300 p-2">{{ fullData?.duration }}</td>
+        </tr>
+        <tr>
+          <td class="border border-green-300 p-2">Work started on</td>
+          <td class="border border-green-300 p-2">{{ fullData?.startDate }}</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="mt-8 text-center text-green-600 italic">
+      <p>Thank you for choosing GreenLand - Where Nature Meets Innovation!</p>
+      <p>Together, we're cultivating a greener future.</p>
+    </div>
+  </div>

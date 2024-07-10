@@ -1,35 +1,32 @@
-<div class="h-screen w-[100%]   pt-8" >
-    <user-nav></user-nav>
-    <!-- body -->
-    <div class="mt-[130px] sm:mt-[130px] md:mt-[50px] lg:mt-[00px] xl:mt-[00px]" >
-      <div class="w-[100%]   min-h-screen bg-[] flex items-center justify-center  flex-wrap  gap-2 sm:gap-1 md:gap-2 lg:gap-2 xl:gap-8  pb-8 pt-8" >
-        <div class="h-[300px] w-[80%] sm:w-[40%] md:w-[30%] lg:w-[23%] xl:w-[23%] bg-[#F6EEC9] rounded-[10px] p-2 relative transition-transform duration-300 ease-in-out hover:scale-105 ">
-            <div class="h-[40%] w-full flex items-center justify-center bg-[] rounded-tl-[10px] rounded-t-[10px]">
-                <img src="/assets/images/compony.png" alt="" class="h-[60%] w-auto">
-            </div>
-            <p class="w-full text-center text-[25px] font-medium mt-4">Registered works</p>
-            <button class="h-[40px] w-[70%] bg-[#EE4E4E] rounded-[10px] ml-[15%] text-white absolute bottom-[15px] cursor-pointer" routerLink="/client/registerdComponys">Click here</button>
-        </div>
-
-        <div class="h-[300px] w-[80%] sm:w-[40%] md:w-[30%] lg:w-[23%] xl:w-[23%] bg-[#F6EEC9] rounded-[10px] p-2 relative transition-transform duration-300 ease-in-out hover:scale-105   ">
-            <div class="h-[40%] w-full flex items-center justify-center bg-[] rounded-tl-[10px] rounded-t-[10px]">
-                <img src="/assets/images/compony.png" alt="" class="h-[60%] w-auto">
-            </div>
-            <p class="w-full text-center text-[25px] font-medium mt-8">Register new work</p>
-            <button class="h-[40px] w-[70%] bg-[#EE4E4E] rounded-[10px] ml-[15%] text-white absolute bottom-[15px] cursor-pointer" routerLink="/client/componyReg">Register</button>
-        </div>
-
-        <div class="h-[300px] w-[80%] sm:w-[40%] md:w-[30%] lg:w-[23%] xl:w-[23%] bg-[#F6EEC9] rounded-[10px] p-2 relative transition-transform duration-300 ease-in-out hover:scale-105 ">
-            <div class="h-[40%] w-full flex items-center justify-center bg-[] rounded-tl-[10px] rounded-t-[10px]">
-                <img src="/assets/images/compony.png" alt="" class="h-[60%] w-auto">
-            </div>
-            <p class="w-full text-center text-[25px] font-medium mt-2"> History</p>
-            <button class="h-[40px] w-[70%] bg-[#EE4E4E] rounded-[10px] ml-[15%] text-white absolute bottom-[15px] cursor-pointer"  routerLink="/client/userHistory">Click here</button>
-        </div>
-        
-        
-    </div>
+<user-nav></user-nav>
+<div class="min-h-screen w-full bg-gradient-to-br from-[#f3e7e9] to-[#e3eeff] pt-8 flex  justify-center items-center">
+  <!-- body -->
+  <div class="w-full max-w-5xl px-4   ">
+    <h1 class="text-3xl font-bold text-center text-[#5d4037] mb-8">GreenLand Dashboard</h1>
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-6 pb-12">
       
+      <div class="w-[80%] sm:w-[45%] md:w-[30%] lg:w-[30%] xl:w-[30%] bg-gradient-to-br from-[#81c784] to-[#4caf50] rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        <div class="p-4">
+          <h2 class="text-lg font-semibold text-white mb-3">Registered Works</h2>
+          <button class="w-full bg-white text-[#2e7d32] hover:bg-[#e8f5e9] font-medium py-2 px-3 rounded-md transition duration-300" routerLink="/client/registerdComponys">View Works</button>
+        </div>
+      </div>
+
+      <div class="w-[80%] sm:w-[45%] md:w-[30%] lg:w-[30%] xl:w-[30%] bg-gradient-to-br from-[#64b5f6] to-[#2196f3] rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        <div class="p-4">
+          <h2 class="text-lg font-semibold text-white mb-3">Register New Work</h2>
+          <button class="w-full bg-white text-[#1565c0] hover:bg-[#e3f2fd] font-medium py-2 px-3 rounded-md transition duration-300" routerLink="/client/componyReg">Register</button>
+        </div>
+      </div>
+
+      <div class="w-[80%] sm:w-[45%] md:w-[30%] lg:w-[30%] xl:w-[30%] bg-gradient-to-br from-[#ffa726] to-[#ff9800] rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        <div class="p-4">
+          <h2 class="text-lg font-semibold text-white mb-3">History</h2>
+          <button class="w-full bg-white text-[#e65100] hover:bg-[#fff3e0] font-medium py-2 px-3 rounded-md transition duration-300" routerLink="/client/contractorHistory">View History</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>
-</div>

@@ -5,26 +5,22 @@ import { clientService } from 'src/app/services/client.service';
 @Component({
   selector: 'userWork-history',
   templateUrl: './work-history.component.html',
-  styleUrls: ['./work-history.component.css']
+  styleUrls: ['./work-history.component.css'],
 })
 export class WorkHistoryComponent implements OnInit {
+  constructor(private clientService: clientService, private router: Router) {}
 
-  constructor(private clientService:clientService , private router:Router){}
-
-  history:any
+  history: any;
 
   ngOnInit(): void {
-    this.clientService.workHistoryGet().subscribe((res)=>{
+    this.clientService.workHistoryGet().subscribe((res) => {
       console.log(res);
-      this.history=res
-      
-    })
+      this.history = res;
+    });
   }
 
-  open(id:string){
-    console.log(id);
-    
-    this.router.navigate([`/client/detailWorkView/${id}`])
+  // work history open
+  open(id: string) {
+    this.router.navigate([`/client/detailWorkView/${id}`]);
   }
-
 }

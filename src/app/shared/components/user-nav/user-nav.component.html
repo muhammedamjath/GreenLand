@@ -1,39 +1,38 @@
-<div class="h-auto w-screen bg-gradient-to-r from-[#fff]   to-[#1A5319]  flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row items-center   fixed top-0 left-0 z-20  ">
+<div class="h-auto w-screen bg-gradient-to-r from-[#1A5319] via-[#2A7A28] to-[#3A9A37] flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row items-center fixed top-0 left-0 z-20 shadow-md">
 
-    <div class="w-[100%] sm:w-[100%] md:w-[50%] lg:w-[50%] xl:w-[50%] bg-[] h-[80px] pl-8 flex items-center sm:justify-center md:justify-center lg:justify-normal xl:justify-normal justify-center " >
-        <img
-            class="h-[40px] sm:h-[60px] ml- sm:ml- md:ml- lg:ml- xl:ml-  "
-            src="/assets/images/logo.png"
-            alt="GreenLand Logo"
-        />
-        <p class="text-[#007200] font-bold mt-4 text-[16px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px]"> Green<span class="text-[#972d07]">Land</span></p>
-    </div>
-    <div  class="w-[100%] sm:w-[100%] md:w-[50%] lg:w-[50%] xl:w-[50%] h-[80px] flex items-center justify-evenly sm:justify-evenly md:justify-end lg:justify-end xl:justify-evenly  gap-6 pr-4  bg-[]">
-        <div class=" w-[10%] bg-[] flex items-center justify-center cursor-pointer" [routerLink]="userData?.category == 'contractor' ? '/client/contractorHome' : '/client/userLandPage'">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 432 384"><path fill="#ffff" d="M171 363H64V192H0L213 0l214 192h-64v171H256V235h-85v128z"/></svg>
-        </div>
+  <div class="w-[100%] sm:w-[100%] md:w-[50%] lg:w-[50%] xl:w-[50%] h-[60px] pl-8 flex items-center sm:justify-center md:justify-center lg:justify-normal xl:justify-normal justify-center">
+      <img
+          class="h-[50px] sm:h-[70px] ml- sm:ml- md:ml- lg:ml- xl:ml- transition-transform duration-300 hover:scale-105"
+          src="/assets/images/logo.png"
+          alt="GreenLand Logo"
+      />
+      <p class="text-[#ffffff] font-bold mt-4 text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] xl:text-[34px] text-shadow-sm"> Green<span class="text-[#ffaa00]">Land</span></p>
+  </div>
+  <div class="w-[100%] sm:w-[100%] md:w-[50%] lg:w-[50%] xl:w-[50%] h-[60px] flex items-center justify-evenly sm:justify-evenly md:justify-end lg:justify-end xl:justify-end gap-0 pr-0 md:pr-14">
+      <div class="w-[12%] flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110" [routerLink]="userData?.category == 'contractor' ? '/client/contractorHome' : '/client/userLandPage'">
+          <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 432 384"><path fill="#ffffff" d="M171 363H64V192H0L213 0l214 192h-64v171H256V235h-85v128z"/></svg>
+      </div>
 
-        <div *ngIf="userData?.category=='contractor'" (click)="notificationStatus()"  class=" w-[10%] bg-[] flex items-center justify-center cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50"><g fill="#ffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke="#454054" d="M31.25 37.5h-12.5a6.25 6.25 0 0 0 12.5 0"/><path stroke="#306CFE" d="M40.375 29.958a4.42 4.42 0 0 1 1.292 3.125v0A4.417 4.417 0 0 1 37.25 37.5h-24.5a4.416 4.416 0 0 1-4.417-4.417v0a4.42 4.42 0 0 1 1.292-3.125l2.875-2.875V18.75A12.5 12.5 0 0 1 25 6.25v0a12.5 12.5 0 0 1 12.5 12.5v8.333z"/></g></svg>
-            <span class="h-[20px] w-[20px] bg-[red] rounded-full mb-[20px] ml-[-20px] border-2 border-white flex items-center justify-center text-[10px] text-white">{{unreadMessageCount}}</span>
-        </div>
+      <div *ngIf="userData?.category=='contractor'" (click)="notificationStatus()" class="w-[12%] flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110">
+          <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 50 50"><g fill="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke="#ffffff" d="M31.25 37.5h-12.5a6.25 6.25 0 0 0 12.5 0"/><path stroke="#ffffff" d="M40.375 29.958a4.42 4.42 0 0 1 1.292 3.125v0A4.417 4.417 0 0 1 37.25 37.5h-24.5a4.416 4.416 0 0 1-4.417-4.417v0a4.42 4.42 0 0 1 1.292-3.125l2.875-2.875V18.75A12.5 12.5 0 0 1 25 6.25v0a12.5 12.5 0 0 1 12.5 12.5v8.333z"/></g></svg>
+          <span class="h-[22px] w-[22px] bg-[red] rounded-full mb-[22px] ml-[-22px] border-2 border-white flex items-center justify-center text-[11px] text-white font-bold">{{unreadMessageCount}}</span>
+      </div>
 
-        <div class=" w-[10%] bg-[] flex items-center justify-center cursor-pointer" (click)="showTheChat()" >
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><g fill="none" stroke="#ffff" stroke-width="2"><path d="M4 12a8 8 0 1 1 16 0v5.09c0 .848 0 1.27-.126 1.609a2 2 0 0 1-1.175 1.175C18.36 20 17.937 20 17.09 20H12a8 8 0 0 1-8-8z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 11h6m-3 4h3"/></g></svg>
-            <span class="h-[20px] w-[20px] bg-[red] rounded-full mb-[20px] ml-[-20px] border-2 border-white flex items-center justify-center text-[10px] text-white">5</span>
-        </div>
+      <div class="w-[12%] flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110" (click)="showTheChat()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"><g fill="none" stroke="#ffffff" stroke-width="2"><path d="M4 12a8 8 0 1 1 16 0v5.09c0 .848 0 1.27-.126 1.609a2 2 0 0 1-1.175 1.175C18.36 20 17.937 20 17.09 20H12a8 8 0 0 1-8-8z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 11h6m-3 4h3"/></g></svg>
+          <span class="h-[22px] w-[22px] bg-[red] rounded-full mb-[22px] ml-[-22px] border-2 border-white flex items-center justify-center text-[11px] text-white font-bold">5</span>
+      </div>
 
-        <div class=" w-[10%] bg-[] flex items-center justify-center cursor-pointer" [routerLink]="userData?.category == 'contractor' ? '/client/contractorHistory' : '/client/userHistory'">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="#ffff" d="M4 19V8v11Zm.615 1q-.69 0-1.152-.462Q3 19.075 3 18.385v-9.77q0-.69.463-1.152Q3.925 7 4.615 7H9V5.615q0-.69.463-1.152Q9.925 4 10.614 4h2.77q.69 0 1.153.463q.462.462.462 1.152V7h4.385q.69 0 1.152.463q.463.462.463 1.152v4.198q-.238-.151-.479-.264q-.24-.112-.521-.21V8.614q0-.269-.173-.442T19.385 8H4.615q-.269 0-.442.173T4 8.615v9.77q0 .269.173.442t.442.173h7.46q.056.275.12.515q.063.24.153.485H4.615ZM10 7h4V5.615q0-.269-.173-.442T13.385 5h-2.77q-.269 0-.442.173T10 5.615V7Zm8 15q-1.671 0-2.836-1.164T14 18q0-1.671 1.164-2.836T18 14q1.671 0 2.836 1.164T22 18q0 1.671-1.164 2.836T18 22Zm.385-4.162v-2.723h-.77v3.047l2.035 2.034l.546-.546l-1.811-1.812Z"/></svg>
-        </div>
+      <div class="w-[12%] flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110" [routerLink]="userData?.category == 'contractor' ? '/client/contractorHistory' : '/client/userHistory'">
+          <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"><path fill="#ffffff" d="M4 19V8v11Zm.615 1q-.69 0-1.152-.462Q3 19.075 3 18.385v-9.77q0-.69.463-1.152Q3.925 7 4.615 7H9V5.615q0-.69.463-1.152Q9.925 4 10.614 4h2.77q.69 0 1.153.463q.462.462.462 1.152V7h4.385q.69 0 1.152.463q.463.462.463 1.152v4.198q-.238-.151-.479-.264q-.24-.112-.521-.21V8.614q0-.269-.173-.442T19.385 8H4.615q-.269 0-.442.173T4 8.615v9.77q0 .269.173.442t.442.173h7.46q.056.275.12.515q.063.24.153.485H4.615ZM10 7h4V5.615q0-.269-.173-.442T13.385 5h-2.77q-.269 0-.442.173T10 5.615V7Zm8 15q-1.671 0-2.836-1.164T14 18q0-1.671 1.164-2.836T18 14q1.671 0 2.836 1.164T22 18q0 1.671-1.164 2.836T18 22Zm.385-4.162v-2.723h-.77v3.047l2.035 2.034l.546-.546l-1.811-1.812Z"/></svg>
+      </div>
 
-        <div  (click)="profileClick()" class=" w-[55px]  rounded-full bg-[] border-2 border-[#ffff] h-[55px] flex items-center justify-center cursor-pointer">
-            <img  *ngIf="userData?.image" src="{{userData?.image}}" alt="" class="h-full w-full object-cover rounded-full">
-            <div *ngIf="!userData?.image" class="h-full w-full text-[30px] flex items-center justify-center"><i class="fa-regular fa-user"></i></div>
-        </div>
-    </div>
+      <div (click)="profileClick()" class="w-[40px] rounded-full bg-[] border-2 border-[#ffffff] h-[40px] flex items-center justify-center cursor-pointer overflow-hidden shadow-glow transition-transform duration-300 hover:scale-105">
+          <img *ngIf="userData?.image" src="{{userData?.image}}" alt="" class="h-full w-full object-cover rounded-full">
+          <div *ngIf="!userData?.image" class="h-full w-full text-[32px] flex items-center justify-center text-white"><i class="fa-regular fa-user"></i></div>
+      </div>
+  </div>
 </div>
-
 
 <!-- profile part -->
 <div *ngIf="logoutDiv" class="max-w-md w-full mx-auto bg-white rounded-lg shadow-lg overflow-hidden fixed top-[160px] sm:top-[160px] md:top-[90px] lg:top-[90px] xl:top-[90px] right-0 xl:right-4 z-10">

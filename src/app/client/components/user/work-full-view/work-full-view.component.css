@@ -1,0 +1,17 @@
+.hide-on-print {
+    display: none !important;
+  }
+
+  .tooltip {
+    visibility: hidden;
+    width: 200px;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -100px;
+    position: absolute;
+    text-align: center;
+  }
+  
+  .relative:hover .tooltip {
+    visibility: visible;
+  }
