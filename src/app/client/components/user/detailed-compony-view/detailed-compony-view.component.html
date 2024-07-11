@@ -34,58 +34,18 @@
     <div class="bg-white rounded-lg shadow-md p-6">
       <h2 class="text-2xl font-semibold text-gray-800 mb-4">Customer Reviews</h2>
       <div class="space-y-4">
-        <div class="border-b pb-4">
+        <div class="border-b pb-4" *ngFor="let review of reviews">
           <div class="flex items-center mb-2">
-            <img src="/assets/images/Amjath.jpg" alt="Reviewer" class="w-10 h-10 rounded-full mr-3">
+            <img src="{{review?.userData.image}}" alt="Reviewer" class="w-10 h-10 rounded-full mr-3">
             <div>
-              <p class="font-semibold">Amjath</p>
-              <div class="text-yellow-400">
-                ★★★★★
-              </div>
+              <p class="font-semibold">{{review?.userData?.name}}</p>
+              <ul class="flex">
+                <li *ngFor="let _ of createArray(review?.starCount)" class="text-[#ffd60a]"> ★</li>
+              </ul>
             </div>
           </div>
-          <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque laboriosam recusandae aperiam repellendus eveniet molestiae obcaecati, tenetur aspernatur.</p>
-        </div>
-        <!-- Add more review items here -->
-        <div class="border-b pb-4">
-          <div class="flex items-center mb-2">
-            <img src="/assets/images/Amjath.jpg" alt="Reviewer" class="w-10 h-10 rounded-full mr-3">
-            <div>
-              <p class="font-semibold">Amjath</p>
-              <div class="text-yellow-400">
-                ★★★★★
-              </div>
-            </div>
-          </div>
-          <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque laboriosam recusandae aperiam repellendus eveniet molestiae obcaecati, tenetur aspernatur.</p>
-        </div>
-        <!-- Add more review items here -->
-        <div class="border-b pb-4">
-          <div class="flex items-center mb-2">
-            <img src="/assets/images/Amjath.jpg" alt="Reviewer" class="w-10 h-10 rounded-full mr-3">
-            <div>
-              <p class="font-semibold">Amjath</p>
-              <div class="text-yellow-400">
-                ★★★★★
-              </div>
-            </div>
-          </div>
-          <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque laboriosam recusandae aperiam repellendus eveniet molestiae obcaecati, tenetur aspernatur.</p>
-        </div>
-        <!-- Add more review items here -->
-        <div class="border-b pb-4">
-          <div class="flex items-center mb-2">
-            <img src="/assets/images/Amjath.jpg" alt="Reviewer" class="w-10 h-10 rounded-full mr-3">
-            <div>
-              <p class="font-semibold">Amjath</p>
-              <div class="text-yellow-400">
-                ★★★★★
-              </div>
-            </div>
-          </div>
-          <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque laboriosam recusandae aperiam repellendus eveniet molestiae obcaecati, tenetur aspernatur.</p>
-        </div>
-        <!-- Add more review items here -->
+          <p class="text-gray-600 text-sm ml-12 truncate  ">{{review?.reviewDescription}}</p>
+        </div>        
       </div>
     </div>
   </div>

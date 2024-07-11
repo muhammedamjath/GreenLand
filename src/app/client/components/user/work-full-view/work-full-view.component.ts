@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { clientService } from 'src/app/services/client.service';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
+import Swal from 'sweetalert2';
 
 interface WorkUpdate {
   _id: any;
@@ -25,6 +26,7 @@ export class WorkFullViewComponent implements OnInit {
   objectId: string = '';
   fullData: any;
   contractorData:any
+  reviewSelector:boolean=false
   workUpdates: WorkUpdate[] = [];
 
   ngOnInit(): void {
@@ -34,7 +36,6 @@ export class WorkFullViewComponent implements OnInit {
 
     this.clientService.detailedViewOfWork(this.objectId).subscribe((res) => {
       this.fullData = res[0];
-      console.log(this.fullData);
       
       for (let data of res[0].workUpdates) {
         this.workUpdates.push(data);
@@ -73,7 +74,7 @@ export class WorkFullViewComponent implements OnInit {
     }
   }
 
-  // chat button 
+  // chat open button 
   openChat(id: string, componyId: string) {
     this.router.navigate([`/client/chat/${id}/${componyId}`]);
   }
@@ -100,5 +101,31 @@ export class WorkFullViewComponent implements OnInit {
       data?.classList.add('hide-on-print');
 
     });    
+  }
+
+  // review open
+  reviewOpen(){
+    this.reviewSelector=true
+  }
+
+  // reviwe post 
+  starRating(data:any){
+    console.log('data in :',data);
+    const obj={
+      projectId:this.fullData?._id,
+      userId:this.fullData?.userData[0]?._id,
+      componyId:this.fullData?.componyData[0]?._id,
+      review:data
+    }
+    this.clientService.reviewPost(obj).subscribe((res)=>{
+      this.reviewSelector=false
+      Swal.fire({
+        title: 'Your review has been submitted',
+        icon: 'success',
+        timer: 3000,
+        showConfirmButton: false,
+      });
+      
+    })
   }
 }

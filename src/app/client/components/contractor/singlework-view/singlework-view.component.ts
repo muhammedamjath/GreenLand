@@ -78,7 +78,7 @@ export class SingleworkViewComponent implements OnInit {
         .subscribe((res) => {
           this.formState = false;
           Swal.fire({
-            title: 'Auto close alert!',
+            title: 'Details submitted',
             icon: 'success',
             timer: 2000,
             showConfirmButton: false,

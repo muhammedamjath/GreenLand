@@ -112,4 +112,16 @@ export class clientService{
         const generateInvoiceApi = 'http://localhost:3000/client/generateInvoice?id='
         return this.http.get(`${generateInvoiceApi}${id}`)
     }
+
+    // reviwe posting
+    reviewPostApi='http://localhost:3000/client/reviwePost'
+    reviewPost(data:any):Observable<any>{
+        return this.http.post(this.reviewPostApi,data)
+    }
+
+    // reviews get
+    reviewsGet(id:string):Observable<any>{
+        const reviewGetApi = 'http://localhost:3000/client/reviweGet?id=' 
+        return this.http.get(`${reviewGetApi}${id}`)
+    }
 }

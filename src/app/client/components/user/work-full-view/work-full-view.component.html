@@ -131,15 +131,23 @@
           You can download invoice after work has been completed
         </div>
       </div>
+
+      <button 
+          class="w-full sm:w-auto bg-[#EE4E4E] text-white font-bold py-2 px-4 rounded mt-6 flex items-center justify-center" 
+          (click)="reviewOpen()"
+          >
+          post a review
+        </button>
     
 
     <!-- chat button -->
     <button (click)="openChat(fullData?.contractorId, fullData?.componyData[0]._id)" class="fixed bottom-20 right-8 w-16 h-16 bg-[#EE4E4E] text-white rounded-full shadow-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2 transition duration-300 ease-in-out transform hover:-translate-y-1">
       <i class="fas fa-comments text-2xl"></i>
     </button>
+
   </div>
   <app-footer></app-footer>
-
+  
   <!-- invoice canvas -->
   <div id="invoice-content" class="p-8 bg-white rounded-lg shadow-lg max-w-3xl mx-auto hide-on-print ">
     <div class="flex justify-center items-center mb-6">
@@ -165,7 +173,7 @@
         <p><span class="font-medium">Mobile:</span> {{ fullData?.userData[0]?.mobNo }}</p>
       </div>
     </div>
-
+    
     <div class="mb-6">
       <h3 class="text-lg font-semibold text-green-700 mb-2">Company Details</h3>
       <p><span class="font-medium">Name of Company:</span> {{ fullData?.componyData[0].componyName }}</p>
@@ -208,3 +216,5 @@
       <p>Together, we're cultivating a greener future.</p>
     </div>
   </div>
+  
+  <star-rating *ngIf="reviewSelector" (formData)="starRating($event)"></star-rating>

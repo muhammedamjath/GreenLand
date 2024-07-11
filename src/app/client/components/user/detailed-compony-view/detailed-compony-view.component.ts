@@ -21,6 +21,7 @@ export class DetailedComponyViewComponent implements OnInit {
   componyId: string = '';
   componyDetailes: any;
   btnStatus: any = null;
+  reviews:any
   btndisabled: boolean = false;
   conncetionform: boolean = false;
   spinner: boolean = false;
@@ -29,6 +30,13 @@ export class DetailedComponyViewComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.componyId = params['id'];
     });
+
+    // reviews get
+    this.clientService.reviewsGet(this.componyId).subscribe((res)=>{
+      console.log(res);
+      this.reviews=res
+      
+    })
 
     // compony detailes get 
     this.clientService.componyDetails(this.componyId).subscribe((res) => {
@@ -91,5 +99,9 @@ export class DetailedComponyViewComponent implements OnInit {
       'background-color': this.btndisabled ? '#ccc' : 'blue',
       "cursor": this.btndisabled ? "not-allowed" :'pointer'
     };
+  }
+
+  createArray(length: number): any[] {
+    return new Array(length);
   }
 }
