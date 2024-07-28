@@ -12,6 +12,8 @@ export class LandingPageComponent implements OnInit {
   searchData: string = '';
   allComponys: any[] = [];
   filteredComponys: any[] = [];
+  selectedCategory: string = '';
+  selectedLocation: string = '';
 
   districts: string[] = [
     'Kasarkod',
@@ -30,12 +32,40 @@ export class LandingPageComponent implements OnInit {
     'Thiruvananthapuram',
   ];
   works: string[] = [
-    'Painting',
-    'Carpender',
+    'Demolition',
+    'Framing',
+    'Plumbing',
+    'Electrical',
+    'HVAC',
+    'Insulation',
+    'Drywall',
+    'Flooring',
+    'Painting and Finishing',
+    'Carpentry',
     'Roofing',
-    'Floor',
-    'Evacuation',
-    'Foundation',
+    'Windows and Doors',
+    'Exterior Work',
+    'Landscaping',
+    'Plastering',
+    'Tiling',
+    'Interior Design',
+    'Lighting and Fixtures',
+    'Security Systems',
+    'Smart Home Integration',
+    'Gardening and Planting',
+    'Lawn Care',
+    'Irrigation Systems',
+    'Outdoor Lighting',
+    'Patios and Decks',
+    'Fencing and Gates',
+    'Pathways and Walkways',
+    'Water Features',
+    'Outdoor Kitchens and BBQ Areas',
+    'Outdoor Furniture and Decor',
+    'Pest Control (Outdoor)',
+    'Garden Structures',
+    'Swimming Pools and Hot Tubs',
+    'Rainwater Harvesting Systems',
   ];
   constructor(
     private clientService: clientService,
@@ -55,22 +85,32 @@ export class LandingPageComponent implements OnInit {
   }
 
   ngDoCheck() {
-    this.filteredComponys = this.filterComponys(this.searchData);
+    this.filterComponys();
   }
 
-  filterComponys(searchTitle: string) {
-    if (!searchTitle) {
-      return this.allComponys;
-    }
-    searchTitle = searchTitle.toLowerCase();
-    return this.allComponys.filter((compony) => {
-      return (
-        compony.componyName.toLowerCase().includes(searchTitle) ||
-        compony.category.toLowerCase().includes(searchTitle)
-      );
+  filterComponys() {
+    this.filteredComponys = this.allComponys.filter((compony) => {
+      const matchesSearch =
+        compony.componyName
+          .toLowerCase()
+          .includes(this.searchData.toLowerCase()) ||
+        compony.category.toLowerCase().includes(this.searchData.toLowerCase());
+      const matchesCategory = this.selectedCategory ? compony.category === this.selectedCategory: true;
+      const matchesLocation = this.selectedLocation ? compony.location === this.selectedLocation: true;
+
+      return matchesSearch && matchesCategory && matchesLocation;
     });
   }
 
+  onCategorySelect(category: string) {
+    this.selectedCategory = category;
+    this.filterComponys();
+  }
+
+  onLocationSelect(location: string) {
+    this.selectedLocation = location;
+    this.filterComponys();
+  }
   shareId(id: any) {
     this.router.navigateByUrl(`/client/detailedView/${id}`);
   }

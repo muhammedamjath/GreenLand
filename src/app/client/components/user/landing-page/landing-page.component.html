@@ -26,16 +26,28 @@
                     <p class="text-[20px] text-gray-600">No results found</p>
                 </div>
 
-                <div *ngFor="let data of filteredComponys" class="w-[95%] sm:w-[48%] md:w-[45%] lg:w-[30%] xl:w-[30%]  h-[350px] bg-[#F6EEC9] rounded-[10px] shadow-lg relative" routerLink="/client/detailedView">
-                    <div class="w-full h-[45%] bg-[] flex items-center justify-center">
-                        <img src="{{data?.image}}" alt="" class="h-[90%] w-auto rounded-[10px]">
+                <div *ngFor="let data of filteredComponys" class="w-[95%] sm:w-[48%] md:w-[45%] lg:w-[30%] xl:w-[30%] h-[400px] bg-[#F6EEC9] rounded-[15px] shadow-lg relative overflow-hidden hover:shadow-xl transition-shadow duration-300" routerLink="/client/detailedView">
+                    <div class="w-full h-[50%] bg-cover bg-center" [style.background-image]="'url(' + data?.image + ')'">
+                        <div class="w-full h-full bg-black bg-opacity-30 flex items-end p-4">
+                            <h2 class="text-white text-2xl font-bold truncate">{{data?.componyName}}</h2>
+                        </div>
                     </div>
-                    <p class="w-full text-center text-[20px] font-medium">{{data?.componyName}}</p>
-                    <p class="text-[10px] pl-6">category: <span>{{data?.category}}</span></p>
-                    <div class="w-full pl-6">⭐⭐⭐⭐⭐</div>
-                    <p class="w-full truncate pl-6">{{data?.discription}}</p>
-                    <div class="w-full flex items-center justify-center absolute bottom-6">
-                        <button class="bg-[#EE4E4E] text-white h-[35px] w-[40%] rounded-[10px]" (click)="shareId(data?._id)">View</button>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="text-sm font-medium text-gray-600">{{data?.category}}</p>
+                            <div class="text-yellow-400">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-2 line-clamp-2">{{data?.discription}}</p>
+                        <div class="flex items-center text-sm text-gray-600 mb-4">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            {{data?.location}}
+                        </div>
+                    </div>
+                    <div class="absolute bottom-4 left-0 right-0 flex justify-center">
+                        <button class="bg-[#EE4E4E] text-white h-[40px] w-[50%] rounded-full font-medium shadow-md hover:bg-[#D64141] transition-colors duration-300" (click)="shareId(data?._id)">View Details</button>
                     </div>
                 </div>
   
@@ -43,12 +55,12 @@
             <div class="h-[590px] w-[20%] bg-[] overflow-y-auto scrollbar-hide sticky top-[80px] hidden sm:hidden md:block lg:block xl:block border bg-white bg-opacity-30 backdrop-blur-lg ">
                 <div class="w-full min-h-[50%] bg-[] flex flex-col gap-2 pt-2 "> 
                     <p class="w-full text-center font-black">Filter by Category</p>
-                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded " *ngFor="let work of works">{{work}}</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded " *ngFor="let work of works" (click)="onCategorySelect(work)">{{work}}</button>
                 </div>
 
                 <div class="w-full min-h-[50%] bg-[] flex flex-col gap-2 pt-2 mt-2 pb-8">
                     <p class="w-full text-center font-black">Filter by location</p>
-                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded" *ngFor="let District of districts">{{District}}</button>
+                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded" *ngFor="let District of districts" (click)="onLocationSelect(District)">{{District}}</button>
                 </div>
                
             </div>
