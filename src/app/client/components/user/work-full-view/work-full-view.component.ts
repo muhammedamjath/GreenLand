@@ -63,7 +63,7 @@ export class WorkFullViewComponent implements OnInit {
       return {
         width: '80%',
       };
-    } else if (this.fullData?.status == 'finished') {
+    } else if (this.fullData?.status == 'completed') {
       return {
         width: '100%',
       };
@@ -80,7 +80,7 @@ export class WorkFullViewComponent implements OnInit {
   }
 
   // invvoice 
-  projectInvoice(id:string){
+  projectInvoice(){
     const data = document.getElementById('invoice-content');
 
     // remove class of the invoice canvas for getting value

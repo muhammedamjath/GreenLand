@@ -24,7 +24,7 @@ import { ChatListComponent } from './components/chat-list/chat-list.component';
     UserNavComponent,
     NotificationsComponent,
     ChatComponent,
-    ChatListComponent
+    ChatListComponent,
   ],
   imports: [
     CommonModule,

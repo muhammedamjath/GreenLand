@@ -101,6 +101,7 @@ export class DetailedComponyViewComponent implements OnInit {
     };
   }
 
+  // create array for the star iteration
   createArray(length: number): any[] {
     return new Array(length);
   }

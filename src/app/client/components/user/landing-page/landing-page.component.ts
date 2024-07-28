@@ -9,7 +9,10 @@ import { clientService } from 'src/app/services/client.service';
 })
 export class LandingPageComponent implements OnInit {
   userData: any;
-  allComponys: any;
+  searchData: string = '';
+  allComponys: any[] = [];
+  filteredComponys: any[] = [];
+
   districts: string[] = [
     'Kasarkod',
     'Kannur',
@@ -47,7 +50,24 @@ export class LandingPageComponent implements OnInit {
 
     this.clientService.getAllCompony().subscribe((res) => {
       this.allComponys = res;
-      console.log(this.allComponys);
+      this.filteredComponys = res; // Initially show all companies
+    });
+  }
+
+  ngDoCheck() {
+    this.filteredComponys = this.filterComponys(this.searchData);
+  }
+
+  filterComponys(searchTitle: string) {
+    if (!searchTitle) {
+      return this.allComponys;
+    }
+    searchTitle = searchTitle.toLowerCase();
+    return this.allComponys.filter((compony) => {
+      return (
+        compony.componyName.toLowerCase().includes(searchTitle) ||
+        compony.category.toLowerCase().includes(searchTitle)
+      );
     });
   }
 

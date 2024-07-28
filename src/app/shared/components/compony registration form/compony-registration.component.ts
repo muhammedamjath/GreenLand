@@ -38,14 +38,18 @@ export class ComponyRegistrationComponent implements OnInit   {
       this.componyId=params['id']
     })
 
-    this.clientService.componyDetails(this.componyId).subscribe((res)=>{
-      this.componyDetails=res 
-      if (this.componyDetails) {
-        const { image, ...otherDetails } = this.componyDetails; 
-        this.imageUrl = image; 
-        this.registerForm.patchValue(otherDetails); 
-      }
-    })
+    if(this.componyId){
+      console.log(this.componyId);  
+      
+      this.clientService.componyDetails(this.componyId).subscribe((res)=>{
+        this.componyDetails=res 
+        if (this.componyDetails) {
+          const { image, ...otherDetails } = this.componyDetails; 
+          this.imageUrl = image; 
+          this.registerForm.patchValue(otherDetails); 
+        }
+      })
+    }
 
   }
 
@@ -60,8 +64,10 @@ export class ComponyRegistrationComponent implements OnInit   {
   onSubmit(){
     
     if(this.registerForm.valid){
+      
       this.emitData();
     } else if(!this.registerForm.valid && this.isEditing) {
+      console.log('from udate');
       this.emitData();
     }
   }

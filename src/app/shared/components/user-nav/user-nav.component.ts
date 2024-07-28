@@ -40,6 +40,8 @@ export class UserNavComponent implements OnInit {
     console.log('the errr is :',err);
     if(err.error == 'Invalid token' ){}
       localStorage.removeItem('token')
+      console.log('removed from nav');
+      
       this.router.navigate(['/auth/login'])
   })
 

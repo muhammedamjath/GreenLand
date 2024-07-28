@@ -65,16 +65,20 @@
             <p class="font-semibold text-[#799351]">{{ update?.date | date:'medium' }}</p>
             <p class="text-[#576B3D]">{{ update?.discription }}</p>
           </div>
-          <button (click)="deleteUpdate(update?._id)" class="text-red-500 hover:text-red-700">
+          <button 
+          (click)="deleteUpdate(update?._id)" 
+          class="text-red-500 hover:text-red-700"
+          [disabled]="fullData?.status == 'completed'" 
+          [ngClass]="{'cursor-not-allowed':fullData?.status == 'completed'}">
             <i class="fa-regular fa-trash-can"></i>
           </button>
         </div>
       </div>
       <!-- Add Update Form -->
-      <form (ngSubmit)="addUpdate()" [formGroup]="updateForm" class="flex space-x-4">
-        <input type="text" formControlName="updateDescription" placeholder="Enter update" 
+      <form (ngSubmit)="addUpdate()" *ngIf="fullData?.status != 'completed' " [formGroup]="updateForm" class="flex space-x-4">
+        <input type="text"  formControlName="updateDescription" placeholder="Enter update" 
                class="flex-grow px-4 py-2 border border-[#A1DD70] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A1DD70] text-[#576B3D]">
-        <button type="submit" class="px-6 py-2 bg-[#EE4E4E] text-white rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2">
+        <button  type="submit" class="px-6 py-2 bg-[#EE4E4E] text-white rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2">
           Add Update
         </button>
       </form>
@@ -83,7 +87,11 @@
     <div class="bg-white rounded-xl shadow-lg p-6 mb-8" >
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl text-[#799351] font-bold">Project Details</h2>
-        <button class="bg-[#799351] text-white px-4 py-2 rounded-lg hover:bg-[#5d7340] transition duration-300" (click)="openForm()">
+        <button 
+        class="bg-[#799351] text-white px-4 py-2 rounded-lg hover:bg-[#5d7340] transition duration-300" 
+        (click)="openForm()"
+        [disabled]="fullData?.status == 'completed'" 
+        [ngClass]="{'bg-gray-300 cursor-not-allowed':fullData?.status == 'completed'}">
           Add/Update Project Details
         </button>
       </div>
@@ -149,18 +157,96 @@
     </div>
 
     <!-- Invoice Generation -->
-    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-      <h2 class="text-2xl font-bold mb-4 text-[#799351]">Generate Invoice</h2>
-      <button (click)="generateInvoice()" class="px-8 py-3 bg-[#EE4E4E] text-white rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2 transition duration-300 ease-in-out transform hover:-translate-y-1">
-        Generate Invoice
-      </button>
-    </div>
+    <!-- Invoice Generation and Project Completion -->
+<div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+  <h2 class="text-2xl font-bold mb-4 text-[#799351]">Project Actions</h2>
+  <div class="flex justify-center space-x-4">
+    <button 
+    (click)="completeProject(fullData?._id)" 
+    class="px-8 py-3 bg-[#799351] text-white rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#799351] focus:ring-offset-2 transition duration-300 ease-in-out transform hover:-translate-y-1"
+    [disabled]="fullData?.status == 'completed'"
+    [ngClass]="{'bg-gray-300 cursor-not-allowed':fullData?.status == 'completed'}">
+     project completed
+    </button>
+    <button (click)="generateInvoice()" class="px-8 py-3 bg-[#EE4E4E] text-white rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2 transition duration-300 ease-in-out transform hover:-translate-y-1">
+      downlord invoice
+    </button>
+  </div>
+</div>
 
     <!-- chat button -->
     <button (click)="openChat(fullData?.userData[0]._id, fullData?.componyData[0]._id)" class="fixed bottom-20 right-8 w-16 h-16 bg-[#EE4E4E] text-white rounded-full shadow-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EE4E4E] focus:ring-offset-2 transition duration-300 ease-in-out transform hover:-translate-y-1">
       <i class="fas fa-comments text-2xl"></i>
     </button>
-
   </div>
 </div>
 <app-footer></app-footer>
+
+<!-- invoice canvas -->
+<div id="invoice-content" class="p-8 bg-white rounded-lg shadow-lg max-w-3xl mx-auto hide-on-print ">
+  <div class="flex justify-center items-center mb-6">
+    <h2 class="text-3xl font-bold text-green-600 ">GreenLand</h2>
+  </div>
+  
+  <div class="mb-6">
+    <h3 class="text-xl font-semibold text-green-700 mb-2 text-center">Invoice</h3>
+    <p class="text-gray-600">Details of your project in {{fullData?.place}}</p>
+  </div>
+  
+  <div class="grid grid-cols-2 gap-6 mb-6">
+    <div>
+      <h3 class="text-lg font-semibold text-green-700 mb-2">Contractor Details</h3>
+      <p><span class="font-medium">Name:</span> {{ contractorData?.name }}</p>
+      <p><span class="font-medium">Email:</span> {{ contractorData?.email }}</p>
+      <p><span class="font-medium">Mobile:</span> {{ contractorData?.mobNo }}</p>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold text-green-700 mb-2">User Details</h3>
+      <p><span class="font-medium">Name:</span> {{ fullData?.userData[0]?.name }}</p>
+      <p><span class="font-medium">Email:</span> {{ fullData?.userData[0]?.email }}</p>
+      <p><span class="font-medium">Mobile:</span> {{ fullData?.userData[0]?.mobNo }}</p>
+    </div>
+  </div>
+  
+  <div class="mb-6">
+    <h3 class="text-lg font-semibold text-green-700 mb-2">Company Details</h3>
+    <p><span class="font-medium">Name of Company:</span> {{ fullData?.componyData[0].componyName }}</p>
+    <p><span class="font-medium">Category:</span> {{ fullData?.componyData[0].category }}</p>
+  </div>
+  
+  <div class="mb-6">
+    <h3 class="text-lg font-semibold text-green-700 mb-2">Project Details</h3>
+    <table class="w-full border-collapse">
+      
+      <tr class="bg-green-50">
+        <td class="border border-green-300 p-2">District</td>
+        <td class="border border-green-300 p-2">{{ fullData?.district }}</td>
+      </tr>
+      <tr>
+        <td class="border border-green-300 p-2">Place of Work</td>
+        <td class="border border-green-300 p-2">{{ fullData?.place }}</td>
+      </tr>
+      <tr class="bg-green-50">
+        <td class="border border-green-300 p-2">Total Area</td>
+        <td class="border border-green-300 p-2">{{ fullData?.area }}</td>
+      </tr>
+      <tr>
+        <td class="border border-green-300 p-2">Amount</td>
+        <td class="border border-green-300 p-2">{{ fullData?.amount }}</td>
+      </tr>
+      <tr class="bg-green-50">
+        <td class="border border-green-300 p-2">Duration</td>
+        <td class="border border-green-300 p-2">{{ fullData?.duration }}</td>
+      </tr>
+      <tr>
+        <td class="border border-green-300 p-2">Work started on</td>
+        <td class="border border-green-300 p-2">{{ fullData?.startDate }}</td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="mt-8 text-center text-green-600 italic">
+    <p>Thank you for choosing GreenLand - Where Nature Meets Innovation!</p>
+    <p>Together, we're cultivating a greener future.</p>
+  </div>
+</div>

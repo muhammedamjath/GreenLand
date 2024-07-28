@@ -124,4 +124,12 @@ export class clientService{
         const reviewGetApi = 'http://localhost:3000/client/reviweGet?id=' 
         return this.http.get(`${reviewGetApi}${id}`)
     }
+
+    // updating project status that is completed
+    projectCompletedApi = 'http://localhost:3000/client/projectCompleted'
+    projectCompleted(obj:any):Observable<any>{
+        console.log('from service', obj);
+        
+        return this.http.post(this.projectCompletedApi,obj)
+    }
 }

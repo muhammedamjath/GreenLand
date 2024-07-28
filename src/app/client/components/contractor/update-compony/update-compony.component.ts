@@ -13,21 +13,21 @@ export class UpdateComponyComponent implements OnInit {
 
   constructor(private router:Router ,private activeRoute:ActivatedRoute , private clientService:clientService){}
 
-  // componyId:string=''
-  // componyData:any
+  componyId:string=''
+  componyData:any
   ngOnInit(): void {
 
-    // this.activeRoute.params.subscribe(params =>{
-    // this.componyId=params['id']
+    this.activeRoute.params.subscribe(params =>{
+    this.componyId=params['id']
       
-    // this.clientService.componyDetails(this.componyId).subscribe((res)=>{
-    //     this.componyData=res
-    //     console.log('response from update:',res);
+    this.clientService.componyDetails(this.componyId).subscribe((res)=>{
+        this.clientService.componyData=res
+        console.log('response from update:',res);
         
-    //   })
+      })
       
 
-    // })
+    })
     
   }
 

@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
       console.log('the errr is :',err);
       if(err.error == 'Invalid token' ){}
         localStorage.removeItem('token')
+        console.log('removed from home');
+        
         this.router.navigate([''])
     })
     }

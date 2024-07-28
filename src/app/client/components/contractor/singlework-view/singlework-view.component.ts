@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { clientService } from 'src/app/services/client.service';
 import Swal from 'sweetalert2';
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
 
 interface WorkUpdate {
   _id: any;
@@ -20,6 +22,7 @@ export class SingleworkViewComponent implements OnInit {
   fullData: any;
   formState: boolean = false;
   workUpdates: WorkUpdate[] = [];
+  contractorData:any
 
   updateForm!: FormGroup;
   projectForm!: FormGroup;
@@ -54,6 +57,10 @@ export class SingleworkViewComponent implements OnInit {
         this.workUpdates.push(data);
       }
     });
+
+    this.clientService.generateInvoice(this.objectId).subscribe((res)=>{
+      this.contractorData=res
+    })
   }
 
   addUpdate(): void {
@@ -102,11 +109,6 @@ export class SingleworkViewComponent implements OnInit {
     this.formState = false;
   }
 
-  generateInvoice(): void {
-    console.log('Generating invoice...');
-    // Implement invoice generation logic here
-  }
-
   deleteUpdate(id: string) {
     Swal.fire({
       title: 'Are you sure to delete this update?',
@@ -145,5 +147,46 @@ export class SingleworkViewComponent implements OnInit {
     this.clientService.confirmationEmail(obj).subscribe((res) => {
       this.fullData.status = 'Accepted';
     });
+  }
+
+  completeProject(id:string){
+    Swal.fire({
+      title: 'It will update the status of the projcet as completed.you cant change it',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'update it!',
+    }).then((result) => {
+      console.log('this is id from:',id);
+      const obj={id:id}
+      this.clientService.projectCompleted(obj).subscribe((res)=>{
+        console.log(res);
+        
+      })
+    });
+  }
+
+  generateInvoice(){
+    const data = document.getElementById('invoice-content');
+
+    // remove class of the invoice canvas for getting value
+    data?.classList.remove('hide-on-print');
+ 
+    html2canvas(data!).then((canvas) => {
+      const imgWidth = 208;
+      const pageHeight = 295;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+
+      const contentDataURL = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const position = 0;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+      pdf.save('GreenLand_invoice.pdf');
+
+    // add class of the invoice canvas 
+      data?.classList.add('hide-on-print');
+
+    });    
   }
 }

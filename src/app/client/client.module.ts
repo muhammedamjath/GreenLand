@@ -11,7 +11,6 @@ import { LandingPageComponent } from './components/user/landing-page/landing-pag
 import { DetailedComponyViewComponent } from './components/user/detailed-compony-view/detailed-compony-view.component';
 import { WorkHistoryComponent } from './components/user/work-history/work-history.component';
 import { HistoryComponent } from './components/contractor/history/history.component';
-import { WorkDetailComponent } from './components/user/work-detail/work-detail.component';
 import { WorkFullViewComponent } from './components/user/work-full-view/work-full-view.component';
 import { SingleworkViewComponent } from './components/contractor/singlework-view/singlework-view.component';
 import { StarRatingComponent } from './components/user/star-rating/star-rating.component';
@@ -28,7 +27,6 @@ import { StarRatingComponent } from './components/user/star-rating/star-rating.c
     DetailedComponyViewComponent,
     WorkHistoryComponent,
     HistoryComponent,
-    WorkDetailComponent,
     WorkFullViewComponent,
     SingleworkViewComponent,
     StarRatingComponent,
