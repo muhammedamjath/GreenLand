@@ -81,6 +81,8 @@ export class LandingPageComponent implements OnInit {
     this.clientService.getAllCompony().subscribe((res) => {
       this.allComponys = res;
       this.filteredComponys = res; // Initially show all companies
+      console.log(res);
+      
     });
   }
 

@@ -24,7 +24,7 @@ const routes:Routes=[
     {path:'userHistory',component:WorkHistoryComponent},
     {path:'contractorHistory',component:HistoryComponent},
     {path:'detailWorkView/:id',component:WorkFullViewComponent},
-    {path:'singleworkView/:id',component:SingleworkViewComponent}
+    {path:'singleworkView/:id',component:SingleworkViewComponent},
     
 ]
 

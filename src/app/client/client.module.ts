@@ -14,6 +14,10 @@ import { HistoryComponent } from './components/contractor/history/history.compon
 import { WorkFullViewComponent } from './components/user/work-full-view/work-full-view.component';
 import { SingleworkViewComponent } from './components/contractor/singlework-view/singlework-view.component';
 import { StarRatingComponent } from './components/user/star-rating/star-rating.component';
+import { AboutUsComponent } from './components/common/about-us/about-us.component';
+import { HomeComponent } from './components/common/home/home.component';
+import { AnimationHomeComponent } from './components/common/animation-home/animation-home.component';
+
 
 
 
@@ -30,6 +34,9 @@ import { StarRatingComponent } from './components/user/star-rating/star-rating.c
     WorkFullViewComponent,
     SingleworkViewComponent,
     StarRatingComponent,
+    AboutUsComponent,
+    HomeComponent,
+    AnimationHomeComponent
   ],
   imports: [
     CommonModule,

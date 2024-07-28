@@ -55,12 +55,12 @@
             <div class="h-[590px] w-[20%] bg-[] overflow-y-auto scrollbar-hide sticky top-[80px] hidden sm:hidden md:block lg:block xl:block border bg-white bg-opacity-30 backdrop-blur-lg ">
                 <div class="w-full min-h-[50%] bg-[] flex flex-col gap-2 pt-2 "> 
                     <p class="w-full text-center font-black">Filter by Category</p>
-                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded " *ngFor="let work of works" (click)="onCategorySelect(work)">{{work}}</button>
+                    <button class="bg-[#799351] w-[80%] hover:bg-[#EE4E4E] text-[white] h-8 ml-[10%] rounded " *ngFor="let work of works"[ngClass]="{'bg-[#EE4E4E] text-white': selectedCategory === work}"  (click)="onCategorySelect(work)">{{work}}</button>
                 </div>
 
                 <div class="w-full min-h-[50%] bg-[] flex flex-col gap-2 pt-2 mt-2 pb-8">
                     <p class="w-full text-center font-black">Filter by location</p>
-                    <button class="bg-[#FFA27F] w-[80%] hover:bg-[#EE4E4E] hover:text-white h-8 ml-[10%] rounded" *ngFor="let District of districts" (click)="onLocationSelect(District)">{{District}}</button>
+                    <button class="bg-[#799351] w-[80%] hover:bg-[#EE4E4E] text-[white] h-8 ml-[10%] rounded" *ngFor="let District of districts" [ngClass]="{'bg-[#EE4E4E] text-white': selectedLocation === District}" (click)="onLocationSelect(District)">{{District}}</button>
                 </div>
                
             </div>
