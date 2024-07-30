@@ -1,16 +1,14 @@
-<nav class="h-20 w-full  border-b border-[#adb5bd] bg-opacity-20 flex items-center justify-between px-4 sm:px-8">
+<nav class="h-32 md:h-20 w-full bg-[#f5f7fa]  flex flex-col md:flex-row items-center justify-evenly md:justify-between px-4 sm:px-8">
   <div class="flex items-center space-x-4 " >
-      <img class="h-12 sm:h-16" src="/assets/images/logo.png" alt="GreenLand Logo">
+      <img class="h-16 sm:h-16" src="/assets/images/logo.png" alt="GreenLand Logo">
       <p class="text-[#007200] font-bold text-lg sm:text-[30px]">Green<span class="text-[#972d07]">Land</span></p>
   </div>
-  <div class="flex space-x-4 sm:space-x-8 ">
-      <a href="#" class="nav-link">Home</a>
-      <a href="#" class="nav-link">Categories</a>
-      <a href="#" class="nav-link">Contact</a>
-      <a href="/aboutUs" class="nav-link">About us</a>
-      <a href="/auth/login" class="nav-link">Login</a>
-  </div>
-  <div class="flex items-center justify-center h-12 w-12 sm:hidden">
-      <app-button [icon]="menuBtnIcon"></app-button>
+  <div class="flex space-x-2 sm:space-x-6  ">
+    <span class="nav-link cursor-pointer " routerLink="/">Home</span>
+    <span class="nav-link cursor-pointer " (click)="goToService()">Services</span>
+    <span class="nav-link cursor-pointer " (click)="goToContactSection()">Contact</span>
+    <span class="nav-link cursor-pointer " routerLink="/aboutUs">About us</span>
+    <span class="nav-link cursor-pointer " routerLink="/auth/login">Login</span>
+
   </div>
 </nav>

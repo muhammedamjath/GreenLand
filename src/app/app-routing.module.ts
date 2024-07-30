@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './client/components/common/home/home.component';
 import { clientGuard } from './guards/client.guard';
 import { AboutUsComponent } from './client/components/common/about-us/about-us.component';
+import { AnimationHomeComponent } from './client/components/common/animation-home/animation-home.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: AnimationHomeComponent },
   {path:'aboutUs' ,component:AboutUsComponent},
   {
     path: 'auth',

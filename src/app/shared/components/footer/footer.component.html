@@ -1,13 +1,13 @@
-<footer class="h-auto w-full shadow bg-[#252525] pt-4 pb-4 overflow-x-hidden">
+<footer id="contact-section" class="h-auto w-full shadow bg-[#0c1524] pt-4 pb-4 overflow-x-hidden">
     <div class="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-4 text-[24px] sm:text-[30px]">
         <img class="h-[40px] sm:h-[50px]" src="/assets/images/logo.png" alt="GreenLand Logo">
         <p class="text-[#525151] font-bold mt-4 sm:mt-0">GreenLand</p>
     </div>
     <div class="text-white flex justify-center gap-4 sm:gap-6 md:gap-10 lg:gap-14 xl:gap-20 mt-4 text-[10px] sm:text-[13px] md:text-[14px] lg:text-[15px]  ">
-        <a href="">Home</a>
-        <a href="">About</a>
-        <a href="">Steps</a>
-        <a href="">Register</a>
+        <span class=" cursor-pointer " routerLink="/">Home</span>
+        <span class="nav-link cursor-pointer " routerLink="/aboutUs">About us</span>
+        <span class="nav-link cursor-pointer " (click)="goToService()">Services</span>
+        <span class="nav-link cursor-pointer " routerLink="/auth/login">Login</span>
     </div>
     <div class="flex justify-center  gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 mt-4">
         <img onclick="window.open('//www.linkedin.com/in/muhammedamjath/', '_blank')" class="h-[18px] cursor-pointer sm:h-[22px] md:h-[20px] xl:h-[25px] "  src="/assets/images/LinkedIn_icon_circle.svg.webp" alt="">
