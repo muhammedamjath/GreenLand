@@ -38,10 +38,12 @@ export class LoginComponent {
           
           if(res.data?.category == 'user'){
               localStorage.setItem('token',res.token)
+              localStorage.setItem('category',res.data?.category)
               this.router.navigate(['/client/userLandPage'])
                 
           }else if (res.data?.category == 'contractor'){
             localStorage.setItem('token',res.token)
+            localStorage.setItem('category',res.data?.category)
             this.router.navigate(['/client/contractorHome'])
 
           }else if (res.status=='incorrect password'){

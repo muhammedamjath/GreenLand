@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Socket, io } from 'socket.io-client';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,12 @@ import { Socket, io } from 'socket.io-client';
 export class ChatService {
 
   constructor(private http:HttpClient){}
+  api=environment.socketUrl
 
   private socket!:Socket
 
   connect() {
-    this.socket = io('http://localhost:3000');
+    this.socket = io(this.api);
   }
 
   register(senderId: string) {
@@ -32,24 +34,30 @@ export class ChatService {
     })
   }
 
+  disconnect() {
+    if (this.socket) {
+      this.socket.disconnect();
+    }
+  }
+
   // chat post api 
-  chatPostApi='http://localhost:3000/client/chatPost'
+  chatPostApi=`${this.api}/client/chatPost`
   chatPost(data:object):Observable<any>{
     return this.http.post(this.chatPostApi,data)
   }
 
-  getChatListApi='http://localhost:3000/client/chatList'
+  getChatListApi=`${this.api}/client/chatList`
   chatList():Observable<any>{
     return this.http.get(this.getChatListApi)
   }
   
   chatHistoryget(data:object):Observable<any>{
-    const chatHistoryGetApi=`http://localhost:3000/client/chatHistory`
+    const chatHistoryGetApi=`${this.api}/client/chatHistory`
     return this.http.post(chatHistoryGetApi,data)
   }
 
   receiverData(id:string):Observable<any>{
-    const receiverDetailesApi='http://localhost:3000/client/receiverData?id='
+    const receiverDetailesApi=`${this.api}/client/receiverData?id=`
     return this.http.get(`${receiverDetailesApi}${id}`)
   }
 }

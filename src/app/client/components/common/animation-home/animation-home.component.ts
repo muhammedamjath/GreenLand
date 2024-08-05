@@ -17,9 +17,7 @@ export class AnimationHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.homeService.getComponys().subscribe((res)=>{
-      this.componyData=res
-      console.log(this.componyData);
-      
+      this.componyData=res      
     })
 
     const token = localStorage.getItem('token')
@@ -31,7 +29,6 @@ export class AnimationHomeComponent implements OnInit {
       console.log('the errr is :',err);
       if(err.error == 'Invalid token' ){}
         localStorage.removeItem('token')
-        console.log('removed from home');
         
         this.router.navigate([''])
     })
@@ -39,9 +36,11 @@ export class AnimationHomeComponent implements OnInit {
   }
 
   getFullComponyData(){
-    const tocken =localStorage.getItem('token')
-    if(tocken){
+    const category =localStorage.getItem('category')
+    if(category == 'user'){
       this.router.navigate(['/client/userLandPage'])
+    }else if(category == 'contractor'){
+      this.router.navigate([''])
     }else{
       this.router.navigate(['/auth/login'])
     }

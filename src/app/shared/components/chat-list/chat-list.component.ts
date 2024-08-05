@@ -16,19 +16,16 @@ export class ChatListComponent implements OnInit {
   ngOnInit(): void {
    this.clientService.getUser().subscribe((res)=>{
     this.userData=res.userData
-    console.log('res:',res);
     
    })
 
     this.chatServeice.chatList().subscribe((res)=>{
-      console.log('this is from chat list bai:',res);
       this.chatListDat=res
       
     })
   }
 
   getSelect(id:string ,componyId:string){  
-    console.log('form ;ist:',id);
       
     this.router.navigate([`/client/chat/${id}/${componyId}`])
   }

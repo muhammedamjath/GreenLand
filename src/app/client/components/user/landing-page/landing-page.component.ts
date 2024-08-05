@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { clientService } from 'src/app/services/client.service';
 
@@ -8,12 +8,21 @@ import { clientService } from 'src/app/services/client.service';
   styleUrls: ['./landing-page.component.css'],
 })
 export class LandingPageComponent implements OnInit {
+
+  constructor(
+    private clientService: clientService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private elRef: ElementRef
+  ) {}
+
   userData: any;
   searchData: string = '';
   allComponys: any[] = [];
   filteredComponys: any[] = [];
   selectedCategory: string = '';
   selectedLocation: string = '';
+  filterView:boolean=true
 
   districts: string[] = [
     'Kasarkod',
@@ -67,11 +76,7 @@ export class LandingPageComponent implements OnInit {
     'Swimming Pools and Hot Tubs',
     'Rainwater Harvesting Systems',
   ];
-  constructor(
-    private clientService: clientService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  
 
   ngOnInit() {
     this.clientService.getUser().subscribe((res) => {
@@ -81,10 +86,39 @@ export class LandingPageComponent implements OnInit {
     this.clientService.getAllCompony().subscribe((res) => {
       this.allComponys = res;
       this.filteredComponys = res; // Initially show all companies
-      console.log(res);
       
     });
+
+      this.checkScreenSize();
+    
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  filterClicked(state:boolean){
+    this.filterView = state
+    
+  }
+
+  checkScreenSize(): void {
+    if (window.innerWidth < 768) {
+      this.onSmallScreen();
+    } else {
+      this.onLargeScreen();
+    }
+  }
+
+  onSmallScreen(): void {
+    this.filterView=false
+  }
+
+  onLargeScreen(): void {
+    this.filterView = true;  
+  }
+
 
   ngDoCheck() {
     this.filterComponys();
@@ -116,4 +150,5 @@ export class LandingPageComponent implements OnInit {
   shareId(id: any) {
     this.router.navigateByUrl(`/client/detailedView/${id}`);
   }
+
 }

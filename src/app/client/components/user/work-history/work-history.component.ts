@@ -14,7 +14,6 @@ export class WorkHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.clientService.workHistoryGet().subscribe((res) => {
-      console.log(res);
       this.history = res;
     });
   }

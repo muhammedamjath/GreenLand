@@ -5,6 +5,7 @@ import { signupModel } from "../models/signup";
 import { Observable } from "rxjs";
 import { signupOtp } from "../models/sinupOtp";
 import { resetPasswordModel } from "../models/resetPass";
+import { environment } from "src/environment/environment";
 
 @Injectable({
   providedIn:"root"
@@ -12,38 +13,39 @@ import { resetPasswordModel } from "../models/resetPass";
 
 export class authService{
   constructor(private http:HttpClient , private router:Router){}
+  api = environment.baseUrl
 
-  userSignupApi='http://localhost:3000/auth/userSignup'
+  userSignupApi=`${this.api}/auth/userSignup`
   userSignup(data:signupModel):Observable <any>{
     return this.http.post(this.userSignupApi,data)
   }
 
-  contractorSignupApi='http://localhost:3000/auth/contractorSignup'
+  contractorSignupApi=`${this.api}/auth/contractorSignup`
   contractorSignup(data:signupModel):Observable <any>{
     return this.http.post(this.contractorSignupApi,data)
   }
 
-  signupOtpApi='http://localhost:3000/auth/signupOtp'
+  signupOtpApi=`${this.api}/auth/signupOtp`
   signupOtp(data:signupOtp):Observable <any>{
     return this.http.post(this.signupOtpApi,data)
   }
 
-  resentOtpApi='http://localhost:3000/auth/resentOtp'
+  resentOtpApi=`${this.api}/auth/resentOtp`
   resentOtp(data:signupOtp):Observable <any>{
     return this.http.patch(this.resentOtpApi,data)
   }
 
-  fogetPasswordApi='http://localhost:3000/auth/forgetPassword'
+  fogetPasswordApi=`${this.api}/auth/forgetPassword`
   forgetPassword(data:resetPasswordModel):Observable <any>{
     return this.http.post(this.fogetPasswordApi,data)
   }
   
-  resetPasswordOtpApi='http://localhost:3000/auth/resetPassword'
+  resetPasswordOtpApi=`${this.api}/auth/resetPassword`
   resetPassword(data:signupOtp):Observable <any>{
     return this.http.post(this.resetPasswordOtpApi,data)
   }
 
-  loginApi='http://localhost:3000/auth/login'
+  loginApi=`${this.api}/auth/login`
   login(data:resetPasswordModel):Observable <any>{
     return this.http.post(this.loginApi,data)
   }

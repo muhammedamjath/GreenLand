@@ -11,20 +11,22 @@ import { WorkHistoryComponent } from "./components/user/work-history/work-histor
 import { HistoryComponent } from "./components/contractor/history/history.component";
 import { WorkFullViewComponent } from "./components/user/work-full-view/work-full-view.component";
 import { SingleworkViewComponent } from "./components/contractor/singlework-view/singlework-view.component";
+import { contractorGuard } from "../guards/contractor.guard";
+import { userGuard } from "../guards/user.guard";
 
 
 const routes:Routes=[
-    {path:'contractorHome', component:HomeContractorComponent},
-    {path:'componyReg', component:ComponyRegComponent},
-    {path:'updateCompony/:id', component:UpdateComponyComponent},
-    {path:'registerdComponys' ,component:RegisterdComponysComponent},
-    {path:'userLandPage' ,component:LandingPageComponent},
-    {path:'detailedView/:id', component:DetailedComponyViewComponent},
+    {path:'contractorHome', component:HomeContractorComponent,canActivate:[contractorGuard]},
+    {path:'componyReg', component:ComponyRegComponent,canActivate:[contractorGuard]},
+    {path:'updateCompony/:id', component:UpdateComponyComponent,canActivate:[contractorGuard]},
+    {path:'registerdComponys' ,component:RegisterdComponysComponent,canActivate:[contractorGuard]},
+    {path:'userLandPage' ,component:LandingPageComponent,canActivate:[userGuard]},
+    {path:'detailedView/:id', component:DetailedComponyViewComponent,canActivate:[userGuard]},
     {path:'chat/:id/:componyId',component:ChatComponent},
-    {path:'userHistory',component:WorkHistoryComponent},
-    {path:'contractorHistory',component:HistoryComponent},
-    {path:'detailWorkView/:id',component:WorkFullViewComponent},
-    {path:'singleworkView/:id',component:SingleworkViewComponent},
+    {path:'userHistory',component:WorkHistoryComponent,canActivate:[userGuard]},
+    {path:'contractorHistory',component:HistoryComponent,canActivate:[contractorGuard]},
+    {path:'detailWorkView/:id',component:WorkFullViewComponent,canActivate:[userGuard]},
+    {path:'singleworkView/:id',component:SingleworkViewComponent,canActivate:[contractorGuard]},
     
 ]
 

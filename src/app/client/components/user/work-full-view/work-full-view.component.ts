@@ -110,7 +110,6 @@ export class WorkFullViewComponent implements OnInit {
 
   // reviwe post 
   starRating(data:any){
-    console.log('data in :',data);
     const obj={
       projectId:this.fullData?._id,
       userId:this.fullData?.userData[0]?._id,

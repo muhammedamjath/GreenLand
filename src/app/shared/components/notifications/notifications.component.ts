@@ -27,7 +27,6 @@ export class NotificationsComponent implements OnInit {
     this.userData=this.clientService.userData    
     this.clientService.notificationGet(false).subscribe((res)=>{
       this.notification=res
-      console.log(this.notification);
       
     })
   }

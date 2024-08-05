@@ -79,7 +79,6 @@ export class SingleworkViewComponent implements OnInit {
 
   submitProjectDetails(): void {
     if (this.projectForm.valid) {
-      console.log('Project details submitted:', this.projectForm.value);
       this.clientService
         .projectDetailes(this.projectForm.value)
         .subscribe((res) => {
@@ -158,12 +157,8 @@ export class SingleworkViewComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'update it!',
     }).then((result) => {
-      console.log('this is id from:',id);
       const obj={id:id}
-      this.clientService.projectCompleted(obj).subscribe((res)=>{
-        console.log(res);
-        
-      })
+      this.clientService.projectCompleted(obj).subscribe((res)=>{})
     });
   }
 

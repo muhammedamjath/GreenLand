@@ -1,6 +1,8 @@
 <app-navbar *ngIf="!userData"></app-navbar>
 <user-nav *ngIf="userData"></user-nav>
 
+<div *ngIf="userData" class="mt-[120px] sm:mt-[120px] md:mt-[60px] lg:mt-[60px] xl:mt-[60px] "></div>
+
 <div class="relative bg-[#f5f7fa] w-full min-h-[600px] px-4 py-12 md:py-24 lg:h-[600px]" style="background-image: url(/assets/images/repairman.png); background-position: right bottom; background-repeat: no-repeat; background-size: contain;">
     <div class="max-w-7xl mx-auto">
         <p class="bg-[#fff0eb] w-fit p-2 text-orange text-lg md:text-2xl mb-6 md:mb-8">Ready to help you!</p>
@@ -22,7 +24,7 @@
         </div>
         <div class="rounded h-24 bg-[#EE4E4E] flex flex-col justify-center p-6 md:p-8">
             <span class="text-white text-2xl mb-2"><i class="fa-solid fa-star"></i></span>
-            <p class="text-white text-xl">Affordable Rates</p>
+            <p class="text-white text-xl">Various choise</p>
         </div>
     </div>
 </div>
@@ -116,8 +118,8 @@
 
 <!-- last part -->
  <div class="h-[500px] bg-[#EE4E4E] w-full flex flex-col items-center justify-center gap-12 ">
-  <h1 class="text-4xl md:text-6xl w-[80%] md:w-[50%] text-center font-semibold">Ready to get your home in top shape?</h1>
-  <p class="text-xl md:text-2xl w-[80%]  md:w-[50%] text-center">connect with your contractor or engineers for  house work solutions! </p>
+  <h1 class="text-4xl md:text-6xl w-[80%] md:w-[50%] text-white text-center font-semibold">Ready to get your home in top shape?</h1>
+  <p class="text-xl text-white w-[80%]  md:w-[50%] text-center">connect with your contractor or engineers for  house work solutions! </p>
   <button class="bg-white p-2 rounded w-[40%] md:w-[20%] transition duration-300 ease-in-out transform hover:-translate-y-1 hover:bg-blue-600 hover:text-white" routerLink="/auth/login" >Register Now &nbsp; <i class="fa-solid fa-angle-right"></i> </button>
  </div>
 

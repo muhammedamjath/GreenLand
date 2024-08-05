@@ -21,16 +21,6 @@ export class RegisterdComponysComponent implements OnInit {
   editItem(id:any){
 
         this.router.navigate(['/client/updateCompony',id ])
-  //   this.clientService.componyDetails(id).subscribe((res)=>{
-  //     if(res){
-  //       this.clientService.componyData=res
-  //       this.router.navigate(['/client/updateCompony' ])
-  //     }
-  //   },
-  //   (err)=>{
-  //   console.log('the error is :',err);
-    
-  // })
   }
 
 }

@@ -44,13 +44,11 @@ export class ChatComponent implements OnInit , AfterViewChecked   {
     
     this.chatService.receiverData(this.reciverid).subscribe((res)=>{
       this.receiverData=res
-      console.log(res);
       
     })
     
     this.clientService.getUser().subscribe((res)=>{
       this.userData=res.userData
-      console.log('receiverId:',this.userData);
       
       this.chatService.register(this.userData._id)
       const obj={

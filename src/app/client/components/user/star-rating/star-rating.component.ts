@@ -24,7 +24,6 @@ export class StarRatingComponent implements OnInit {
 
   onSubmit() {
     if (this.ratingForm.valid) {
-      // console.log(this.ratingForm.value);
       this.formData.emit(this.ratingForm.value)
     }
   }

@@ -33,7 +33,6 @@ export class DetailedComponyViewComponent implements OnInit {
 
     // reviews get
     this.clientService.reviewsGet(this.componyId).subscribe((res)=>{
-      console.log(res);
       this.reviews=res
       
     })

@@ -21,9 +21,7 @@ export class UpdateComponyComponent implements OnInit {
     this.componyId=params['id']
       
     this.clientService.componyDetails(this.componyId).subscribe((res)=>{
-        this.clientService.componyData=res
-        console.log('response from update:',res);
-        
+        this.clientService.componyData=res        
       })
       
 

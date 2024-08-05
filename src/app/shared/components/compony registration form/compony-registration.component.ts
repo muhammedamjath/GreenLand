@@ -39,9 +39,10 @@ export class ComponyRegistrationComponent implements OnInit   {
     })
 
     if(this.componyId){
-      console.log(this.componyId);  
       
+      console.log('this is from update:');
       this.clientService.componyDetails(this.componyId).subscribe((res)=>{
+        
         this.componyDetails=res 
         if (this.componyDetails) {
           const { image, ...otherDetails } = this.componyDetails; 
@@ -67,7 +68,6 @@ export class ComponyRegistrationComponent implements OnInit   {
       
       this.emitData();
     } else if(!this.registerForm.valid && this.isEditing) {
-      console.log('from udate');
       this.emitData();
     }
   }
