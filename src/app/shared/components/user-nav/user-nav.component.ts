@@ -103,6 +103,9 @@ export class UserNavComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('category');
     this.router.navigate(['/']);
+    if (this.router.url === '/') {
+      window.location.reload();
+    }
   }
 
   changeProfile() {

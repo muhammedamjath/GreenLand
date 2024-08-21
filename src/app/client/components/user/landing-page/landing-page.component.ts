@@ -1,5 +1,5 @@
-import { Component, ElementRef, HostListener, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, HostListener, OnInit, Output } from '@angular/core';
+import {  Router } from '@angular/router';
 import { clientService } from 'src/app/services/client.service';
 
 @Component({
@@ -12,8 +12,6 @@ export class LandingPageComponent implements OnInit {
   constructor(
     private clientService: clientService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private elRef: ElementRef
   ) {}
 
   userData: any;
@@ -83,11 +81,17 @@ export class LandingPageComponent implements OnInit {
       this.userData = res;
     });
 
-    this.clientService.getAllCompony().subscribe((res) => {
-      this.allComponys = res;
-      this.filteredComponys = res; // Initially show all companies
-      
-    });
+    if (this.clientService.componyData){
+      this.allComponys = this.clientService.componyData;
+      this.filteredComponys = this.clientService.componyData;      
+    }else{
+      this.clientService.getAllCompony().subscribe((res) => {
+        this.clientService.componyData=res
+        this.allComponys = this.clientService.componyData;
+        this.filteredComponys = this.clientService.componyData; 
+        
+      });
+    }
 
       this.checkScreenSize();
     

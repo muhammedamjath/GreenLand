@@ -14,6 +14,7 @@ export class AnimationHomeComponent implements OnInit {
 
   componyData:any[]=[]
   userData:any
+  category:any
 
   ngOnInit(): void {
     this.homeService.getComponys().subscribe((res)=>{
@@ -21,6 +22,8 @@ export class AnimationHomeComponent implements OnInit {
     })
 
     const token = localStorage.getItem('token')
+    const category = localStorage.getItem('category')
+    this.category = category
     if(token){
       this.userService.getUser().subscribe((res)=>{
         this.userData=res.userData

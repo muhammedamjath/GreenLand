@@ -15,7 +15,6 @@ import { WorkFullViewComponent } from './components/user/work-full-view/work-ful
 import { SingleworkViewComponent } from './components/contractor/singlework-view/singlework-view.component';
 import { StarRatingComponent } from './components/user/star-rating/star-rating.component';
 import { AboutUsComponent } from './components/common/about-us/about-us.component';
-import { HomeComponent } from './components/common/home/home.component';
 import { AnimationHomeComponent } from './components/common/animation-home/animation-home.component';
 
 
@@ -35,7 +34,6 @@ import { AnimationHomeComponent } from './components/common/animation-home/anima
     SingleworkViewComponent,
     StarRatingComponent,
     AboutUsComponent,
-    HomeComponent,
     AnimationHomeComponent
   ],
   imports: [
